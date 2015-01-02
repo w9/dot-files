@@ -254,7 +254,8 @@ alias tt='tree -L 2'
 alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
-alias vi=vim
+alias vim='vim --servername VIM'
+alias vi='vim'
 alias grep='grep --color=always'
 
 alias open=gnome-open
