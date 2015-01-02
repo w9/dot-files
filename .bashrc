@@ -257,6 +257,7 @@ alias R="R --quiet --no-save"
 alias vim='vim --servername VIM'
 alias vi='vim'
 alias grep='grep --color=always'
+alias tmux='tmux -2'
 
 alias open=gnome-open
 
