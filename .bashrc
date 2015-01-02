@@ -198,7 +198,7 @@ case ${TERM} in
         # Time of day (with load info):
         #PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
         # User@Host (with connection type info):
-        PS1=${PS1}"\[${SU}\]\u\[${NC}\]${Green}@${NC}\[${CNX}\]\h\[${NC}\]${Green}:${NC}"
+        PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
         # PWD (with 'disk space' info):
         PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
         # Prompt (with 'job' info):
