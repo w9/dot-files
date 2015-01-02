@@ -33,7 +33,6 @@ shopt -s checkwinsize       # If set, bash checks the window size after each com
 shopt -s cmdhist            # If set, bash attempts to save all lines of a multiple-line command in the same history entry.
 shopt -s extglob            # Necessary for programmable completion.
 shopt -s dotglob
-shopt -s failglob           # If set, patterns which fail to match filenames during filename expansion result in an expansion error.
 
 
 
@@ -190,17 +189,16 @@ function job_color()
     fi
 }
 
-function myip () { ip addr show eth0 | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
 
 # Now we construct the prompt.
 PROMPT_COMMAND="history -a"
 case ${TERM} in
-  *term | xterm-256color | rxvt | linux | cygwin)
+  *term | xterm-256color | rxvt | linux | cygwin | screen)
         PS1=""
         # Time of day (with load info):
         #PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
         # User@Host (with connection type info):
-        PS1=${PS1}"\[${SU}\]\u\[${NC}\]${Green}@${NC}\[${CNX}\]\$(myip)\[${NC}\]${Green}:${NC}"
+        PS1=${PS1}"\[${SU}\]\u\[${NC}\]${Green}@${NC}\[${CNX}\]\h\[${NC}\]${Green}:${NC}"
         # PWD (with 'disk space' info):
         PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
         # Prompt (with 'job' info):
@@ -292,6 +290,7 @@ function sanitize-own() { sudo chown -R `whoami`:`whoami` "$@";}
 
 function pp() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
 
+function myip () { ip addr show | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
 
 
 
