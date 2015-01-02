@@ -193,7 +193,7 @@ function job_color()
 # Now we construct the prompt.
 PROMPT_COMMAND="history -a"
 case ${TERM} in
-  *term | xterm-256color | rxvt | linux | cygwin | screen)
+  *term | xterm-256color | rxvt | linux | cygwin | screen | screen-256color )
         PS1=""
         # Time of day (with load info):
         #PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
