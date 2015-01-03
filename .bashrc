@@ -259,7 +259,9 @@ alias vi='vim'
 alias grep='grep --color=always'
 alias tmux='tmux -2'
 
-alias open=gnome-open
+alias open='gnome-open'
+
+alias tra='trash-put'
 
 
 
