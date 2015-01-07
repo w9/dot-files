@@ -4,23 +4,23 @@ call pathogen#helptags()
 syntax enable
 filetype plugin indent on
 
-se rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-se t_Co=256
-se laststatus=2
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set t_Co=256
+set laststatus=2
 
 let mapleader=" "
 
 " use soft tabs
-se nowrap ts=2 si sw=2 et sts=2
+set nowrap ts=2 si sw=2 et sts=2
 
 " Use only underline to highlight search results
 hi Search cterm=underline ctermbg=NONE ctermfg=NONE
-se hls      " search higlight
-se is       " incremental search
+set hls      " search higlight
+set is       " incremental search
 
 " Make folded lines dimmer
 hi Folded ctermbg=red ctermfg=black
-" se foldlevel=3
+" set foldlevel=3
 
 " quick navigation
 nn <C-J> 3j
@@ -38,15 +38,15 @@ let g:vim_markdown_initial_foldlevel=99
 " netrw: don't show the banner
 let g:netrw_banner=0
 
-se listchars=eol:$,tab:>-
-nn <Leader>l :se list! list?<CR>
+set listchars=eol:$,tab:>-
+nn <Leader>l :set list! list?<CR>
 nn <Leader>n :noh<CR>
-nn <Leader>p :se paste! paste?<CR>
+nn <Leader>p :set paste! paste?<CR>
 
 nn Y y$
 
 " retain undo's after closing files
-se undofile
+set undofile
 
 let g:Tex_DefaultTargetFormat="pdf"
 let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
@@ -57,13 +57,10 @@ im <C-H> <Plug>IMAP_JumpForward
 vm <C-H> <Plug>IMAP_JumpForward
 
 " accept mouse click
-"se mouse=a
-
-" powerline
-" let g:Powerline_symbols = "fancy"
+"set mouse=a
 
 " this is for zero delay after quitting insert mode
-se timeout timeoutlen=5000 ttimeoutlen=1
+set timeout timeoutlen=5000 ttimeoutlen=1
 
 nmap <c-s-t> :vs<bar>:b#<CR>
 
