@@ -288,10 +288,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 function ff() { find . -type f -iname '*'"$*"'*' ; }
 function fe() { find . -type f -iname '*'"${1:-}"'*' -exec ${2:-file} {} \; ; }
-<<<<<<< HEAD
 function fr() { grep -R --include '*.R' $* ; }
-=======
->>>>>>> 2123134d72116359a1b8519a186f15f35b57951a
 
 function sanitize() { sudo chmod -R u=rw,g=r,o=r,a-x+X "$@" ;}
 function sanitize-own() { sudo chown -R `whoami`:`whoami` "$@";}
