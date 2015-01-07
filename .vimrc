@@ -68,3 +68,7 @@ nmap <c-s-t> :vs<bar>:b#<CR>
 set autochdir
 
 set backspace=indent,eol,start
+
+let vimrplugin_vsplit = 1
+let vimrplugin_rconsole_width = 80
+
