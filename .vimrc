@@ -65,7 +65,7 @@ set timeout timeoutlen=5000 ttimeoutlen=1
 nmap <c-s-t> :vs<bar>:b#<CR>
 
 " cwd always set to current file
-set autochdir
+se autochdir
 
 set backspace=indent,eol,start
 
