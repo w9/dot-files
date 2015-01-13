@@ -8,6 +8,7 @@
 # Base PATHs
 #-------------------------------------------------------------
 
+export PATH=""
 export PATH="$PATH:\
 /home/xzhu/.local/bin:\
 /usr/local/sbin:\
@@ -212,18 +213,6 @@ case ${TERM} in
 esac
 
 
-#export PS1="${debian_chroot:+($debian_chroot)}\[\$(disk_color)\][\w] \[${NC}\]$ "    # shorter path
-#export PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$"   # default
-#export TERM=xterm    # For my poor cygwin to fake xterm
-#export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
-#export HISTIGNORE="&:bg:fg:ll:h"
-#export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
-#export HISTCONTROL=ignoredups
-#export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
-#export EDITOR=/usr/bin/vim
-
-
-
 #------------------------------------------------------------
 # Aliases
 #------------------------------------------------------------
@@ -281,6 +270,13 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+#export TERM=xterm    # For my poor cygwin to fake xterm
+#export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
+export HISTIGNORE="&:bg:fg:ll:h"
+export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
+export HISTCONTROL=ignoredups
+#export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
+#export EDITOR=/usr/bin/vim
 
 
 #-------------------------------------------------------------
