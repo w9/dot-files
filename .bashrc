@@ -10,7 +10,7 @@
 
 export PATH=""
 export PATH="$PATH:\
-/home/xzhu/.local/bin:\
+$HOME/.local/bin:\
 /usr/local/sbin:\
 /usr/local/bin:\
 /usr/sbin:\
@@ -244,7 +244,7 @@ alias tt='tree -L 2'
 alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
-alias vim='vim --servername VIM'
+alias vim='vim'
 alias vi='vim'
 alias grep='grep --color=always'
 alias tmux='tmux -2'
@@ -316,3 +316,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$HOME/Softwares/android-studio/bin:$PATH"
 
 alias ccc='ssh xzhu@rna.cc.hawaii.edu'
+alias ddd='ssh zhu2@128.171.123.18'
