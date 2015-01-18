@@ -262,8 +262,6 @@ alias open='gnome-open'
 alias tra='trash-put'
 
 
-alias ccc='ssh xzhu@rna.cc.hawaii.edu'
-alias ddd='ssh zhu2@128.171.123.18'
 
 #-------------------------------------------------------------
 # ENV Exports
