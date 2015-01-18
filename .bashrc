@@ -9,17 +9,21 @@
 #-------------------------------------------------------------
 
 export PATH=""
-export PATH="$PATH:\
-$HOME/.local/bin:\
-/usr/local/sbin:\
-/usr/local/bin:\
-/usr/sbin:\
-/usr/bin:\
-/sbin:\
-/bin:\
-/usr/games:\
-/usr/local/games\
-"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/opt/local/slurm/14.03.3-2/bin"
+#export PATH="$PATH:/opt/local/munge/0.5.11-1/bin"
+#export PATH="$PATH:/usr/lib64/qt-3.3/bin"
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/sbin"
+export PATH="$PATH:/usr/bin"
+export PATH="$PATH:/sbin"
+export PATH="$PATH:/bin"
+export PATH="$PATH:/usr/games"
+export PATH="$PATH:/usr/local/game"
+
+
+
 
 
 
@@ -217,7 +221,6 @@ esac
 # Aliases
 #------------------------------------------------------------
 
-alias rm='rm -I'
 alias cp='cp -i'
 alias mv='mv -i'
 #alias mkdir='mkdir -p'
@@ -283,6 +286,8 @@ export HISTCONTROL=ignoredups
 # Helper functions
 #-------------------------------------------------------------
 
+function rm() { echo "Use tra instead!" ; }
+
 function ff() { find . -type f -iname '*'"$*"'*' ; }
 function fe() { find . -type f -iname '*'"${1:-}"'*' -exec ${2:-file} {} \; ; }
 function fr() { grep -R --include '*.R' $* ; }
@@ -310,10 +315,10 @@ clear
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/Softwares/android-studio/bin:$PATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export PATH="$HOME/Softwares/android-studio/bin:$PATH"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 alias ccc='ssh xzhu@rna.cc.hawaii.edu'
 alias ddd='ssh zhu2@128.171.123.18'
