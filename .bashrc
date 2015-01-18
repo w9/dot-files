@@ -226,6 +226,7 @@ esac
 # Aliases
 #------------------------------------------------------------
 
+alias rm!='/bin/rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 #alias mkdir='mkdir -p'
