@@ -31,6 +31,13 @@ export PATH="$PATH:/usr/games"
 export PATH="$PATH:/usr/local/game"
 
 
+export LD_LIBRARY_PATH=""
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib"
+
+
 
 #-------------------------------------------------------------
 # Bash Settings
