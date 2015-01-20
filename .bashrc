@@ -1,49 +1,47 @@
 #!/usr/bin/env bash
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
+[[ $- == *i* ]] || return
 
 #-------------------------------------------------------------
 # Base PATHs
 #-------------------------------------------------------------
 
-export PATH=""
+export PATH="\
+$HOME/.local/bin:\
+/usr/local/sbin:\
+/usr/local/game:\
+/usr/local/bin:\
+/usr/sbin:\
+/usr/games:\
+/usr/bin:\
+/sbin:\
+/bin"
 
-export PATH="$PATH:/opt/local/slurm/14.03.3-2/bin"
-#export PATH="$PATH:/opt/local/munge/0.5.11-1/bin"
-#export PATH="$PATH:/usr/lib64/qt-3.3/bin"
+export PATH="/opt/local/slurm/14.03.3-2/bin:$PATH"
+#export PATH="/opt/local/munge/0.5.11-1/bin:$PATH"
+#export PATH="/usr/lib64/qt-3.3/bin:$PATH"
 
-export PATH="$PATH:/usr/local/heroku/bin"
-export PATH="$PATH:$HOME/Softwares/android-studio/bin"
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/Softwares/android-studio/bin:$PATH"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:/usr/local/bin"
-export PATH="$PATH:/usr/sbin"
-export PATH="$PATH:/usr/bin"
-export PATH="$PATH:/sbin"
-export PATH="$PATH:/bin"
-export PATH="$PATH:/usr/games"
-export PATH="$PATH:/usr/local/game"
 
 #------------------------------------
 
-export LD_LIBRARY_PATH=""
-
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib64"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib"
+export LD_LIBRARY_PATH="\
+$HOME/.local/lib64:\
+$HOME/.local/lib:\
+/usr/local/lib:\
+/usr/lib:/lib"
 
 #------------------------------------
 
-export MANPATH=""
-
-export MANPATH="$MANPATH:$HOME/.local/share/man"
+export MANPATH="\
+$HOME/.local/share/man\
+"
 
 
 
@@ -210,31 +208,38 @@ function job_color()
     if [ $(jobs -s | wc -l) -gt "0" ]; then
         echo -en ${BRed}
     elif [ $(jobs -r | wc -l) -gt "0" ] ; then
-        echo -en ${BCyan}
+        echo -en ${BBlue}
     fi
 }
 
 
-# Now we construct the prompt.
+# this is so that history saves after each return in bash
 PROMPT_COMMAND="history -a"
-case ${TERM} in
-  *term | xterm-256color | rxvt | linux | cygwin | screen | screen-256color )
-        PS1=""
-        # Time of day (with load info):
-        #PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
-        # User@Host (with connection type info):
-        PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
-        # PWD (with 'disk space' info):
-        PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
-        # Prompt (with 'job' info):
-        PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
-        # Set title of current xterm:
-        #PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
-        ;;
+
+# Now we construct the prompt.
+if $(shopt -q login_shell); then
+  case ${TERM} in
+    *some | strange | stuff )
+      export PS1="\u@\h:\w $ " 
+      ;;
     *)
-        PS1="\u@\h:\w $ " 
-        ;;
-esac
+      export PS1=""
+      # Time of day (with load info):
+      #export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
+      # User@Host (with connection type info):
+      export PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
+      # PWD (with 'disk space' info):
+      export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
+      # Prompt (with 'job' info):
+      export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
+      # Set title of current xterm:
+      #export PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
+      ;;
+  esac
+else
+  # Push a prefix to sub bash processes
+  export PS1=">${PS1}"
+fi
 
 
 #------------------------------------------------------------
@@ -326,7 +331,7 @@ function myip () { ip addr show | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
 # After bash starts
 #-------------------------------------------------------------
 
-clear
+shopt -q login_shell && clear
 
 
 
