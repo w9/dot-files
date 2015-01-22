@@ -40,7 +40,9 @@ $HOME/.local/lib:\
 #------------------------------------
 
 export MANPATH="\
-$HOME/.local/share/man\
+$HOME/.local/share/man:\
+/usr/share/man:\
+/usr/local/share/man
 "
 
 
