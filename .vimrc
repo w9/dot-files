@@ -69,7 +69,35 @@ se autochdir
 
 set backspace=indent,eol,start
 
-let vimrplugin_vsplit = 1
-let vimrplugin_rconsole_width = 80
-
 set autoread
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" To open R in terminal rather than RGui (only necessary on OS X)
+" let vimrplugin_applescript = 0
+" let vimrplugin_screenplugin = 0
+" For tmux support
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let vimrplugin_screenvsplit = 1 " For vertical tmux split
+let vimrplugin_rconsole_width = 80
+" see R documentation in a Vim buffer
+let vimrplugin_vimpager = "no"
+
+let g:ScreenImpl = 'Tmux'
+let g:ScreenShellInitialFocus = 'shell' 
+" instruct to use your own .screenrc file
+let g:vimrplugin_noscreenrc = 1
+" For integration of r-plugin with screen.vim
+let g:vimrplugin_screenplugin = 1
+" Don't use conque shell if installed
+let vimrplugin_conqueplugin = 0
+" map the letter 'r' to send visually selected lines to R 
+let g:vimrplugin_map_r = 1
+
+map <F2> <Plug>RStart 
+imap <F2> <Plug>RStart
+vmap <F2> <Plug>RStart
+" send selection to R with space bar
+vmap <Space> <Plug>RDSendSelection 
+" send line to R with space bar
+nmap <Space> <Plug>RDSendLine
