@@ -3,6 +3,8 @@
 !.profile
 !.bashrc
 !.vimrc
+!.vim
+!.vim/autoload
 !.vim/autoload/pathogen.vim
 !.vim/bundle
 !.Rprofile
