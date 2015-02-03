@@ -40,8 +40,34 @@ $HOME/.local/lib:\
 #------------------------------------
 
 export MANPATH="\
-$HOME/.local/share/man\
+$HOME/.local/share/man:\
+/usr/share/man:\
+/usr/local/share/man
 "
+
+
+#-------------------------------------------------------------
+# ENV Exports
+#-------------------------------------------------------------
+
+export LESS='-i -g -M -X -R -S'
+
+# LESS man page colors (makes Man pages more readable).
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+#export TERM=xterm    # For my poor cygwin to fake xterm
+#export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
+export HISTIGNORE="&:bg:fg:ll:h"
+export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
+export HISTCONTROL=ignoredups
+#export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
+#export EDITOR=/usr/bin/vim
 
 
 
@@ -281,31 +307,7 @@ alias tmux='tmux -2'
 alias open='gnome-open'
 
 alias tra='trash-put'
-
-
-
-#-------------------------------------------------------------
-# ENV Exports
-#-------------------------------------------------------------
-
-export LESS='-i -g -M -X -R -S'
-
-# LESS man page colors (makes Man pages more readable).
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
-#export TERM=xterm    # For my poor cygwin to fake xterm
-#export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
-export HISTIGNORE="&:bg:fg:ll:h"
-export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
-export HISTCONTROL=ignoredups
-#export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
-#export EDITOR=/usr/bin/vim
+alias fr="grep -R --include '*.R'"
 
 
 #-------------------------------------------------------------
@@ -316,7 +318,6 @@ function rm() { echo "Use tra instead!" ; }
 
 function ff() { find . -type f -iname '*'"$*"'*' ; }
 function fe() { find . -type f -iname '*'"${1:-}"'*' -exec ${2:-file} {} \; ; }
-function fr() { grep -R --include '*.R' $* ; }
 
 function sanitize() { sudo chmod -R u=rw,g=r,o=r,a-x+X "$@" ;}
 function sanitize-own() { sudo chown -R `whoami`:`whoami` "$@";}
