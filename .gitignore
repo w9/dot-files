@@ -8,3 +8,4 @@
 !.vim/autoload/pathogen.vim
 !.vim/bundle
 !.Rprofile
+!.tmux.conf
