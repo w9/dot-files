@@ -4,32 +4,64 @@ call pathogen#helptags()
 syntax enable
 filetype plugin indent on
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set backspace=indent,eol,start
+
+set runtimepath+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set t_Co=256
 set laststatus=2
+set listchars=eol:$,tab:>-
+set hlsearch
+set incsearch
 
-let mapleader=" "
+" retain undo's after closing files
+set undofile
 
-" use soft tabs
-set nowrap ts=2 si sw=2 et sts=2
+set nowrap
+set smartindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+set foldlevel=999
+" this is for zero delay after quitting insert mode
+set timeout timeoutlen=5000 ttimeoutlen=1
+
+" cwd always set to current file
+set autochdir
+
+" automatically reload the file when it gets changed
+set autoread
+
+" accept mouse click
+"set mouse=a
 
 " Use only underline to highlight search results
-hi Search cterm=underline ctermbg=NONE ctermfg=NONE
-set hls      " search higlight
-set is       " incremental search
+highlight Search cterm=underline ctermbg=NONE ctermfg=NONE
 
 " Make folded lines dimmer
-hi Folded ctermbg=red ctermfg=black
-" set foldlevel=3
+highlight Folded ctermbg=red ctermfg=black
 
 " quick navigation
-nn <C-J> 3j
-nn <C-K> 3k
-vn <C-J> 3j
-vn <C-K> 3k
+nnoremap <C-J> 3j
+nnoremap <C-K> 3k
+vnoremap <C-J> 3j
+vnoremap <C-K> 3k
 
 " delete in insert mode
-ino <C-D> <Del>
+inoremap <C-D> <Del>
+
+nnoremap <Leader>l :set list! list?<CR>
+nnoremap <Leader>n :noh<CR>
+nnoremap <Leader>p :set paste! paste?<CR>
+
+nnoremap Y y$
+
+" reopen closed split
+nmap <c-s-t> :vs<bar>:b#<CR>
+
+let mapleader=" "
+let maplocalleader="\\"
 
 " vim-markdown fold level
 let g:vim_markdown_initial_foldlevel=99
@@ -38,66 +70,46 @@ let g:vim_markdown_initial_foldlevel=99
 " netrw: don't show the banner
 let g:netrw_banner=0
 
-set listchars=eol:$,tab:>-
-nn <Leader>l :set list! list?<CR>
-nn <Leader>n :noh<CR>
-nn <Leader>p :set paste! paste?<CR>
-
-nn Y y$
-
-" retain undo's after closing files
-set undofile
-
-let g:Tex_DefaultTargetFormat="pdf"
-let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
-" let g:Tex_ViewRule_pdf="okular"
-
-nm <C-H> <Plug>IMAP_JumpForward
-im <C-H> <Plug>IMAP_JumpForward
-vm <C-H> <Plug>IMAP_JumpForward
-
-" accept mouse click
-"set mouse=a
-
-" this is for zero delay after quitting insert mode
-set timeout timeoutlen=5000 ttimeoutlen=1
-
-nmap <c-s-t> :vs<bar>:b#<CR>
-
-" cwd always set to current file
-se autochdir
-
-set backspace=indent,eol,start
-
-set autoread
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" To open R in terminal rather than RGui (only necessary on OS X)
-" let vimrplugin_applescript = 0
-" let vimrplugin_screenplugin = 0
-" For tmux support
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let vimrplugin_screenvsplit = 1 " For vertical tmux split
-let vimrplugin_rconsole_width = 80
-" see R documentation in a Vim buffer
-let vimrplugin_vimpager = "no"
 
-let g:ScreenImpl = 'Tmux'
-let g:ScreenShellInitialFocus = 'shell' 
-" instruct to use your own .screenrc file
-let g:vimrplugin_noscreenrc = 1
-" For integration of r-plugin with screen.vim
-let g:vimrplugin_screenplugin = 1
-" Don't use conque shell if installed
-let vimrplugin_conqueplugin = 0
-" map the letter 'r' to send visually selected lines to R 
-let g:vimrplugin_map_r = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for vim-latex
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup vim_latex
+  let g:Tex_DefaultTargetFormat="pdf"
+  let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
+  " let g:Tex_ViewRule_pdf="okular"
 
-map <F2> <Plug>RStart 
-imap <F2> <Plug>RStart
-vmap <F2> <Plug>RStart
-" send selection to R with space bar
-vmap <Space> <Plug>RDSendSelection 
-" send line to R with space bar
-nmap <Space> <Plug>RDSendLine
+  au FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
+  au FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
+  au FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
+augroup END
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for vim-r-plugin 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+augroup vim_r_plugin
+  let vimrplugin_vsplit = 1 " For vertical tmux split
+  let vimrplugin_rconsole_width = 80
+
+  let g:ScreenImpl = 'Tmux'
+  let g:ScreenShellInitialFocus = 'shell' 
+  let g:vimrplugin_noscreenrc = 1
+  let g:vimrplugin_screenplugin = 1
+  let vimrplugin_conqueplugin = 0
+  let g:vimrplugin_map_r = 1
+
+  map <F1> <Esc>:call RAction("help")<CR>
+  map <F2> <Esc>:call RAction("print")<CR>
+  map <F3> <Esc>:call RAction("str")<CR>
+  map <F4> <Esc>:call RAction("head")<CR>
+  map <F8> <Esc>:call StartR("vanilla")<CR>
+
+  vmap <Space><Space> <Plug>RDSendSelection
+  nmap <Space><Space> <Plug>RDSendLine
+augroup END

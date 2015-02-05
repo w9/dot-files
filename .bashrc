@@ -299,10 +299,9 @@ alias tt='tree -L 2'
 alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
-alias vim='vim --servername VIM'
 alias vi='vim'
-alias grep='grep --color=always'
 alias tmux='tmux -2'
+alias grep='grep --color=always'
 
 alias open='gnome-open'
 
@@ -325,6 +324,8 @@ function sanitize-own() { sudo chown -R `whoami`:`whoami` "$@";}
 function pp() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
 
 function myip () { ip addr show | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
+
+function vir () { tmux -2 new "vim --servername VIM $*" ; }
 
 
 
