@@ -57,8 +57,13 @@ nnoremap <Leader>p :set paste! paste?<CR>
 
 nnoremap Y y$
 
+" surround selection with symbols
+vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
+vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
+vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
+
 " reopen closed split
-nmap <c-s-t> :vs<bar>:b#<CR>
+nnoremap <c-s-t> :vs<bar>:b#<CR>
 
 let mapleader=" "
 let maplocalleader="\\"
@@ -104,12 +109,11 @@ augroup vim_r_plugin
   let vimrplugin_conqueplugin = 0
   let g:vimrplugin_map_r = 1
 
-  map <F1> <Esc>:call RAction("help")<CR>
-  map <F2> <Esc>:call RAction("print")<CR>
-  map <F3> <Esc>:call RAction("str")<CR>
-  map <F4> <Esc>:call RAction("head")<CR>
-  map <F8> <Esc>:call StartR("vanilla")<CR>
+  nnoremap <F1> <Esc>:call RAction("help")<CR>
+  nnoremap <F2> <Esc>:call RAction("print")<CR>
+  nnoremap <F3> <Esc>:call RAction("str")<CR>
+  nnoremap <F4> <Esc>:call RAction("head")<CR>
+  nnoremap <F8> <Esc>:call StartR("vanilla")<CR>
 
-  vmap <Space><Space> <Plug>RDSendSelection
-  nmap <Space><Space> <Plug>RDSendLine
-augroup END
+  vnoremap <Space><Space> <Esc>:call SendSelectionToR("echo", "down")<CR>
+  nnoremap <Space><Space> :call SendLineToR("down")<CR>
