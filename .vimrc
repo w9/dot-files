@@ -43,10 +43,13 @@ highlight Search cterm=underline ctermbg=NONE ctermfg=NONE
 highlight Folded ctermbg=red ctermfg=black
 
 " quick navigation
-nnoremap <C-J> 3j
-nnoremap <C-K> 3k
-vnoremap <C-J> 3j
-vnoremap <C-K> 3k
+noremap <C-J> 3j
+noremap <C-K> 3k
+noremap H ^
+noremap L $
+
+" quick quitting insert mode
+inoremap jk <esc>
 
 " delete in insert mode
 inoremap <C-D> <Del>
@@ -58,9 +61,9 @@ nnoremap <Leader>p :set paste! paste?<CR>
 nnoremap Y y$
 
 " surround selection with symbols
-vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
-vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
-vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
+vnoremap " <esc>`<i"<esc>`>la"<esc>l
+vnoremap ( <esc>`<i(<esc>`>la)<esc>l
+vnoremap [ <esc>`<i[<esc>`>la]<esc>l
 
 " reopen closed split
 nnoremap <c-s-t> :vs<bar>:b#<CR>
