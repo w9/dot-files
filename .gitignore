@@ -9,4 +9,4 @@
 !.vim/bundle
 !.Rprofile
 !.tmux.conf
-!install-R-packages.R
+!.__install-R-packages.R
