@@ -84,15 +84,13 @@ let g:netrw_banner=0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " for vim-latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup vim_latex
-  let g:Tex_DefaultTargetFormat="pdf"
-  let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
-  " let g:Tex_ViewRule_pdf="okular"
+let g:Tex_DefaultTargetFormat="pdf"
+let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
+" let g:Tex_ViewRule_pdf="okular"
 
-  au FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
-  au FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
-  au FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
-augroup END
+au FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
+au FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
+au FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
 
 
 
@@ -101,22 +99,32 @@ augroup END
 " for vim-r-plugin 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-augroup vim_r_plugin
-  let vimrplugin_vsplit = 1 " For vertical tmux split
-  let vimrplugin_rconsole_width = 80
+let vimrplugin_vsplit = 1 " For vertical tmux split
+let vimrplugin_rconsole_width = 80
 
-  let g:ScreenImpl = 'Tmux'
-  let g:ScreenShellInitialFocus = 'shell' 
-  let g:vimrplugin_noscreenrc = 1
-  let g:vimrplugin_screenplugin = 1
-  let vimrplugin_conqueplugin = 0
-  let g:vimrplugin_map_r = 1
+let g:ScreenImpl = 'Tmux'
+let g:ScreenShellInitialFocus = 'shell' 
+let g:vimrplugin_noscreenrc = 1
+let g:vimrplugin_screenplugin = 1
+let vimrplugin_conqueplugin = 0
+let g:vimrplugin_map_r = 1
 
-  nnoremap <F1> <Esc>:call RAction("help")<CR>
-  nnoremap <F2> <Esc>:call RAction("print")<CR>
-  nnoremap <F3> <Esc>:call RAction("str")<CR>
-  nnoremap <F4> <Esc>:call RAction("head")<CR>
-  nnoremap <F8> <Esc>:call StartR("vanilla")<CR>
+nnoremap <F1> <Esc>:call RAction("help")<CR>
+nnoremap <F2> <Esc>:call RAction("print")<CR>
+nnoremap <F3> <Esc>:call RAction("str")<CR>
+nnoremap <F4> <Esc>:call RAction("head")<CR>
+nnoremap <F8> <Esc>:call StartR("vanilla")<CR>
 
-  vnoremap <Space><Space> <Esc>:call SendSelectionToR("echo", "down")<CR>
-  nnoremap <Space><Space> :call SendLineToR("down")<CR>
+vnoremap <Space><Space> <Esc>:call SendSelectionToR("echo", "down")<CR>
+nnoremap <Space><Space> :call SendLineToR("down")<CR>
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" load local rc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if findfile('.vimrc_local')
+  so .vimrc_local
+endif
+
