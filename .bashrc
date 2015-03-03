@@ -243,7 +243,8 @@ function job_color()
 PROMPT_COMMAND="history -a"
 
 # Now we construct the prompt.
-if $(shopt -q login_shell); then
+if [ -z $PS1_SET ]; then
+  export PS1_SET=yes
   case ${TERM} in
     *some | strange | stuff )
       export PS1="\u@\h:\w $ " 
