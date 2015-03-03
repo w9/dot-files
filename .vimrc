@@ -33,6 +33,12 @@ set autochdir
 " automatically reload the file when it gets changed
 set autoread
 
+" search upwards until find tags
+set tags=./tags;/
+
+" auto add comment symbols
+set formatoptions=rq
+
 " accept mouse click
 "set mouse=a
 
@@ -63,7 +69,7 @@ vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
 vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
 
 " reopen closed split
-nnoremap <c-s-t> :vs<bar>:b#<CR>
+nnoremap <F12> :vs<bar>:b#<CR>
 
 let mapleader=" "
 let maplocalleader="\\"
@@ -106,14 +112,17 @@ let g:vimrplugin_screenplugin = 1
 let vimrplugin_conqueplugin = 0
 let g:vimrplugin_map_r = 1
 
-nnoremap <F1> <Esc>:call RAction("help")<CR>
-nnoremap <F2> <Esc>:call RAction("print")<CR>
-nnoremap <F3> <Esc>:call RAction("str")<CR>
-nnoremap <F4> <Esc>:call RAction("head")<CR>
-nnoremap <F8> <Esc>:call StartR("vanilla")<CR>
+noremap <F1> <Esc>:call RAction("help")<CR>
+noremap <F2> <Esc>:call RAction("print")<CR>
+noremap <F3> <Esc>:call RAction("str")<CR>
+noremap <F4> <Esc>:call RAction("head")<CR>
 
-vnoremap <Space><Space> <Esc>:call SendSelectionToR("echo", "down")<CR>
-nnoremap <Space><Space> :call SendLineToR("down")<CR>
+noremap <F7> <Esc>:call g:SendCmdToR("devtools::load_all()")<CR>
+noremap <F8> <Esc>:call StartR("vanilla")<CR>
+
+vnoremap <Down> <Esc>:call SendSelectionToR("echo", "down")<CR>
+nnoremap <Down> :call SendLineToR("down")<CR>
+inoremap <Down> <Esc>:call SendLineToR("down")<CR>
 
 
 
