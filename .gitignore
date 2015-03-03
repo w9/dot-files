@@ -9,3 +9,4 @@
 !.vim/bundle
 !.Rprofile
 !.tmux.conf
+.Rproj.user
