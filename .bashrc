@@ -83,6 +83,8 @@ shopt -s cmdhist            # If set, bash attempts to save all lines of a multi
 shopt -s extglob            # Necessary for programmable completion.
 shopt -s dotglob
 
+stty -ixon
+
 
 
 #-------------------------------------------------------------
