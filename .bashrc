@@ -258,7 +258,7 @@ if [ -z $PS1_SET ]; then
       # User@Host (with connection type info):
       export PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
       # PWD (with 'disk space' info):
-      export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
+      export PS1=${PS1}" \[\$(disk_color)\]\w\[${NC}\] "
       # Prompt (with 'job' info):
       export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
       # Set title of current xterm:
