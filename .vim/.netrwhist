@@ -1,9 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/xzhu/test/R'
-let g:netrw_dirhist_2='/home/xzhu/ta.sk/x03.test_gwt'
-let g:netrw_dirhist_3='/home/xzhu/si.de/x01.vl-ruby/bin'
-let g:netrw_dirhist_4='/home/xzhu/ta.sk/x05.process_rena_data'
-let g:netrw_dirhist_5='/home/xzhu/ta.sk/x06.xzExpr_package/zx/R'
-let g:netrw_dirhist_6='/data2/xzhu/x01-nico_Ng239/s7-cuffmerge_result'
-let g:netrw_dirhist_7='/home/xzhu/work/x10-find_all_cutting_sites_in_genome/s2-genome_sites'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/xzhu/.local/lib/python2.7/site-packages/powerline/config_files'
