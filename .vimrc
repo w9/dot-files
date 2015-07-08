@@ -133,4 +133,3 @@ inoremap <Down> <Esc>:call SendLineToR("down")<CR>
 if findfile('.vimrc_local')
   so .vimrc_local
 endif
-
