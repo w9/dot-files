@@ -7,43 +7,36 @@
 # Base PATHs
 #-------------------------------------------------------------
 
-export PATH="\
-$HOME/.local/bin:\
-/usr/local/sbin:\
-/usr/local/game:\
-/usr/local/bin:\
-/usr/sbin:\
-/usr/games:\
-/usr/bin:\
-/sbin:\
-/bin"
-
-export PATH="/opt/local/slurm/14.03.3-2/bin:$PATH"
-#export PATH="/opt/local/munge/0.5.11-1/bin:$PATH"
-#export PATH="/usr/lib64/qt-3.3/bin:$PATH"
-
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/Softwares/android-studio/bin:$PATH"
-
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH=""
+export PATH="/bin:$PATH"
+export PATH="/sbin:$PATH"
+export PATH="/usr/bin:$PATH"
+export PATH="/usr/games:$PATH"
+export PATH="/usr/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/game:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 
 #------------------------------------
 
-export LD_LIBRARY_PATH="\
-$HOME/.local/lib64:\
-$HOME/.local/lib:\
-/usr/local/lib:\
-/usr/lib:/lib"
+
+export LD_LIBRARY_PATH=""
+export LD_LIBRARY_PATH="/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib64:$LD_LIBRARY_PATH"
+
 
 #------------------------------------
 
-export MANPATH="\
-$HOME/.local/share/man:\
-/usr/share/man:\
-/usr/local/share/man
-"
+
+export MANPATH=""
+export MANPATH="/usr/local/share/man:$MANPATH"
+export MANPATH="/usr/share/man:$MANPATH"
+export MANPATH="$HOME/.local/share/man:$MANPATH"
 
 
 #-------------------------------------------------------------
