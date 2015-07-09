@@ -13,6 +13,9 @@ set listchars=eol:$,tab:>-
 set hlsearch
 set incsearch
 
+set relativenumber
+set cursorline
+
 " retain undo's after closing files
 set undofile
 
@@ -42,8 +45,15 @@ set formatoptions=rq
 " accept mouse click
 "set mouse=a
 
+" load .vimrc from working directory if present
+set exrc
+set secure
+
 " Use only underline to highlight search results
-highlight Search cterm=underline ctermbg=NONE ctermfg=NONE
+highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
+highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
+highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=Black ctermbg=Black
 
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
@@ -134,3 +144,22 @@ if findfile('.vimrc_local')
   so .vimrc_local
 endif
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerd tree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
