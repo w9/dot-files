@@ -4,6 +4,9 @@ call pathogen#helptags()
 syntax enable
 filetype plugin indent on
 
+let mapleader = " "
+let maplocalleader = "\\"
+
 set backspace=indent,eol,start
 
 set runtimepath+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
@@ -49,6 +52,7 @@ set formatoptions=rq
 set exrc
 set secure
 
+
 " Use only underline to highlight search results
 highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
@@ -78,11 +82,13 @@ vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
 vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
 vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
 
+" make and run
+noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
+" print debug info after running
+noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; command time -v "./%<"<CR>
+
 " reopen closed split
 nnoremap <F12> :vs<bar>:b#<CR>
-
-let mapleader=" "
-let maplocalleader="\\"
 
 " vim-markdown fold level
 let g:vim_markdown_initial_foldlevel=99
@@ -109,30 +115,30 @@ au FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" for vim-r-plugin 
+" for vim-r-plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let vimrplugin_vsplit = 1 " For vertical tmux split
-let vimrplugin_rconsole_width = 80
-
-let g:ScreenImpl = 'Tmux'
-let g:ScreenShellInitialFocus = 'shell' 
-let g:vimrplugin_noscreenrc = 1
-let g:vimrplugin_screenplugin = 1
-let vimrplugin_conqueplugin = 0
-let g:vimrplugin_map_r = 1
-
-noremap <F1> <Esc>:call RAction("help")<CR>
-noremap <F2> <Esc>:call RAction("print")<CR>
-noremap <F3> <Esc>:call RAction("str")<CR>
-noremap <F4> <Esc>:call RAction("head")<CR>
-
-noremap <F7> <Esc>:call g:SendCmdToR("devtools::load_all()")<CR>
-noremap <F8> <Esc>:call StartR("vanilla")<CR>
-
-vnoremap <Down> <Esc>:call SendSelectionToR("echo", "down")<CR>
-nnoremap <Down> :call SendLineToR("down")<CR>
-inoremap <Down> <Esc>:call SendLineToR("down")<CR>
+"let vimrplugin_vsplit = 1 " For vertical tmux split
+"let vimrplugin_rconsole_width = 80
+"
+"let g:ScreenImpl = 'Tmux'
+"let g:ScreenShellInitialFocus = 'shell' 
+"let g:vimrplugin_noscreenrc = 1
+"let g:vimrplugin_screenplugin = 1
+"let vimrplugin_conqueplugin = 0
+"let g:vimrplugin_map_r = 1
+"
+"noremap <F1> <Esc>:call RAction("help")<CR>
+"noremap <F2> <Esc>:call RAction("print")<CR>
+"noremap <F3> <Esc>:call RAction("str")<CR>
+"noremap <F4> <Esc>:call RAction("head")<CR>
+"
+"noremap <F7> <Esc>:call g:SendCmdToR("devtools::load_all()")<CR>
+"noremap <F8> <Esc>:call StartR("vanilla")<CR>
+"
+"vnoremap <Down> <Esc>:call SendSelectionToR("echo", "down")<CR>
+"nnoremap <Down> :call SendLineToR("down")<CR>
+"inoremap <Down> <Esc>:call SendLineToR("down")<CR>
 
 
 
