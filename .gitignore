@@ -8,4 +8,5 @@
 !.Rprofile
 !.tmux.conf
 !.__install-R-packages.R
-!.hosts
+!.ycm_extra_conf.py
+
