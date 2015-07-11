@@ -82,6 +82,8 @@ vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
 vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
 vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
 
+" build
+noremap <C-F9> :w<CR> :silent !clear; make<CR>
 " make and run
 noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
 " print debug info after running
