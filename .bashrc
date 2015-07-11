@@ -43,7 +43,7 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 # ENV Exports
 #-------------------------------------------------------------
 
-export HOSTALIASES='~/.hosts'
+export HOSTALIASES="$HOME/.hosts"
 
 export LESS='-i -g -M -X -R -S'
 
