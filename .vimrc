@@ -94,10 +94,10 @@ highlight CursorLineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=232
 highlight Folded ctermbg=red ctermfg=black
 
 " quick navigation
-nnoremap <C-J> 3<C-E>
-nnoremap <C-K> 3<C-Y>
-vnoremap <C-J> 3<C-E>
-vnoremap <C-K> 3<C-Y>
+nnoremap <C-J> 3j
+nnoremap <C-K> 3k
+vnoremap <C-J> 3j
+vnoremap <C-K> 3k
 
 " delete in insert mode
 inoremap <C-D> <Del>
