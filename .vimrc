@@ -26,7 +26,7 @@ NeoBundle 'bling/vim-airline'
 let g:neobundle#install_process_timeout = 1500
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build'      : {
-        \ 'unix'    : 'sudo apt-get install libclang-dev && ./install.sh --clang-completer --system-libclang',
+        \ 'unix'    : './install.sh --clang-completer --system-libclang',
         \ }
      \ }
 
