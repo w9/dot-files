@@ -43,6 +43,8 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 # ENV Exports
 #-------------------------------------------------------------
 
+export HOSTALIASES='~/.hosts'
+
 export LESS='-i -g -M -X -R -S'
 
 # LESS man page colors (makes Man pages more readable).
