@@ -306,6 +306,10 @@ alias open='gnome-open'
 alias tra='trash-put'
 alias fr="grep -R --include '*.R'"
 
+alias gitl='git pull origin master'
+alias gitc='git commit -am commit'
+alias gitp='git push origin master'
+
 
 #-------------------------------------------------------------
 # Helper functions
