@@ -22,13 +22,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 
 NeoBundle 'bling/vim-airline'
-
-let g:neobundle#install_process_timeout = 1500
-NeoBundle 'Valloric/YouCompleteMe', {
-     \ 'build'      : {
-        \ 'unix'    : './install.sh --clang-completer --system-libclang',
-        \ }
-     \ }
+NeoBundle 'Valloric/YouCompleteMe'
 
 call neobundle#end()
 
