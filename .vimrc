@@ -57,7 +57,7 @@ set secure
 highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
-highlight CursorLineNr term=NONE cterm=NONE ctermfg=Black ctermbg=Black
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=232
 
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
@@ -82,6 +82,8 @@ vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
 vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
 vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
 
+" build
+noremap <C-F9> :w<CR> :silent !clear; make<CR>
 " make and run
 noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
 " print debug info after running
@@ -155,10 +157,7 @@ endif
 " nerd tree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
