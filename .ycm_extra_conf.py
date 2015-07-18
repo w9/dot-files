@@ -5,7 +5,7 @@ import ycm_core
  
 def LoadSystemIncludes():
     regex = re.compile(ur'(?:\#include \<...\> search starts here\:)(?P<list>.*?)(?:End of search list)', re.DOTALL);
-    process = subprocess.Popen(['clang++-3.5 -E -x c++ - -v < /dev/null'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
+    process = subprocess.Popen(['clang++-3.5', '-v', '-E', '-x', 'c++', '-'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
     process_out, process_err = process.communicate('');
     output = process_out + process_err;
     includes = [];

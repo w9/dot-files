@@ -23,6 +23,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'scrooloose/nerdcommenter'
 
 call neobundle#end()
 
