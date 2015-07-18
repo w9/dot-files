@@ -49,6 +49,7 @@ set hlsearch
 set incsearch
 
 set relativenumber
+set number
 set cursorline
 
 " retain undo's after closing files
