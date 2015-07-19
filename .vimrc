@@ -22,8 +22,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 
 NeoBundle 'bling/vim-airline'
-NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'scrooloose/nerdcommenter'
+
+NeoBundleLazy 'Valloric/YouCompleteMe'
+NeoBundleLazy 'scrooloose/nerdcommenter'
+
+autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp NeoBundleSource nerdcommenter
 
 call neobundle#end()
 
@@ -35,6 +39,10 @@ filetype plugin indent on
 NeoBundleCheck
 
 syntax enable
+
+" save and restore cursor and screen position
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
 
 let mapleader = " "
 let maplocalleader = "\\"
