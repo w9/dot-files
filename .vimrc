@@ -43,11 +43,14 @@ NeoBundleCheck
 syntax enable
 
 " save and restore cursor and screen position
-au BufWinLeave * mkview
-au BufReadPost,BufWritePost * silent loadview
+autocmd BufWinLeave * mkview
+autocmd BufReadPost * silent loadview
 
 let mapleader = " "
 let maplocalleader = "\\"
+
+" this solves ruby syntax being slow
+set re=1
 
 set backspace=indent,eol,start
 
