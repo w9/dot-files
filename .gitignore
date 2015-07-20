@@ -4,10 +4,9 @@
 !.bashrc
 !.vimrc
 !.vim
-!.vim/autoload
-!.vim/autoload/pathogen.vim
 !.vim/bundle
 !.Rprofile
 !.tmux.conf
 !.__install-R-packages.R
-!.hosts
+!.ycm_extra_conf.py
+!.screenrc

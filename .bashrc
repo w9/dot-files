@@ -43,6 +43,10 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 # ENV Exports
 #-------------------------------------------------------------
 
+# This is so that `screen` will use 256 colors
+export TERM=xterm-256color
+
+# Makes programs respect the `.hosts` file
 export HOSTALIASES="$HOME/.hosts"
 
 export LESS='-i -g -M -X -R -S'
@@ -242,27 +246,24 @@ PROMPT_COMMAND="history -a"
 # Now we construct the prompt.
 if [ -z $PS1_SET ]; then
   export PS1_SET=yes
-  case ${TERM} in
-    *some | strange | stuff )
-      export PS1="\u@\h:\w $ " 
-      ;;
-    *)
-      export PS1=""
-      # Time of day (with load info):
-      #export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
-      # User@Host (with connection type info):
-      export PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
-      # PWD (with 'disk space' info):
-      export PS1=${PS1}" \[\$(disk_color)\]\w\[${NC}\] "
-      # Prompt (with 'job' info):
-      export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
-      # Set title of current xterm:
-      #export PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
-      ;;
-  esac
+
+  export PS1=""
+  # Time of day (with load info):
+  #export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
+  # User@Host (with connection type info):
+  export PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
+  # PWD (with 'disk space' info):
+  export PS1=${PS1}" \[\$(disk_color)\]\w\[${NC}\] "
+  # Prompt (with 'job' info):
+  export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
+  # Set title of current xterm:
+  #export PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
+  export PREVIOUS_PS1=${PS1}
+
 else
   # Push a prefix to sub bash processes
-  export PS1=">${PS1}"
+  export PS1=">${PREVIOUS_PS1}"
+  export PREVIOUS_PS1=${PS1}
 fi
 
 
@@ -305,6 +306,10 @@ alias open='gnome-open'
 
 alias tra='trash-put'
 alias fr="grep -R --include '*.R'"
+
+alias gitl='git pull origin master'
+alias gitc='git commit -am commit'
+alias gitp='git push origin master'
 
 
 #-------------------------------------------------------------

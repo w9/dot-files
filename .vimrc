@@ -1,8 +1,50 @@
-call pathogen#infect()
-call pathogen#helptags()
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
+NeoBundle 'bling/vim-airline'
+
+NeoBundleLazy 'Valloric/YouCompleteMe'
+NeoBundleLazy 'scrooloose/nerdcommenter'
+NeoBundleLazy 'klen/python-mode'
+
+autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp NeoBundleSource nerdcommenter
+autocmd FileType python NeoBundleSource python-mode
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 syntax enable
-filetype plugin indent on
+
+" save and restore cursor and screen position
+au BufWinLeave * mkview
+au BufReadPost,BufWritePost * silent loadview
 
 let mapleader = " "
 let maplocalleader = "\\"
@@ -17,6 +59,7 @@ set hlsearch
 set incsearch
 
 set relativenumber
+set number
 set cursorline
 
 " retain undo's after closing files
@@ -57,10 +100,13 @@ set secure
 highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
-highlight CursorLineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=232
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=232
+highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
 
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
+
+noremap! jk <ESC>
 
 " quick navigation
 nnoremap <C-J> 3j
@@ -72,7 +118,7 @@ vnoremap <C-K> 3k
 inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
-nnoremap <Leader>n :noh<CR>
+nnoremap <Leader>n :set number! relativenumber! number?<CR>
 nnoremap <Leader>p :set paste! paste?<CR>
 
 nnoremap Y y$
@@ -88,6 +134,8 @@ noremap <C-F9> :w<CR> :silent !clear; make<CR>
 noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
 " print debug info after running
 noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; command time -v "./%<"<CR>
+
+noremap <CR> :nohlsearch<CR>
 
 " reopen closed split
 nnoremap <F12> :vs<bar>:b#<CR>
@@ -168,3 +216,39 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for YouCompleteMe
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:ycm_register_as_syntastic_checker = 1 "default 1
+let g:Show_diagnostics_ui = 1 "default 1
+
+"will put icons in Vim's gutter on lines that have a diagnostic set.
+"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
+"highlighting
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_always_populate_location_list = 1 "default 0
+let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+
+
+let g:ycm_complete_in_strings = 1 "default 1
+let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
+let g:ycm_path_to_python_interpreter = '' "default ''
+
+
+let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
+let g:ycm_server_log_level = 'info' "default info
+
+
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
+let g:ycm_confirm_extra_conf = 1
+
+
+let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_key_invoke_completion = '<C-Space>'
+
+
+nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
