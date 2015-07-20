@@ -25,9 +25,11 @@ NeoBundle 'bling/vim-airline'
 
 NeoBundleLazy 'Valloric/YouCompleteMe'
 NeoBundleLazy 'scrooloose/nerdcommenter'
+NeoBundleLazy 'klen/python-mode'
 
 autocmd FileType c,cpp NeoBundleSource YouCompleteMe
 autocmd FileType c,cpp NeoBundleSource nerdcommenter
+autocmd FileType python NeoBundleSource python-mode
 
 call neobundle#end()
 
@@ -98,7 +100,8 @@ set secure
 highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
-highlight CursorLineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=232
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=232
+highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=DarkGrey
 
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
@@ -129,6 +132,8 @@ noremap <C-F9> :w<CR> :silent !clear; make<CR>
 noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
 " print debug info after running
 noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; command time -v "./%<"<CR>
+
+noremap <CR> :nohlsearch<CR>
 
 " reopen closed split
 nnoremap <F12> :vs<bar>:b#<CR>
