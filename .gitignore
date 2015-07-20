@@ -9,4 +9,4 @@
 !.tmux.conf
 !.__install-R-packages.R
 !.ycm_extra_conf.py
-
+!.screenrc
