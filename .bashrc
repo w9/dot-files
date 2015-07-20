@@ -43,9 +43,6 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 # ENV Exports
 #-------------------------------------------------------------
 
-# This is so that `screen` will use 256 colors
-export TERM=xterm-256color
-
 # Makes programs respect the `.hosts` file
 export HOSTALIASES="$HOME/.hosts"
 
