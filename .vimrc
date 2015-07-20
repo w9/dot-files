@@ -106,8 +106,6 @@ highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
 
-noremap jk <ESC>
-
 " quick navigation
 nnoremap <C-J> 3j
 nnoremap <C-K> 3k
