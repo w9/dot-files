@@ -49,9 +49,6 @@ autocmd BufReadPost * silent loadview
 let mapleader = " "
 let maplocalleader = "\\"
 
-" this solves ruby syntax being slow
-set re=1
-
 set backspace=indent,eol,start
 
 set runtimepath+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
