@@ -44,7 +44,7 @@ syntax enable
 
 " save and restore cursor and screen position
 au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufReadPost,BufWritePost * silent loadview
 
 let mapleader = " "
 let maplocalleader = "\\"
@@ -101,10 +101,12 @@ highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
 highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=232
-highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=DarkGrey
+highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
 
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
+
+noremap! jk <ESC>
 
 " quick navigation
 nnoremap <C-J> 3j
@@ -116,7 +118,7 @@ vnoremap <C-K> 3k
 inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
-nnoremap <Leader>n :noh<CR>
+nnoremap <Leader>n :set number! relativenumber! number?<CR>
 nnoremap <Leader>p :set paste! paste?<CR>
 
 nnoremap Y y$
