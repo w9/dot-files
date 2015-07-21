@@ -330,6 +330,10 @@ function myip () { ip addr show | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
 
 function vir () { tmux -2 new "vim --servername VIM $*" ; }
 
+# This gives a convenient way of printing the full directory of a file
+function pwd () { if [ -z "$1" ]; then echo $PWD; else echo $PWD/$1; fi; }
+complete -f pwd
+
 
 
 #-------------------------------------------------------------
