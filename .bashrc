@@ -330,6 +330,9 @@ function myip () { ip addr show | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
 
 function vir () { tmux -2 new "vim --servername VIM $*" ; }
 
+function pwd () { if [ -z "$1" ]; then `command pwd`; else echo `command pwd`/$1; fi; }
+complete -f pwd
+
 
 
 #-------------------------------------------------------------
