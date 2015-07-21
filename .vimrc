@@ -112,12 +112,13 @@ nnoremap <C-K> 3k
 vnoremap <C-J> 3j
 vnoremap <C-K> 3k
 
+nnoremap zt zt5<C-Y>
+
 " delete in insert mode
 inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
-nnoremap <Leader>n :set number! relativenumber! number?<CR>
-nnoremap <Leader>p :set paste! paste?<CR>
+nnoremap <Leader>p :set number! relativenumber! paste! paste?<CR>
 
 nnoremap Y y$
 
