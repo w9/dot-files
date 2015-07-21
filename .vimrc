@@ -118,7 +118,7 @@ nnoremap zt zt5<C-Y>
 inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
-nnoremap <Leader>p :set number! relativenumber! paste! paste?<CR>
+nnoremap <Leader>p :set number! relativenumber! cursorline! paste! paste?<CR>
 
 nnoremap Y y$
 
