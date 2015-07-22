@@ -342,7 +342,13 @@ complete -f pwd
 
 shopt -q login_shell && clear
 
+#-------------------------------------------------------------
+# Source Bashmarks if exists
+#-------------------------------------------------------------
 
+if [ -f "$HOME/.local/bin/bashmarks.sh" ]; then
+  source $HOME/.local/bin/bashmarks.sh
+fi
 
 #-------------------------------------------------------------
 # Run machine specific script if exists
