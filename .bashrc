@@ -312,6 +312,7 @@ alias gitc='git commit -am commit'
 alias gitp='git push origin master'
 
 
+
 #-------------------------------------------------------------
 # Helper functions
 #-------------------------------------------------------------
@@ -333,6 +334,10 @@ function vir () { tmux -2 new "vim --servername VIM $*" ; }
 # This gives a convenient way of printing the full directory of a file
 function pwd () { if [ -z "$1" ]; then echo $PWD; else echo $PWD/$1; fi; }
 complete -f pwd
+
+function ctagsc() {
+  g++ -M `find . -name '*.cpp' -or -name '*.h' | xargs` | sed -e 's/[\\ ]/\n/g' | sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q
+}
 
 
 

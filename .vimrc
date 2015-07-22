@@ -26,10 +26,11 @@ NeoBundle 'bling/vim-airline'
 NeoBundleLazy 'Valloric/YouCompleteMe'
 NeoBundleLazy 'scrooloose/nerdcommenter'
 NeoBundleLazy 'klen/python-mode'
+NeoBundleLazy 'vim-scripts/taglist.vim'
 
 autocmd FileType c,cpp NeoBundleSource YouCompleteMe
-autocmd FileType c,cpp NeoBundleSource nerdcommenter
 autocmd FileType python NeoBundleSource python-mode
+autocmd FileType c,cpp NeoBundleSource taglist.vim
 
 call neobundle#end()
 
@@ -43,8 +44,43 @@ NeoBundleCheck
 syntax enable
 
 " save and restore cursor and screen position
-autocmd BufWinLeave * mkview
-autocmd BufReadPost * silent loadview
+" complex logic for special cases, copied from Wikia
+let g:skipview_files = [
+            \ '[EXAMPLE PLUGIN BUFFER]'
+            \ ]
+function! MakeViewCheck()
+    if has('quickfix') && &buftype =~ 'nofile'
+        " Buffer is marked as not a file
+        return 0
+    endif
+    if empty(glob(expand('%:p')))
+        " File does not exist on disk
+        return 0
+    endif
+    if len($TEMP) && expand('%:p:h') == $TEMP
+        " We're in a temp dir
+        return 0
+    endif
+    if len($TMP) && expand('%:p:h') == $TMP
+        " Also in temp dir
+        return 0
+    endif
+    if index(g:skipview_files, expand('%')) >= 0
+        " File is in skip list
+        return 0
+    endif
+    return 1
+endfunction
+augroup vimrcAutoView
+    autocmd!
+    " Autosave & Load Views.
+    autocmd BufWritePost,BufLeave,WinLeave ?* if MakeViewCheck() | mkview | endif
+    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
+augroup end
+
+
+
+
 
 let mapleader = " "
 let maplocalleader = "\\"
