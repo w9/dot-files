@@ -94,7 +94,6 @@ set listchars=eol:$,tab:>-
 set hlsearch
 set incsearch
 
-set relativenumber
 set number
 set cursorline
 
@@ -154,7 +153,7 @@ nnoremap zt zt5<C-Y>
 inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
-nnoremap <Leader>p :set number! relativenumber! cursorline! paste! paste?<CR>
+nnoremap <Leader>p :set number! cursorline! paste! paste?<CR>
 
 nnoremap Y y$
 
