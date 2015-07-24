@@ -149,6 +149,8 @@ vnoremap <C-K> 3k
 
 nnoremap zt zt5<C-Y>
 
+nnoremap <Leader>re #*:%s//
+
 " delete in insert mode
 inoremap <C-D> <Del>
 
