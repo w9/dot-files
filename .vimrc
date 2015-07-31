@@ -285,6 +285,3 @@ let g:ycm_confirm_extra_conf = 1
 let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_filetype_whitelist = { '*': 1 }
 let g:ycm_key_invoke_completion = '<C-Space>'
-
-
-nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
