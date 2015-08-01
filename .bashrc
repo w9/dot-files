@@ -282,8 +282,8 @@ alias type='type -a'
 alias ..='cd ..'
 alias lc='wc -l'
 
-alias ls='ls -hF --color'
-alias lx='ls -l --group-directories-first'
+alias ls='ls -hF --group-directories-first --color'
+alias lx='ls -l'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'

@@ -79,6 +79,11 @@ augroup vimrcAutoView
 augroup end
 
 
+" if you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 
@@ -130,6 +135,12 @@ set formatoptions=rq
 set exrc
 set secure
 
+" gui options
+set guioptions-=m  " menu bar
+set guioptions-=T  " menu toobar
+set guioptions-=r  " menu right-hand scroll bar
+set guioptions-=L  " menu left-hand scroll bar
+
 
 " Use only underline to highlight search results
 highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
@@ -148,6 +159,7 @@ vnoremap <C-J> 3j
 vnoremap <C-K> 3k
 
 nnoremap zt zt5<C-Y>
+nnoremap zb zb5<C-E>
 
 nnoremap <Leader>re #*:%s//
 
@@ -171,7 +183,9 @@ noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running 
 " print debug info after running
 noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; command time -v "./%<"<CR>
 
-noremap <CR> :nohlsearch<CR>
+noremap [[ 6H
+noremap ]] 6L
+noremap <CR> :if v:hlsearch<CR>nohlsearch<CR>else<CR>normal zz<CR>endif<CR><CR>
 
 " reopen closed split
 nnoremap <F12> :vs<bar>:b#<CR>
@@ -185,7 +199,6 @@ let g:netrw_banner=0
 
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " for vim-latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -193,9 +206,9 @@ let g:Tex_DefaultTargetFormat="pdf"
 let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
 " let g:Tex_ViewRule_pdf="okular"
 
-au FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
-au FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
-au FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
+autocmd FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
+autocmd FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
+autocmd FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
 
 
 
