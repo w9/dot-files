@@ -106,7 +106,7 @@ set cursorline
 set undofile
 
 set nowrap
-set smartindent
+set nosmartindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -130,7 +130,6 @@ set formatoptions=rq
 
 " accept mouse click
 "set mouse=a
-
 " load .vimrc from working directory if present
 set exrc
 set secure
@@ -185,7 +184,7 @@ noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running -
 
 noremap [[ 6H
 noremap ]] 6L
-noremap <CR> :if v:hlsearch<CR>nohlsearch<CR>else<CR>normal zz<CR>endif<CR><CR>
+noremap <CR> :nohlsearch<CR>
 
 " reopen closed split
 nnoremap <F12> :vs<bar>:b#<CR>
