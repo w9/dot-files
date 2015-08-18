@@ -28,7 +28,7 @@ NeoBundleLazy 'scrooloose/nerdcommenter'
 NeoBundleLazy 'klen/python-mode'
 NeoBundleLazy 'vim-scripts/taglist.vim'
 
-"autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp,ruby NeoBundleSource YouCompleteMe
 autocmd FileType python NeoBundleSource python-mode
 "autocmd FileType c,cpp NeoBundleSource taglist.vim
 
@@ -79,6 +79,11 @@ augroup vimrcAutoView
 augroup end
 
 
+" if you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 
@@ -94,7 +99,6 @@ set listchars=eol:$,tab:>-
 set hlsearch
 set incsearch
 
-set relativenumber
 set number
 set cursorline
 
@@ -102,7 +106,7 @@ set cursorline
 set undofile
 
 set nowrap
-set smartindent
+set nosmartindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -126,10 +130,15 @@ set formatoptions=rq
 
 " accept mouse click
 "set mouse=a
-
 " load .vimrc from working directory if present
 set exrc
 set secure
+
+" gui options
+set guioptions-=m  " menu bar
+set guioptions-=T  " menu toobar
+set guioptions-=r  " menu right-hand scroll bar
+set guioptions-=L  " menu left-hand scroll bar
 
 
 " Use only underline to highlight search results
@@ -149,12 +158,15 @@ vnoremap <C-J> 3j
 vnoremap <C-K> 3k
 
 nnoremap zt zt5<C-Y>
+nnoremap zb zb5<C-E>
+
+nnoremap <Leader>re #*:%s//
 
 " delete in insert mode
 inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
-nnoremap <Leader>p :set number! relativenumber! cursorline! paste! paste?<CR>
+nnoremap <Leader>p :set number! cursorline! paste! paste?<CR>
 
 nnoremap Y y$
 
@@ -170,6 +182,8 @@ noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running 
 " print debug info after running
 noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; command time -v "./%<"<CR>
 
+noremap [[ 6H
+noremap ]] 6L
 noremap <CR> :nohlsearch<CR>
 
 " reopen closed split
@@ -184,7 +198,6 @@ let g:netrw_banner=0
 
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " for vim-latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,9 +205,9 @@ let g:Tex_DefaultTargetFormat="pdf"
 let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
 " let g:Tex_ViewRule_pdf="okular"
 
-au FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
-au FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
-au FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
+autocmd FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
+autocmd FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
+autocmd FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
 
 
 
@@ -284,6 +297,3 @@ let g:ycm_confirm_extra_conf = 1
 let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_filetype_whitelist = { '*': 1 }
 let g:ycm_key_invoke_completion = '<C-Space>'
-
-
-nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>

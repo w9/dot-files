@@ -247,6 +247,7 @@ PROMPT_COMMAND="history -a"
 if [ -z $PS1_SET ]; then
   export PS1_SET=yes
 
+  # title bar
   export PS1=""
   # Time of day (with load info):
   #export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
@@ -257,7 +258,7 @@ if [ -z $PS1_SET ]; then
   # Prompt (with 'job' info):
   export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
   # Set title of current xterm:
-  #export PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
+  export PS1=${PS1}"\[\e]0;\u@\h: \w\a\]"
   export PREVIOUS_PS1=${PS1}
 
 else
@@ -282,8 +283,8 @@ alias type='type -a'
 alias ..='cd ..'
 alias lc='wc -l'
 
-alias ls='ls -hF --color'
-alias lx='ls -l --group-directories-first'
+alias ls='ls -hF --group-directories-first --color'
+alias lx='ls -l'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
