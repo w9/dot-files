@@ -28,9 +28,9 @@ NeoBundleLazy 'scrooloose/nerdcommenter'
 NeoBundleLazy 'klen/python-mode'
 NeoBundleLazy 'vim-scripts/taglist.vim'
 
-autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+"autocmd FileType c,cpp NeoBundleSource YouCompleteMe
 autocmd FileType python NeoBundleSource python-mode
-autocmd FileType c,cpp NeoBundleSource taglist.vim
+"autocmd FileType c,cpp NeoBundleSource taglist.vim
 
 call neobundle#end()
 
