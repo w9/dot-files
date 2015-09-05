@@ -171,9 +171,9 @@ nnoremap <Leader>p :set number! cursorline! paste! paste?<CR>
 nnoremap Y y$
 
 " surround selection with symbols
-vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
-vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
-vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
+"vnoremap " <ESC>`<i"<ESC>`>la"<ESC>l
+"vnoremap ( <ESC>`<i(<ESC>`>la)<ESC>l
+"vnoremap [ <ESC>`<i[<ESC>`>la]<ESC>l
 
 " build
 noremap <C-F9> :w<CR> :silent !clear; make<CR>
