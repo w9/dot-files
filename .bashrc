@@ -68,6 +68,8 @@ export HISTCONTROL=ignoredups
 #export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
 #export EDITOR=/usr/bin/vim
 
+export GTK_IM_MODULE=fcitx
+
 
 
 #-------------------------------------------------------------
