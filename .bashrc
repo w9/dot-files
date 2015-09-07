@@ -132,7 +132,7 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 # Shell Prompt
 #-------------------------------------------------------------
 
-# Current Format: [TIME USER@HOST PWD] >
+# Current Format: user@host pwd $
 # TIME:
 #    Green     == machine load is low
 #    Orange    == machine load is medium
@@ -370,5 +370,16 @@ fi
 #-------------------------------------------------------------
 
 if [ -f "$HOME/.bashrc_local" ]; then
-  . "$HOME/.bashrc_local"
+  source "$HOME/.bashrc_local"
 fi
+
+
+#-------------------------------------------------------------
+# "command-not-found" script
+#-------------------------------------------------------------
+
+if [ -f  "/usr/share/doc/pkgfile/command-not-found.bash" ]; then
+  source "/usr/share/doc/pkgfile/command-not-found.bash"
+fi
+
+
