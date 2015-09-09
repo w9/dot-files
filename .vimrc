@@ -145,7 +145,7 @@ set guioptions-=L  " menu left-hand scroll bar
 highlight Search term=NONE cterm=underline ctermfg=NONE ctermbg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermfg=NONE ctermbg=232
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
-highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=232
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
 highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
 
 " Make folded lines dimmer
