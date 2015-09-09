@@ -142,8 +142,8 @@ set guioptions-=L  " menu left-hand scroll bar
 
 
 " Use only underline to highlight search results
-highlight Search term=NONE cterm=underline ctermbg=NONE ctermfg=NONE
-highlight CursorLine term=NONE cterm=NONE ctermbg=Black ctermfg=NONE
+highlight Search term=NONE cterm=underline ctermfg=NONE ctermbg=NONE
+highlight CursorLine term=NONE cterm=NONE ctermfg=NONE ctermbg=232
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
 highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=232
 highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
