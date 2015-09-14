@@ -46,6 +46,8 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 # This is so that `screen` will use 256 colors
 export TERM=xterm-256color
 
+export EDITOR=vim
+
 # Makes programs respect the `.hosts` file
 export HOSTALIASES="$HOME/.hosts"
 
@@ -67,8 +69,6 @@ export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 export HISTCONTROL=ignoredups
 #export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
 #export EDITOR=/usr/bin/vim
-
-export GTK_IM_MODULE=fcitx
 
 
 
