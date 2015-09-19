@@ -21,8 +21,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
-if filereadable(".vimrc_local")
-  so .vimrc_local
+if file_readable($HOME . "/.vimrc_local")
+  so $HOME/.vimrc_local
 endif
 
 call neobundle#end()
