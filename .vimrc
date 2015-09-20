@@ -23,7 +23,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'bling/vim-airline'
 
-NeoBundleLazy 'Valloric/YouCompleteMe'
+"NeoBundleLazy 'Valloric/YouCompleteMe'
 NeoBundleLazy 'scrooloose/nerdcommenter'
 NeoBundleLazy 'klen/python-mode'
 NeoBundleLazy 'vim-scripts/taglist.vim'
