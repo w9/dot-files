@@ -83,6 +83,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let mapleader = " "
 let maplocalleader = "\\"
 
+set background=dark
+
 set backspace=indent,eol,start
 
 set runtimepath+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
