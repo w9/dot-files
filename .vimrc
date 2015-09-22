@@ -24,6 +24,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'bling/vim-airline'
 
+" Load local plugins and their settings
+if file_readable($HOME . "/.vimrc_plugins")
+  so $HOME/.vimrc_plugins
+endif
 
 call neobundle#end()
 
