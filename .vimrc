@@ -34,6 +34,8 @@ call neobundle#end()
 " Required:
 filetype plugin indent on
 
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
@@ -195,20 +197,6 @@ let g:vim_markdown_initial_foldlevel=99
 
 " netrw: don't show the banner
 let g:netrw_banner=0
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" for vim-latex
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Tex_DefaultTargetFormat="pdf"
-let g:Tex_CompileRule_pdf="pdflatex -interaction=nonstopmode -file-line-error-style -p $*"
-" let g:Tex_ViewRule_pdf="okular"
-
-autocmd FileType tex,latex,context,plaintex nm <C-H> <Plug>IMAP_JumpForward
-autocmd FileType tex,latex,context,plaintex im <C-H> <Plug>IMAP_JumpForward
-autocmd FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
-
 
 
 
