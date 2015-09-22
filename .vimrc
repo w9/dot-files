@@ -95,6 +95,8 @@ set backspace=indent,eol,start
 
 set runtimepath+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set t_Co=256
+set t_ZH=[3m
+set t_ZR=[23m
 set laststatus=2
 set listchars=eol:$,tab:>-
 set hlsearch
