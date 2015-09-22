@@ -21,9 +21,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
-if file_readable($HOME . "/.vimrc_local")
-  so $HOME/.vimrc_local
-endif
+
+NeoBundle 'bling/vim-airline'
+
 
 call neobundle#end()
 
@@ -98,6 +98,7 @@ set cursorline
 " retain undo's after closing files
 set undofile
 
+set autoindent
 set nowrap
 set nosmartindent
 set expandtab
@@ -232,23 +233,6 @@ autocmd FileType tex,latex,context,plaintex vm <C-H> <Plug>IMAP_JumpForward
 "inoremap <Down> <Esc>:call SendLineToR("down")<CR>
 
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" load local rc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if findfile('.vimrc_local')
-  so .vimrc_local
-endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nerd tree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-map <C-n> :NERDTreeToggle<CR>
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,35 +242,14 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" for YouCompleteMe
+" load local rc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:ycm_register_as_syntastic_checker = 1 "default 1
-let g:Show_diagnostics_ui = 1 "default 1
-
-"will put icons in Vim's gutter on lines that have a diagnostic set.
-"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
-"highlighting
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_always_populate_location_list = 1 "default 0
-let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+if file_readable($HOME . "/.vimrc_local")
+  so $HOME/.vimrc_local
+endif
 
 
-let g:ycm_complete_in_strings = 1 "default 1
-let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
-let g:ycm_path_to_python_interpreter = '' "default ''
-
-
-let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
-let g:ycm_server_log_level = 'info' "default info
-
-
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
-let g:ycm_confirm_extra_conf = 1
-
-
-let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_filetype_whitelist = { '*': 1 }
-let g:ycm_key_invoke_completion = '<C-Space>'
