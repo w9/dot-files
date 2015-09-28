@@ -171,7 +171,7 @@ inoremap <C-D> <Del>
 
 nnoremap <Leader>l :set list! list?<CR>
 nnoremap <Leader>p :set number! cursorline! paste! paste?<CR>
-nnoremap <Leader>8 :%s/.\{80}/&\r/g<CR>
+nnoremap <Leader>8 :%s/.\{80}/&\r/g<CR><CR>
 
 nnoremap Y y$
 
