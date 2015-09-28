@@ -322,6 +322,8 @@ alias gitp='git push origin master'
 # print all 256 color and their code for reference
 alias 256='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
 
+alias run=runghc
+
 
 #-------------------------------------------------------------
 # Helper functions
