@@ -132,6 +132,10 @@ set tags=./tags;/
 " auto add comment symbols
 set formatoptions=rq
 
+" make autocompletion work just like an IDE
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " accept mouse click
 "set mouse=a
 " load .vimrc from working directory if present
