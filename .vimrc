@@ -155,7 +155,7 @@ highlight CursorLine term=NONE cterm=NONE ctermfg=NONE ctermbg=232
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
 highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
 highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
-highlight MatchParen term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+highlight MatchParen term=NONE cterm=bold ctermfg=NONE ctermbg=232
 
 " Make folded lines dimmer
 highlight Folded ctermbg=red ctermfg=black
