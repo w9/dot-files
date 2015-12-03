@@ -150,15 +150,13 @@ set guioptions-=L  " menu left-hand scroll bar
 
 
 " Use only underline to highlight search results
-highlight Search term=NONE cterm=underline ctermfg=NONE ctermbg=NONE
-highlight CursorLine term=NONE cterm=NONE ctermfg=NONE ctermbg=232
-highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=Black
-highlight CursorLineNr term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
-highlight ColorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=Black
-highlight MatchParen term=NONE cterm=bold ctermfg=NONE ctermbg=232
-
-" Make folded lines dimmer
-highlight Folded ctermbg=red ctermfg=black
+highlight Search       term=NONE cterm=underline ctermfg=NONE      ctermbg=NONE
+highlight CursorLine   term=NONE cterm=NONE      ctermfg=NONE      ctermbg=232
+highlight LineNr       term=NONE cterm=NONE      ctermfg=DarkGrey  ctermbg=Black
+highlight CursorLineNr term=NONE cterm=NONE      ctermfg=NONE      ctermbg=Black
+highlight ColorColumn  term=NONE cterm=NONE      ctermfg=NONE      ctermbg=Black
+highlight MatchParen   term=NONE cterm=bold      ctermfg=NONE      ctermbg=232
+highlight Folded       term=NONE cterm=italic    ctermfg=240       ctermbg=234
 
 " quick navigation
 nnoremap <C-J> 3j
