@@ -167,6 +167,8 @@ vnoremap <C-K> 3k
 nnoremap zt zt5<C-Y>
 nnoremap zb zb5<C-E>
 
+nnoremap <C-G> :echo expand('%:p')<CR>
+
 nnoremap <Leader>re #*:%s//
 
 " delete in insert mode
