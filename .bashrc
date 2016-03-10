@@ -307,6 +307,7 @@ alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
 alias vi='vim'
+alias em='emacs -nw'
 alias tmux='tmux -2'
 alias grep='grep --color=always'
 
