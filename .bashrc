@@ -256,7 +256,7 @@ if [ -z $PS1_SET ]; then
   # PWD (with 'disk space' info):
   export PS1=${PS1}" \[\$(disk_color)\]\w\[${NC}\] "
   # Prompt (with 'job' info):
-  export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
+  export PS1=${PS1}"\[\$(job_color)\]\n\$\[${NC}\] "
   # Set title of current xterm:
   export PS1=${PS1}"\[\e]0;\u@\h: \w\a\]"
   export PREVIOUS_PS1=${PS1}
