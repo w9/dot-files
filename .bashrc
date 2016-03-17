@@ -243,28 +243,35 @@ function job_color()
 # this is so that history saves after each return in bash
 PROMPT_COMMAND="history -a"
 
-# Now we construct the prompt.
-if [ -z $PS1_SET ]; then
-  export PS1_SET=yes
+export PS1_PREFIX1="┍━"
+export PS1_PREFIX2="╵"
 
-  export PS1="╷"
-  # Time of day (with load info):
-  #export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
-  # User@Host (with connection type info):
-  export PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
-  # PWD (with 'disk space' info):
-  export PS1=${PS1}" \[\$(disk_color)\]\w\[${NC}\] "
-  # Prompt (with 'job' info):
-  export PS1=${PS1}"\n╵\[\$(job_color)\]\$\[${NC}\] "
-  # Set title of current xterm:
-  export PS1=${PS1}"\[\e]0;\u@\h: \w\a\]"
-  export PREVIOUS_PS1=${PS1}
+export PS1=""
+# Time of day (with load info):
+#export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
 
-else
-  # Push a prefix to sub bash processes
-  export PS1=">${PREVIOUS_PS1}"
-  export PREVIOUS_PS1=${PS1}
+# User@Host (with connection type info):
+export PS1=${PS1}"${PS1_PREFIX1}"
+
+if [ ! -z "$STY" ]; then
+  export PS1=${PS1}"┥\[${Green}\]${STY}\[${NC}\]┝"
 fi
+
+export PS1=${PS1}" "
+export PS1=${PS1}"\[${SU}\]\u\[${NC}\]"
+export PS1=${PS1}"\[${Green}\]@\[${NC}\]"
+export PS1=${PS1}"\[${CNX}\]\h\[${NC}\]"
+export PS1=${PS1}"\[${Green}\]:\[${NC}\]"
+# PWD (with 'disk space' info):
+export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
+# Prompt (with 'job' info):
+export PS1=${PS1}"\n"
+export PS1=${PS1}"${PS1_PREFIX2}"
+export PS1=${PS1}"\[\$(job_color)\]\$\[${NC}\] "
+
+# Set title of current xterm:
+export PS1=${PS1}"\[\e]0;\u@\h: \w\a\]"
+
 
 
 #------------------------------------------------------------
