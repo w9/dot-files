@@ -211,7 +211,7 @@ function load_color()
 function disk_color()
 {
     if [ ! -w "${PWD}" ] ; then
-        echo -en ${Red}
+        echo -en ${BCyan}
         # No 'write' privilege in the current directory.
     elif [ -s "${PWD}" ] ; then
         local used=$(command df -P "$PWD" |
@@ -221,10 +221,10 @@ function disk_color()
         elif [ ${used} -gt 90 ]; then
             echo -en ${BRed}            # Free disk space almost gone.
         else
-            echo -en ${Green}           # Free disk space is ok.
+            echo -en ${BBlue}           # Free disk space is ok.
         fi
     else
-        echo -en ${Cyan}
+        echo -en ${BCyan}
         # Current directory is size '0' (like /proc, /sys etc).
     fi
 }
@@ -243,8 +243,8 @@ function job_color()
 # this is so that history saves after each return in bash
 PROMPT_COMMAND="history -a"
 
-export PS1_PREFIX1="┍━"
-export PS1_PREFIX2="╵"
+export PS1_PREFIX1="\[${Green}\]┍━\[${NC}\]"
+export PS1_PREFIX2="\[${Green}\]╵\[${NC}\]"
 
 export PS1=""
 # Time of day (with load info):
@@ -261,7 +261,7 @@ export PS1=${PS1}" "
 export PS1=${PS1}"\[${SU}\]\u\[${NC}\]"
 export PS1=${PS1}"\[${Green}\]@\[${NC}\]"
 export PS1=${PS1}"\[${CNX}\]\h\[${NC}\]"
-export PS1=${PS1}"\[${Green}\]:\[${NC}\]"
+export PS1=${PS1}"\[${Green}\] \[${NC}\]"
 # PWD (with 'disk space' info):
 export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
 # Prompt (with 'job' info):
