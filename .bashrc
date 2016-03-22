@@ -305,6 +305,7 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
 alias free='free -h'
+alias top='htop'
 
 alias tree='tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t='tree -L 1'
