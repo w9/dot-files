@@ -91,18 +91,16 @@ function show_prompt -d "Shows prompt with cue for current priv"
   set -l uid (id -u $USER)
 
   if [ $uid -eq 0 ]
-    prompt_segment red white "! "
-    set_color normal
-    echo -n -s " "
+    set -g prompt_sign '#'
   else
-    if [ (jobs | wc -l) -gt '0' ]
-      prompt_segment bold red "\$ "
-    else
-      prompt_segment normal white "\$ "
-    end
+    set -g prompt_sign '$'
   end
 
-  set_color normal
+  if [ (jobs | wc -l) -gt '0' ]
+    prompt_segment bold red "$prompt_sign "
+  else
+    prompt_segment normal white "$prompt_sign "
+  end
 end
 
 ## SHOW PROMPT
