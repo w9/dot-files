@@ -10,3 +10,11 @@
 !.__install-R-packages.R
 !.ycm_extra_conf.py
 !.screenrc
+
+!.config
+!.config/fish
+!.config/fish/config.fish
+!.config/fish/function
+!.config/fish/function/*
+
+*.un~
