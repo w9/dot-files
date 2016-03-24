@@ -114,5 +114,8 @@ alias run       runghc
 # Source Other Files
 #-------------------------------------------------------------
 
-source /usr/share/autojump/autojump.fish
+if test -f /home/xzhu/.autojump/share/autojump/autojump.fish
+  source /home/xzhu/.autojump/share/autojump/autojump.fish
+end
+
 source $HOME/.config/fish/local_config.fish
