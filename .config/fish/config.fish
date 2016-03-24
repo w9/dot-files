@@ -113,8 +113,6 @@ alias gitp      'git push origin master'
 # Source Other Files
 #-------------------------------------------------------------
 
-if test -f /home/xzhu/.autojump/share/autojump/autojump.fish
-  source /home/xzhu/.autojump/share/autojump/autojump.fish
-end
+source $HOME/autojump.fish
 
 source $HOME/.config/fish/local_config.fish
