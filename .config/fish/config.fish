@@ -86,7 +86,6 @@ alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 alias du        'du -kh'    # Makes a more readable output.
 alias df        'df -kTh'
 alias free      'free -h'
-alias top       'htop'
 
 alias tree      'tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t         'tree -L 1'
@@ -100,14 +99,14 @@ alias tmux      'tmux -2'
 alias grep      'grep --color=always'
 
 alias open      'gnome-open'
-
+alias top       'htop'
+alias rp        realpath
 alias tra       'trash-put'
+alias run       runghc
 
 alias gitl      'git pull origin master'
 alias gitc      'git commit -am commit'
 alias gitp      'git push origin master'
-
-alias run       runghc
 
 
 #-------------------------------------------------------------
