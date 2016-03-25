@@ -68,6 +68,7 @@ function show_user -d "Show user"
   end
 end
 
+
 # Show directory
 function show_pwd -d "Show the current directory"
   set -l pwd (prompt_pwd)
@@ -77,14 +78,6 @@ function show_pwd -d "Show the current directory"
     prompt_segment bold blue "$pwd "
   end
 end
-
-function prompt_pwd --description 'Print the current working directory, shortened to fit the prompt'
-	set -l args_post
-	set -l args_pre
-	set -l realhome ~
-	echo $PWD | sed -e "s|^$realhome|~|" $args_pre -e 's-\([^/.]\)[^/]*/-\1/-g' $args_post
-end
-
 
 # Show prompt w/ privilege cue
 function show_prompt -d "Shows prompt with cue for current priv"

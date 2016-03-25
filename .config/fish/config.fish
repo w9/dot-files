@@ -52,11 +52,11 @@ set -x EDITOR vim
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
 
-set -x LESS '-i -g -M -X -R -S'
-
 set -x ACK_COLOR_FILENAME 'bold white'
 set -x ACK_COLOR_LINENO   'bold black'
 set -x ACK_COLOR_MATCH    'blue'
+
+set -gx prompt_full_path 0
 
 #-------------------------------------------------------------
 # Aliases
@@ -92,22 +92,24 @@ alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
-alias R         "R --quiet --no-save"
-alias em        'emacs -nw'
-alias tmux      'tmux -2'
-alias grep      'grep --color=always'
+alias R    "R --quiet --no-save"
+alias em   'emacs -nw'
+alias tmux 'tmux -2'
+alias grep 'grep --color=always'
+alias less 'less -i -g -M -X -R -S'
 
-abbr vi   vim
-abbr open gnome-open
-abbr top  htop
-abbr tra  trash-put
-abbr rp   realpath
-abbr run  runghc
+alias vi   vim
+alias open gnome-open
+alias top  htop
+alias tra  trash-put
+alias rp   realpath
+alias run  runghc
 
+
+abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
 abbr gitc 'git commit -am commit'
 abbr gitp 'git push origin master'
-
 
 #-------------------------------------------------------------
 # Source Other Files
