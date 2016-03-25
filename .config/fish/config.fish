@@ -93,20 +93,20 @@ alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
 alias R         "R --quiet --no-save"
-alias vi        'vim'
 alias em        'emacs -nw'
 alias tmux      'tmux -2'
 alias grep      'grep --color=always'
 
-alias open      'gnome-open'
-alias top       'htop'
-alias rp        realpath
-alias tra       'trash-put'
-alias run       runghc
+abbr vi   vim
+abbr open gnome-open
+abbr top  htop
+abbr tra  trash-put
+abbr rp   realpath
+abbr run  runghc
 
-alias gitl      'git pull origin master'
-alias gitc      'git commit -am commit'
-alias gitp      'git push origin master'
+abbr gitl 'git pull origin master'
+abbr gitc 'git commit -am commit'
+abbr gitp 'git push origin master'
 
 
 #-------------------------------------------------------------
