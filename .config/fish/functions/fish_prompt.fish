@@ -59,10 +59,16 @@ function show_user -d "Show user"
 
   prompt_segment normal white "@"
   if [ -n "$SSH_CLIENT" ]
-    prompt_segment normal blue "$host "
+    prompt_segment normal blue "$host"
   else
-    prompt_segment normal green "$host "
+    prompt_segment normal green "$host"
   end
+
+  if set -q host_modifier
+    prompt_segment normal normal $host_modifier
+  end
+
+  prompt_segment normal blue " "
 end
 
 
