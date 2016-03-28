@@ -16,16 +16,14 @@ function prompt_segment -d "Function to show a segment"
   if [ -n "$argv[3]" ]
     echo -n -s $argv[3]
   end
+
+  set_color normal
 end
 
 ## Function to show current status
 function show_status -d "Function to show the current status"
   if [ $RETVAL -ne 0 ]
     prompt_segment normal red "✖ "
-  end
-
-  if [ -n "$SSH_CLIENT" ]
-    prompt_segment normal blue "⚍ "
   end
 
   set -l disk_usage (command df -P $PWD | awk 'END {print $5} {sub(/%/,"")}')
@@ -55,16 +53,15 @@ end
 
 ## Show user if not default
 function show_user -d "Show user"
-  if [ "$USER" != "$default_user" -o -n "$SSH_CLIENT" ]
-    set -l host (hostname -s)
-    set -l who (whoami)
-    prompt_segment normal yellow "$who"
+  set -l host (hostname -s)
+  set -l who (whoami)
+  prompt_segment normal yellow "$who"
 
-    # Skip @ bit if hostname == username
-    if [ "$USER" != "$HOST" ]
-      prompt_segment normal white "@"
-      prompt_segment normal green "$host "
-    end
+  prompt_segment normal white "@"
+  if [ -n "$SSH_CLIENT" ]
+    prompt_segment normal blue "$host "
+  else
+    prompt_segment normal green "$host "
   end
 end
 
@@ -104,5 +101,4 @@ function fish_prompt
   show_virtualenv
   show_status
   show_prompt
-  set_color normal
 end
