@@ -56,8 +56,6 @@ set -x ACK_COLOR_FILENAME 'bold white'
 set -x ACK_COLOR_LINENO   'bold black'
 set -x ACK_COLOR_MATCH    'blue'
 
-set -gx prompt_full_path 0
-
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
