@@ -104,4 +104,5 @@ function fish_prompt
   show_virtualenv
   show_status
   show_prompt
+  set_color normal
 end
