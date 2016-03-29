@@ -7,48 +7,49 @@
 # Base PATHs
 #-------------------------------------------------------------
 
-export PATH="\
-$HOME/.local/bin:\
-/usr/local/sbin:\
-/usr/local/game:\
-/usr/local/bin:\
-/usr/sbin:\
-/usr/games:\
-/usr/bin:\
-/sbin:\
-/bin"
-
-export PATH="/opt/local/slurm/14.03.3-2/bin:$PATH"
-#export PATH="/opt/local/munge/0.5.11-1/bin:$PATH"
-#export PATH="/usr/lib64/qt-3.3/bin:$PATH"
-
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/Softwares/android-studio/bin:$PATH"
-
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH=""
+export PATH="/bin:$PATH"
+export PATH="/sbin:$PATH"
+export PATH="/usr/bin:$PATH"
+export PATH="/usr/games:$PATH"
+export PATH="/usr/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/game:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 
 #------------------------------------
 
-export LD_LIBRARY_PATH="\
-$HOME/.local/lib64:\
-$HOME/.local/lib:\
-/usr/local/lib:\
-/usr/lib:/lib"
+
+export LD_LIBRARY_PATH=""
+export LD_LIBRARY_PATH="/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib64:$LD_LIBRARY_PATH"
+
 
 #------------------------------------
 
-export MANPATH="\
-$HOME/.local/share/man:\
-/usr/share/man:\
-/usr/local/share/man
-"
+
+export MANPATH=""
+export MANPATH="/usr/local/share/man:$MANPATH"
+export MANPATH="/usr/share/man:$MANPATH"
+export MANPATH="$HOME/.local/share/man:$MANPATH"
 
 
 #-------------------------------------------------------------
 # ENV Exports
 #-------------------------------------------------------------
+
+# This is so that `screen` will use 256 colors
+export TERM=xterm-256color
+
+export EDITOR=vim
+
+# Makes programs respect the `.hosts` file
+export HOSTALIASES="$HOME/.hosts"
 
 export LESS='-i -g -M -X -R -S'
 
@@ -82,6 +83,8 @@ shopt -s checkwinsize       # If set, bash checks the window size after each com
 shopt -s cmdhist            # If set, bash attempts to save all lines of a multiple-line command in the same history entry.
 shopt -s extglob            # Necessary for programmable completion.
 shopt -s dotglob
+
+stty -ixon
 
 
 
@@ -129,7 +132,7 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 # Shell Prompt
 #-------------------------------------------------------------
 
-# Current Format: [TIME USER@HOST PWD] >
+# Current Format: user@host pwd $
 # TIME:
 #    Green     == machine load is low
 #    Orange    == machine load is medium
@@ -161,8 +164,6 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 # Test connection type:
 if [ -n "${SSH_CONNECTION}" ]; then
     CNX=${Blue}        # Connected on remote machine, via ssh (good).
-elif [[ "${DISPLAY%%:0*}" != "" ]]; then
-    CNX=${ALERT}        # Connected on remote machine, not via ssh (bad).
 else
     CNX=${Green}        # Connected on local machine.
 fi
@@ -210,7 +211,7 @@ function load_color()
 function disk_color()
 {
     if [ ! -w "${PWD}" ] ; then
-        echo -en ${Red}
+        echo -en ${BCyan}
         # No 'write' privilege in the current directory.
     elif [ -s "${PWD}" ] ; then
         local used=$(command df -P "$PWD" |
@@ -220,10 +221,10 @@ function disk_color()
         elif [ ${used} -gt 90 ]; then
             echo -en ${BRed}            # Free disk space almost gone.
         else
-            echo -en ${Green}           # Free disk space is ok.
+            echo -en ${BBlue}           # Free disk space is ok.
         fi
     else
-        echo -en ${Cyan}
+        echo -en ${BCyan}
         # Current directory is size '0' (like /proc, /sys etc).
     fi
 }
@@ -242,31 +243,35 @@ function job_color()
 # this is so that history saves after each return in bash
 PROMPT_COMMAND="history -a"
 
-# Now we construct the prompt.
-if [ -z $PS1_SET ]; then
-  export PS1_SET=yes
-  case ${TERM} in
-    *some | strange | stuff )
-      export PS1="\u@\h:\w $ " 
-      ;;
-    *)
-      export PS1=""
-      # Time of day (with load info):
-      #export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
-      # User@Host (with connection type info):
-      export PS1=${PS1}"\[${SU}\]\u\[${NC}\]\[${Green}\]@\[${NC}\]\[${CNX}\]\h\[${NC}\]\[${Green}\]:\[${NC}\]"
-      # PWD (with 'disk space' info):
-      export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
-      # Prompt (with 'job' info):
-      export PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
-      # Set title of current xterm:
-      #export PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
-      ;;
-  esac
-else
-  # Push a prefix to sub bash processes
-  export PS1=">${PS1}"
+export PS1_PREFIX1="\[${Green}\]┍━\[${NC}\]"
+export PS1_PREFIX2="\[${Green}\]╵\[${NC}\]"
+
+export PS1=""
+# Time of day (with load info):
+#export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
+
+# User@Host (with connection type info):
+export PS1=${PS1}"${PS1_PREFIX1}"
+
+if [ ! -z "$STY" ]; then
+  export PS1=${PS1}"┥\[${Green}\]${STY}\[${NC}\]┝"
 fi
+
+export PS1=${PS1}" "
+export PS1=${PS1}"\[${SU}\]\u\[${NC}\]"
+export PS1=${PS1}"\[${Green}\]@\[${NC}\]"
+export PS1=${PS1}"\[${CNX}\]\h\[${NC}\]"
+export PS1=${PS1}"\[${Green}\] \[${NC}\]"
+# PWD (with 'disk space' info):
+export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
+# Prompt (with 'job' info):
+export PS1=${PS1}"\n"
+export PS1=${PS1}"${PS1_PREFIX2}"
+export PS1=${PS1}"\[\$(job_color)\]\$\[${NC}\] "
+
+# Set title of current xterm:
+export PS1=${PS1}"\[\e]0;\u@\h: \w\a\]"
+
 
 
 #------------------------------------------------------------
@@ -282,10 +287,17 @@ alias h='history'
 alias j='jobs -l'
 alias type='type -a'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+alias ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
 alias lc='wc -l'
 
-alias ls='ls -hF --color'
-alias lx='ls -l --group-directories-first'
+alias ls='ls -hF --group-directories-first --color'
+alias lx='ls -l'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
@@ -293,6 +305,7 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
 alias free='free -h'
+alias top='htop'
 
 alias tree='tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t='tree -L 1'
@@ -301,6 +314,7 @@ alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
 alias vi='vim'
+alias em='emacs -nw'
 alias tmux='tmux -2'
 alias grep='grep --color=always'
 
@@ -308,6 +322,15 @@ alias open='gnome-open'
 
 alias tra='trash-put'
 alias fr="grep -R --include '*.R'"
+
+alias gitl='git pull origin master'
+alias gitc='git commit -am commit'
+alias gitp='git push origin master'
+
+# print all 256 color and their code for reference
+alias 256='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
+
+alias run=runghc
 
 
 #-------------------------------------------------------------
@@ -328,6 +351,14 @@ function myip () { ip addr show | awk '/ inet / {print $2}' | cut -d/ -f1 ; }
 
 function vir () { tmux -2 new "vim --servername VIM $*" ; }
 
+# This gives a convenient way of printing the full directory of a file
+function pwd () { if [ -z "$1" ]; then echo $PWD; else echo $PWD/$1; fi; }
+complete -f pwd
+
+function ctagsc() {
+  g++ -M `find . -name '*.cpp' -or -name '*.h' | xargs` | sed -e 's/[\\ ]/\n/g' | sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q
+}
+
 
 
 #-------------------------------------------------------------
@@ -336,12 +367,29 @@ function vir () { tmux -2 new "vim --servername VIM $*" ; }
 
 shopt -q login_shell && clear
 
+#-------------------------------------------------------------
+# Source Bashmarks if exists
+#-------------------------------------------------------------
 
+if [ -f "$HOME/.local/bin/bashmarks.sh" ]; then
+  source $HOME/.local/bin/bashmarks.sh
+fi
 
 #-------------------------------------------------------------
 # Run machine specific script if exists
 #-------------------------------------------------------------
 
 if [ -f "$HOME/.bashrc_local" ]; then
-  . "$HOME/.bashrc_local"
+  source "$HOME/.bashrc_local"
 fi
+
+
+#-------------------------------------------------------------
+# "command-not-found" script
+#-------------------------------------------------------------
+
+if [ -f  "/usr/share/doc/pkgfile/command-not-found.bash" ]; then
+  source "/usr/share/doc/pkgfile/command-not-found.bash"
+fi
+
+
