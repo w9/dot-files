@@ -109,6 +109,8 @@ abbr gitl 'git pull origin master'
 abbr gitc 'git commit -am commit'
 abbr gitp 'git push origin master'
 
+function fish_greeting; end
+
 #-------------------------------------------------------------
 # Source Other Files
 #-------------------------------------------------------------
