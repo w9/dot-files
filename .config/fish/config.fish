@@ -103,6 +103,10 @@ alias tra  trash-put
 alias rp   realpath
 alias run  runghc
 
+function cd
+  builtin cd $argv; lx
+end
+
 
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
