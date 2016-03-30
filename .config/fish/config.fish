@@ -100,13 +100,19 @@ alias vi   vim
 alias open gnome-open
 alias top  htop
 alias tra  trash-put
-alias rp   realpath
 alias run  runghc
 
 function cd
   builtin cd $argv; lx
 end
 
+function rp
+  if [ (count $argv) = 0 ]
+    realpath .
+  else
+    realpath $argv
+  end
+end
 
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
