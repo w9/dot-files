@@ -102,10 +102,6 @@ alias top  htop
 alias tra  trash-put
 alias run  runghc
 
-function cd
-  builtin cd $argv; lx
-end
-
 function rp
   if [ (count $argv) = 0 ]
     realpath .
