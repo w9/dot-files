@@ -12,15 +12,47 @@ endif
 
 call plug#end()
 
+" save and restore cursor and screen position
+" complex logic for special cases, copied from Wikia
+let g:skipview_files = [
+            \ '[EXAMPLE PLUGIN BUFFER]'
+            \ ]
+function! MakeViewCheck()
+    if has('quickfix') && &buftype =~ 'nofile'
+        " Buffer is marked as not a file
+        return 0
+    endif
+    if empty(glob(expand('%:p')))
+        " File does not exist on disk
+        return 0
+    endif
+    if len($TEMP) && expand('%:p:h') == $TEMP
+        " We're in a temp dir
+        return 0
+    endif
+    if len($TMP) && expand('%:p:h') == $TMP
+        " Also in temp dir
+        return 0
+    endif
+    if index(g:skipview_files, expand('%')) >= 0
+        " File is in skip list
+        return 0
+    endif
+    return 1
+endfunction
+augroup vimrcAutoView
+    autocmd!
+    " Autosave & Load Views.
+    autocmd BufWritePost,BufLeave,WinLeave ?* if MakeViewCheck() | mkview | endif
+    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
+augroup end
+
+
 
 let mapleader = " "
 let maplocalleader = "\\"
 
 set background=dark
-
-set t_Co=256
-set t_ZH=[3m
-set t_ZR=[23m
 
 set number
 set cursorline
@@ -29,15 +61,12 @@ set cursorline
 set undofile
 
 set nowrap
-set nosmartindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
 set foldlevel=999
-" this is for zero delay after quitting insert mode
-set timeout timeoutlen=5000 ttimeoutlen=1
 
 " cwd always set to current file
 set autochdir
@@ -59,7 +88,7 @@ set guioptions-=L  " menu left-hand scroll bar
 
 " Use only underline to highlight search results
 highlight Search       term=NONE cterm=underline ctermfg=NONE      ctermbg=NONE
-highlight CursorLine   term=NONE cterm=NONE      ctermfg=NONE      ctermbg=232
+highlight CursorLine   term=NONE cterm=NONE      ctermfg=NONE      ctermbg=234
 highlight LineNr       term=NONE cterm=NONE      ctermfg=DarkGrey  ctermbg=235
 highlight CursorLineNr term=NONE cterm=NONE      ctermfg=NONE      ctermbg=235
 highlight ColorColumn  term=NONE cterm=NONE      ctermfg=NONE      ctermbg=Black
