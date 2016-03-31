@@ -96,7 +96,7 @@ alias tmux 'tmux -2'
 alias grep 'grep --color=always'
 alias less 'less -i -g -M -X -R -S'
 
-alias vi   vim
+alias vi   nvim
 alias open gnome-open
 alias top  htop
 alias tra  trash-put
