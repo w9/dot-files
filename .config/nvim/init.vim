@@ -12,70 +12,15 @@ endif
 
 call plug#end()
 
-" Required:
-filetype plugin indent on
-
-syntax enable
-
-" save and restore cursor and screen position
-" complex logic for special cases, copied from Wikia
-let g:skipview_files = [ '[EXAMPLE PLUGIN BUFFER]' ]
-
-function! MakeViewCheck()
-    if has('quickfix') && &buftype =~ 'nofile'
-        " Buffer is marked as not a file
-        return 0
-    endif
-    if empty(glob(expand('%:p')))
-        " File does not exist on disk
-        return 0
-    endif
-    if len($TEMP) && expand('%:p:h') == $TEMP
-        " We're in a temp dir
-        return 0
-    endif
-    if len($TMP) && expand('%:p:h') == $TMP
-        " Also in temp dir
-        return 0
-    endif
-    if index(g:skipview_files, expand('%')) >= 0
-        " File is in skip list
-        return 0
-    endif
-    return 1
-endfunction
-
-augroup vimrcAutoView
-    autocmd!
-    " Autosave & Load Views.
-    autocmd BufWritePost,BufLeave,WinLeave ?* if MakeViewCheck() | mkview | endif
-    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
-augroup end
-
-
-" if you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-
 
 let mapleader = " "
 let maplocalleader = "\\"
 
 set background=dark
 
-set backspace=indent,eol,start
-
-set runtimepath+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set t_Co=256
 set t_ZH=[3m
 set t_ZR=[23m
-set laststatus=2
-set listchars=eol:$,tab:>-
-set hlsearch
-set incsearch
 
 set number
 set cursorline
@@ -83,7 +28,6 @@ set cursorline
 " retain undo's after closing files
 set undofile
 
-set autoindent
 set nowrap
 set nosmartindent
 set expandtab
@@ -98,21 +42,10 @@ set timeout timeoutlen=5000 ttimeoutlen=1
 " cwd always set to current file
 set autochdir
 
-" automatically reload the file when it gets changed
-set autoread
-
-" search upwards until find tags
-set tags=./tags;/
-
-" auto add comment symbols
-set formatoptions=rq
-
 " make autocompletion work just like an IDE
 set completeopt=longest,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" accept mouse click
-"set mouse=a
 " load .vimrc from working directory if present
 set exrc
 set secure
