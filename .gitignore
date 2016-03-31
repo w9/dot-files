@@ -18,5 +18,10 @@
 !.config/fish/functions/*
 !.config/htop
 !.config/htop/htoprc
+!.config/nvim
+!.config/nvim/init.vim
+!.config/nvim/autoload
+!.config/nvim/autoload/*
+
 
 *.un~
