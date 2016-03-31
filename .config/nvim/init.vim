@@ -6,7 +6,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 
 " Load local plugins and their settings
-if file_readable($HOME . ".config/nvim/local_plugins.vim")
+if file_readable($HOME . "/.config/nvim/local_plugins.vim")
   so $HOME/.config/nvim/local_plugins.vim
 endif
 
