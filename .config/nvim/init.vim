@@ -44,7 +44,7 @@ augroup vimrcAutoView
     autocmd!
     " Autosave & Load Views.
     autocmd BufWritePost,BufLeave,WinLeave ?* if MakeViewCheck() | mkview | endif
-    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
+    autocmd BufWinEnter ?* if MakeViewCheck() | silent! loadview | endif
 augroup end
 
 
