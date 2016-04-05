@@ -23,5 +23,7 @@
 !.config/nvim/autoload
 !.config/nvim/autoload/*
 
+!.cabal
+!.cabal/config
 
 *.un~

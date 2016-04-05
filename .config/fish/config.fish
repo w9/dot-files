@@ -52,9 +52,12 @@ set -x EDITOR vim
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
 
-set -x ACK_COLOR_FILENAME 'bold white'
-set -x ACK_COLOR_LINENO   'bold black'
-set -x ACK_COLOR_MATCH    'blue'
+set -x AG_COLOR_FILENAME 'bold white'
+set -x AG_COLOR_LINENO   'bold black'
+set -x AG_COLOR_MATCH    'blue'
+
+alias ag  'ag --unrestricted --group --color --color-line-number="1;30" --color-match="34" --color-path="1;37"'
+alias agp 'ag --pager "less -i -g -M -X -R -S"'
 
 #-------------------------------------------------------------
 # Aliases
