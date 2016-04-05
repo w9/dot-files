@@ -57,18 +57,28 @@ set -x AG_COLOR_FILENAME 'bold white'
 set -x AG_COLOR_LINENO   'bold black'
 set -x AG_COLOR_MATCH    'blue'
 
-alias ag  'ag --unrestricted --group --color --color-line-number="1;30" --color-match="34" --color-path="1;37"'
-alias agp 'ag --pager "less -i -g -M -X -R -S"'
+set -x LESS '-i -g -M -R -S'
+
+# LESS man page colors (makes Man pages more readable).
+set -x LESS_TERMCAP_mb  (set_color -o red)
+set -x LESS_TERMCAP_md  (set_color -o red)
+set -x LESS_TERMCAP_me  (set_color normal)
+set -x LESS_TERMCAP_se  (set_color normal)
+set -x LESS_TERMCAP_so  (set_color -b blue; set_color yellow)
+set -x LESS_TERMCAP_ue  (set_color normal)
+set -x LESS_TERMCAP_us  (set_color green)
+
+alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;37"'
+alias agp 'ag --pager less'
 
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
 
-alias rm!       '/bin/rm -i'
-alias cp        'cp -i'
-alias mv        'mv -i'
+alias rm! '/bin/rm -i'
+alias cp  'cp -i'
+alias mv  'mv -i'
 
-alias h         'history'
 alias ..        'cd ..'
 alias ...       'cd ../..'
 alias ....      'cd ../../..'
@@ -77,13 +87,11 @@ alias ......    'cd ../../../../..'
 alias .......   'cd ../../../../../..'
 alias ........  'cd ../../../../../../..'
 alias ......... 'cd ../../../../../../../..'
-alias lc        'wc -l'
 
+alias h         'history'
+alias lc        'wc -l'
 alias ls        'ls -hF --group-directories-first --color'
 alias lx        'ls -l'
-
-alias path      "echo \$PATH | sed 's/ /\\n/g'"
-alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
 alias du        'du -kh'    # Makes a more readable output.
 alias df        'df -kTh'
@@ -98,7 +106,6 @@ alias R    "R --quiet --no-save"
 alias em   'emacs -nw'
 alias tmux 'tmux -2'
 alias grep 'grep --color=always'
-alias less 'less -i -g -M -X -R -S'
 
 alias vi   nvim
 alias open gnome-open
@@ -113,6 +120,9 @@ function rp
     realpath $argv
   end
 end
+
+alias path      "echo \$PATH | sed 's/ /\\n/g'"
+alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
