@@ -3,6 +3,6 @@ function fish_user_key_bindings
   bind \ej down-or-search
   bind \eh prevd-or-backward-word
   bind \el nextd-or-forward-word
-  bind \ej toggle_prompt_full_path
+  bind \ej print_full_path
   bind \es sudo_last_cmd
 end
