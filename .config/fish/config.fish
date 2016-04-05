@@ -105,7 +105,7 @@ alias ttt       'tree -L 3'
 alias R    "R --quiet --no-save"
 alias em   'emacs -nw'
 alias tmux 'tmux -2'
-alias grep 'grep --color=always'
+alias grep 'grep --color=auto'
 
 alias vi   nvim
 alias open gnome-open
