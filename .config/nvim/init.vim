@@ -47,6 +47,8 @@ augroup vimrcAutoView
     autocmd BufWinEnter ?* if MakeViewCheck() | silent! loadview | endif
 augroup end
 
+" fix syntax error when the file is loaded from middle
+autocmd BufEnter * :syntax sync fromstart
 
 
 let mapleader = " "
