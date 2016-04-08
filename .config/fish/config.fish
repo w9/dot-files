@@ -75,7 +75,7 @@ alias agp 'ag --pager less'
 # Aliases
 #-------------------------------------------------------------
 
-alias rm! '/bin/rm -i'
+alias rm! 'rm -i'
 alias cp  'cp -i'
 alias mv  'mv -i'
 
@@ -93,25 +93,27 @@ alias lc        'wc -l'
 alias ls        'ls -hF --group-directories-first --color'
 alias lx        'ls -l'
 
-alias du        'du -kh'    # Makes a more readable output.
-alias df        'df -kTh'
-alias free      'free -h'
-
 alias tree      'tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
-
-alias R    "R --quiet --no-save"
-alias em   'emacs -nw'
-alias tmux 'tmux -2'
-alias grep 'grep --color=auto'
 
 alias vi   nvim
 alias open gnome-open
 alias top  htop
 alias tra  trash-put
 alias run  runghc
+
+abbr du        'du -kh'    # Makes a more readable output.
+abbr df        'df -kTh'
+abbr free      'free -h'
+
+abbr R    "R --quiet --no-save"
+abbr em   'emacs -nw'
+abbr tmux 'tmux -2'
+abbr grep 'grep --color=auto'
+
+abbr rm   'tra'
 
 function rp
   if [ (count $argv) = 0 ]
