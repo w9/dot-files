@@ -14,6 +14,7 @@ set -x PATH /usr/local/bin $PATH
 set -x PATH /usr/local/game $PATH
 set -x PATH /usr/local/sbin $PATH
 set -x PATH $HOME/.local/bin $PATH
+set -x PATH $HOME/.cabal/bin $PATH
 
 
 #------------------------------------
@@ -52,19 +53,32 @@ set -x EDITOR vim
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
 
-set -x ACK_COLOR_FILENAME 'bold white'
-set -x ACK_COLOR_LINENO   'bold black'
-set -x ACK_COLOR_MATCH    'blue'
+set -x AG_COLOR_FILENAME 'bold white'
+set -x AG_COLOR_LINENO   'bold black'
+set -x AG_COLOR_MATCH    'blue'
+
+set -x LESS '-i -g -M -R -S'
+
+# LESS man page colors (makes Man pages more readable).
+set -x LESS_TERMCAP_mb  (set_color -o red)
+set -x LESS_TERMCAP_md  (set_color -o red)
+set -x LESS_TERMCAP_me  (set_color normal)
+set -x LESS_TERMCAP_se  (set_color normal)
+set -x LESS_TERMCAP_so  (set_color -b blue; set_color yellow)
+set -x LESS_TERMCAP_ue  (set_color normal)
+set -x LESS_TERMCAP_us  (set_color green)
+
+alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;37"'
+alias agp 'ag --pager less'
 
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
 
-alias rm!       '/bin/rm -i'
-alias cp        'cp -i'
-alias mv        'mv -i'
+alias rm! 'rm -i'
+alias cp  'cp -i'
+alias mv  'mv -i'
 
-alias h         'history'
 alias ..        'cd ..'
 alias ...       'cd ../..'
 alias ....      'cd ../../..'
@@ -73,41 +87,51 @@ alias ......    'cd ../../../../..'
 alias .......   'cd ../../../../../..'
 alias ........  'cd ../../../../../../..'
 alias ......... 'cd ../../../../../../../..'
-alias lc        'wc -l'
 
+alias h         'history'
+alias lc        'wc -l'
 alias ls        'ls -hF --group-directories-first --color'
 alias lx        'ls -l'
-
-alias path      "echo \$PATH | sed 's/ /\\n/g'"
-alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
-
-alias du        'du -kh'    # Makes a more readable output.
-alias df        'df -kTh'
-alias free      'free -h'
 
 alias tree      'tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
-alias R    "R --quiet --no-save"
-alias em   'emacs -nw'
-alias tmux 'tmux -2'
-alias grep 'grep --color=always'
-alias less 'less -i -g -M -X -R -S'
-
-alias vi   vim
+alias vi   nvim
 alias open gnome-open
 alias top  htop
 alias tra  trash-put
-alias rp   realpath
 alias run  runghc
 
+abbr du        'du -kh'    # Makes a more readable output.
+abbr df        'df -kTh'
+abbr free      'free -h'
+
+abbr R    "R --quiet --no-save"
+abbr em   'emacs -nw'
+abbr tmux 'tmux -2'
+abbr grep 'grep --color=auto'
+
+abbr rm   'tra'
+
+function rp
+  if [ (count $argv) = 0 ]
+    realpath .
+  else
+    realpath $argv
+  end
+end
+
+alias path      "echo \$PATH | sed 's/ /\\n/g'"
+alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
 abbr gitc 'git commit -am commit'
 abbr gitp 'git push origin master'
+
+function fish_greeting; end
 
 #-------------------------------------------------------------
 # Source Other Files
