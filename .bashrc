@@ -175,7 +175,7 @@ alias tt='tree -L 2'
 alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
-alias vi='vim'
+alias vi='nvim'
 alias em='emacs -nw'
 alias tmux='tmux -2'
 alias grep='grep --color=always'
