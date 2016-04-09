@@ -56,6 +56,7 @@ let maplocalleader = "\\"
 
 set background=dark
 
+set mouse=
 set number
 set cursorline
 

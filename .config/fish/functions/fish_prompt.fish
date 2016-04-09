@@ -78,7 +78,7 @@ end
 
 # Show prompt w/ privilege cue
 function show_prompt -d "Shows prompt with cue for current priv"
-  set -l uid (id -u $USER)
+  set -l uid (id -u (whoami))
 
   if [ $uid -eq 0 ]
     set -g prompt_sign '#'
