@@ -28,11 +28,6 @@ function show_status -d "Function to show the current status"
     prompt_segment normal normal " "
   end
 
-  if [ ! -s $PWD ]
-    prompt_segment yellow black "SYS"
-    prompt_segment normal normal " "
-  end
-
   if [ ! -z "$STY" ]
     prompt_segment green black "SCR"
     prompt_segment normal normal " "
@@ -69,6 +64,11 @@ end
 # Show directory
 function show_pwd -d "Show the current directory"
   set -l pwd (prompt_pwd)
+
+  if [ ! -s $PWD ]
+    set_color -u
+  end
+
   if [ ! -w $PWD ]
     prompt_segment bold red "$pwd "
   else
