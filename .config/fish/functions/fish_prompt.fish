@@ -22,25 +22,25 @@ end
 
 ## Function to show current status
 function show_status -d "Function to show the current status"
-  if [ $RETVAL -ne 0 ]
-    prompt_segment normal red "✖ "
-  end
-
   set -l disk_usage (command df -P $PWD | awk 'END {print $5} {sub(/%/,"")}')
   if [ $disk_usage -gt 90 ]
-    if [ $disk_usage -gt 95 ]
-      prompt_segment normal red "⛁ "
-    else
-      prompt_segment normal yellow "⛃ "
-    end
+    prompt_segment red black "$disk_usage%"
+    prompt_segment normal normal " "
   end
 
   if [ ! -s $PWD ]
-    prompt_segment normal yellow "⚙ "
+    prompt_segment yellow black "SYS"
+    prompt_segment normal normal " "
   end
 
   if [ ! -z "$STY" ]
-    prompt_segment normal green "⛶ "
+    prompt_segment green black "SCR"
+    prompt_segment normal normal " "
+  end
+
+  if [ $RETVAL -ne 0 ]
+    prompt_segment red black "X"
+    prompt_segment normal normal " "
   end
 end
 
@@ -78,7 +78,7 @@ end
 
 # Show prompt w/ privilege cue
 function show_prompt -d "Shows prompt with cue for current priv"
-  set -l uid (id -u $USER)
+  set -l uid (id -u (whoami))
 
   if [ $uid -eq 0 ]
     set -g prompt_sign '#'
@@ -96,9 +96,9 @@ end
 ## SHOW PROMPT
 function fish_prompt
   set -g RETVAL $status
+  show_status
   show_user
   show_pwd
   show_virtualenv
-  show_status
   show_prompt
 end

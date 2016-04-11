@@ -70,6 +70,7 @@ export HISTCONTROL=ignoredups
 #export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
 #export EDITOR=/usr/bin/vim
 
+unset SSH_ASKPASS
 
 
 #-------------------------------------------------------------
@@ -132,146 +133,7 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 # Shell Prompt
 #-------------------------------------------------------------
 
-# Current Format: user@host pwd $
-# TIME:
-#    Green     == machine load is low
-#    Orange    == machine load is medium
-#    Red       == machine load is high
-#    ALERT     == machine load is very high
-# USER:
-#    Cyan      == normal user
-#    Orange    == SU to user
-#    Red       == root
-# HOST:
-#    Cyan      == local session
-#    Green     == secured remote connection (via ssh)
-#    Red       == unsecured remote connection
-# PWD:
-#    Green     == more than 10% free disk space
-#    Orange    == less than 10% free disk space
-#    ALERT     == less than 5% free disk space
-#    Red       == current user does not have write privileges
-#    Cyan      == current filesystem is size zero (like /proc)
-# >:
-#    White     == no background or suspended jobs in this shell
-#    Cyan      == at least one background job in this shell
-#    Orange    == at least one suspended job in this shell
-#
-#    Command is added to the history file each time you hit enter,
-#    so it's available to all shells (using 'history -a').
-
-
-# Test connection type:
-if [ -n "${SSH_CONNECTION}" ]; then
-    CNX=${Blue}        # Connected on remote machine, via ssh (good).
-else
-    CNX=${Green}        # Connected on local machine.
-fi
-
-# Test user type:
-if [[ ${USER} == "root" ]]; then
-    SU=${Black}${On_Red}           # User is root.
-elif [[ ${USER} != $(logname) ]]; then
-    SU=${Red}          # User is not login user.
-else
-    SU=${Green}         # User is normal (well ... most of us are).
-fi
-
-
-
-NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
-SLOAD=$(( 100*${NCPU} ))        # Small load
-MLOAD=$(( 200*${NCPU} ))        # Medium load
-XLOAD=$(( 400*${NCPU} ))        # Xlarge load
-
-# Returns system load as percentage, i.e., '40' rather than '0.40)'.
-function load()
-{
-    local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
-    # System load of the current host.
-    echo $((10#$SYSLOAD))       # Convert to decimal.
-}
-
-# Returns a color indicating system load.
-function load_color()
-{
-    local SYSLOAD=$(load)
-    if [ ${SYSLOAD} -gt ${XLOAD} ]; then
-        echo -en ${ALERT}
-    elif [ ${SYSLOAD} -gt ${MLOAD} ]; then
-        echo -en ${Red}
-    elif [ ${SYSLOAD} -gt ${SLOAD} ]; then
-        echo -en ${BRed}
-    else
-        echo -en ${Green}
-    fi
-}
-
-# Returns a color according to free disk space in $PWD.
-function disk_color()
-{
-    if [ ! -w "${PWD}" ] ; then
-        echo -en ${BCyan}
-        # No 'write' privilege in the current directory.
-    elif [ -s "${PWD}" ] ; then
-        local used=$(command df -P "$PWD" |
-                   awk 'END {print $5} {sub(/%/,"")}')
-        if [ ${used} -gt 95 ]; then
-            echo -en ${ALERT}           # Disk almost full (>95%).
-        elif [ ${used} -gt 90 ]; then
-            echo -en ${BRed}            # Free disk space almost gone.
-        else
-            echo -en ${BBlue}           # Free disk space is ok.
-        fi
-    else
-        echo -en ${BCyan}
-        # Current directory is size '0' (like /proc, /sys etc).
-    fi
-}
-
-# Returns a color according to running/suspended jobs.
-function job_color()
-{
-    if [ $(jobs -s | wc -l) -gt "0" ]; then
-        echo -en ${BRed}
-    elif [ $(jobs -r | wc -l) -gt "0" ] ; then
-        echo -en ${BBlue}
-    fi
-}
-
-
-# this is so that history saves after each return in bash
-PROMPT_COMMAND="history -a"
-
-export PS1_PREFIX1="\[${Green}\]┍━\[${NC}\]"
-export PS1_PREFIX2="\[${Green}\]╵\[${NC}\]"
-
-export PS1=""
-# Time of day (with load info):
-#export PS1=${PS1}"\[\$(load_color)\][\A\[${NC}\] "
-
-# User@Host (with connection type info):
-export PS1=${PS1}"${PS1_PREFIX1}"
-
-if [ ! -z "$STY" ]; then
-  export PS1=${PS1}"┥\[${Green}\]${STY}\[${NC}\]┝"
-fi
-
-export PS1=${PS1}" "
-export PS1=${PS1}"\[${SU}\]\u\[${NC}\]"
-export PS1=${PS1}"\[${Green}\]@\[${NC}\]"
-export PS1=${PS1}"\[${CNX}\]\h\[${NC}\]"
-export PS1=${PS1}"\[${Green}\] \[${NC}\]"
-# PWD (with 'disk space' info):
-export PS1=${PS1}"\[\$(disk_color)\]\w\[${NC}\]"
-# Prompt (with 'job' info):
-export PS1=${PS1}"\n"
-export PS1=${PS1}"${PS1_PREFIX2}"
-export PS1=${PS1}"\[\$(job_color)\]\$\[${NC}\] "
-
-# Set title of current xterm:
-export PS1=${PS1}"\[\e]0;\u@\h: \w\a\]"
-
+export PS1="\u@\h \w \$ "
 
 
 #------------------------------------------------------------
@@ -313,7 +175,7 @@ alias tt='tree -L 2'
 alias ttt='tree -L 3'
 
 alias R="R --quiet --no-save"
-alias vi='vim'
+alias vi='nvim'
 alias em='emacs -nw'
 alias tmux='tmux -2'
 alias grep='grep --color=always'

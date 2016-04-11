@@ -68,9 +68,6 @@ set -x LESS_TERMCAP_so  (set_color -b blue; set_color yellow)
 set -x LESS_TERMCAP_ue  (set_color normal)
 set -x LESS_TERMCAP_us  (set_color green)
 
-alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;37"'
-alias agp 'ag --pager less'
-
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
@@ -97,6 +94,9 @@ alias tree      'tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
+
+alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;37"'
+alias agp 'ag --pager less'
 
 alias vi   nvim
 alias open gnome-open
