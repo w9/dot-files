@@ -99,6 +99,7 @@ alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --col
 alias agp 'ag --pager less'
 
 alias vi   nvim
+alias ipy  ipython
 alias open gnome-open
 alias top  htop
 alias tra  trash-put
