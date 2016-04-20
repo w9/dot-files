@@ -104,6 +104,7 @@ alias open gnome-open
 alias top  htop
 alias tra  trash-put
 alias run  runghc
+alias pac  'sudo pacman -S'
 
 abbr du        'du -kh'    # Makes a more readable output.
 abbr df        'df -kTh'
