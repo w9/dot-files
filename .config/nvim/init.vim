@@ -59,6 +59,7 @@ set background=dark
 set mouse=
 set number
 set cursorline
+set listchars=tab:>-,trail:-,nbsp:+,eol:$
 
 " retain undo's after closing files
 set undofile
