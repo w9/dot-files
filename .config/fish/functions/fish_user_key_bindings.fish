@@ -4,4 +4,6 @@ function fish_user_key_bindings
   bind \el nextd-repaint
   bind \ej print_full_path
   bind \es sudo_last_cmd
+
+  bind \cw backward-kill-bigword
 end
