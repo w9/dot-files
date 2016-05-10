@@ -128,6 +128,8 @@ end
 alias path      "echo \$PATH | sed 's/ /\\n/g'"
 alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
+alias http 'python3 -m http.server'
+
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
 abbr gitc 'git commit -am commit'
@@ -142,3 +144,4 @@ function fish_greeting; end
 source $HOME/.autojump.fish
 
 source $HOME/.config/fish/local_config.fish
+
