@@ -53,7 +53,7 @@ set -x EDITOR vim
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
 
-set -x AG_COLOR_FILENAME 'bold white'
+set -x AG_COLOR_FILENAME 'bold yellow'
 set -x AG_COLOR_LINENO   'bold black'
 set -x AG_COLOR_MATCH    'blue'
 
@@ -95,7 +95,7 @@ alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
-alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;37"'
+alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;33"'
 alias agp 'ag --pager less'
 
 alias vi   nvim
