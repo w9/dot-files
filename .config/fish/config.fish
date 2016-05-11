@@ -53,7 +53,7 @@ set -x EDITOR vim
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
 
-set -x AG_COLOR_FILENAME 'bold white'
+set -x AG_COLOR_FILENAME 'bold yellow'
 set -x AG_COLOR_LINENO   'bold black'
 set -x AG_COLOR_MATCH    'blue'
 
@@ -95,7 +95,7 @@ alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
-alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;37"'
+alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;33"'
 alias agp 'ag --pager less'
 
 alias vi   nvim
@@ -128,6 +128,8 @@ end
 alias path      "echo \$PATH | sed 's/ /\\n/g'"
 alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
+alias http 'python -m http.server'
+
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
 abbr gitc 'git commit -am commit'
@@ -142,3 +144,4 @@ function fish_greeting; end
 source $HOME/.autojump.fish
 
 source $HOME/.config/fish/local_config.fish
+
