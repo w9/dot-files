@@ -23,6 +23,8 @@
 !.config/nvim/init.vim
 !.config/nvim/autoload
 !.config/nvim/autoload/*
+!.config/termite
+!.config/termite/config
 
 !.cabal
 !.cabal/config
