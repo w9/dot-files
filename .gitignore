@@ -13,6 +13,7 @@
 !.screenrc
 !.xprofile
 !.Xmodmap
+!.package_to_install
 
 !.config
 !.config/fish
