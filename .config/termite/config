@@ -3,7 +3,7 @@
 		allow_bold = true
 		audible_bell = true
 	# browser =
-		clickable_url = true
+		clickable_url = false
 		cursor_blink = true
 		cursor_shape = block
 		dynamic_title = true
@@ -28,7 +28,7 @@
 		# special
 		foreground      = #a5a2a2
 		foreground_bold = #a5a2a2
-		background      = rgba(0,0,0,0.9)
+		background      = rgba(0,0,0,0.95)
 
 		# black
 		color0  = #090300
