@@ -70,15 +70,20 @@
         <value type="string" value="thunar"/>
         <value type="string" value="vlc"/>
         <value type="string" value="kimtoy"/>
+        <value type="string" value="networkmanager applet"/>
         <value type="string" value="task manager"/>
         <value type="string" value="simplescreenrecorder"/>
         <value type="string" value="ibus-ui-gtk3"/>
         <value type="string" value="orage"/>
         <value type="string" value="shutter"/>
+        <value type="string" value="pamac-tray"/>
         <value type="string" value="chromium"/>
+        <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
+        <value type="string" value="manjaro settings manager"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="gpick"/>
+        <value type="string" value="pa-applet"/>
         <value type="string" value="notes"/>
       </property>
       <property name="show-frame" type="bool" value="false"/>
