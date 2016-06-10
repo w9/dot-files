@@ -36,8 +36,18 @@ sudo pacman-key --lsign-key 962DDE58
 
 sudo pacman -Syu
 
-sudo pacman -S freetype2-infinality-ultimate \
-               fontconfig-infinality-ultimate \
-               cairo-infinality-ultimate \
-               jdk8-openjdk-infinality \
+sudo pacman -S
+	freetype2-infinality-ultimate \
+	fontconfig-infinality-ultimate \
+	cairo-infinality-ultimate \
+	jdk8-openjdk-infinality
+
+sudo pacman -S
+	otf-inconsolata-pwl-ibx \
+	otf-inconsolatazi4-ibx \
+	ttf-dejavu \
+	ttf-dejavu-ib \
+	ttf-droid-ib \
+	ttf-incosolata-ib \
+	ttf-liberation-ib
 
