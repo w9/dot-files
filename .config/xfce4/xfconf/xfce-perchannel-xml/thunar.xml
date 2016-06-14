@@ -7,11 +7,7 @@
   <property name="last-window-height" type="int" value="661"/>
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_SMALLEST"/>
-<<<<<<< HEAD
-  <property name="last-details-view-column-widths" type="string" value="50,1235,50,50,202,50,50,72,180"/>
-=======
   <property name="last-details-view-column-widths" type="string" value="50,525,50,50,94,50,50,54,56"/>
->>>>>>> 2088c47c4e0084a99cd75ca43b71e731f8ff1462
   <property name="last-separator-position" type="int" value="224"/>
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="last-show-hidden" type="bool" value="false"/>
