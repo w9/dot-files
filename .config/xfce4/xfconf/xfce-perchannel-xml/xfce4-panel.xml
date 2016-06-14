@@ -19,7 +19,7 @@
         <value type="int" value="5"/>
         <value type="int" value="2"/>
       </property>
-      <property name="background-style" type="uint" value="1"/>
+      <property name="background-style" type="uint" value="0"/>
       <property name="background-alpha" type="uint" value="0"/>
       <property name="nrows" type="uint" value="1"/>
       <property name="autohide-behavior" type="uint" value="0"/>
@@ -88,7 +88,7 @@
         <value type="string" value="notes"/>
       </property>
       <property name="show-frame" type="bool" value="false"/>
-      <property name="size-max" type="uint" value="32"/>
+      <property name="size-max" type="uint" value="28"/>
     </property>
     <property name="plugin-1" type="string" value="showdesktop"/>
     <property name="clipman" type="empty">
