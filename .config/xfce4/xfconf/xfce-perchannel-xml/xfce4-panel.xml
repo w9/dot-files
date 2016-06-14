@@ -15,7 +15,6 @@
         <value type="int" value="4"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
-        <value type="int" value="8"/>
         <value type="int" value="5"/>
         <value type="int" value="2"/>
       </property>
@@ -28,9 +27,9 @@
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="leave-opacity" type="uint" value="100"/>
       <property name="background-color" type="array">
-        <value type="uint" value="65535"/>
-        <value type="uint" value="65535"/>
-        <value type="uint" value="65535"/>
+        <value type="uint" value="10794"/>
+        <value type="uint" value="14135"/>
+        <value type="uint" value="15934"/>
         <value type="uint" value="65535"/>
       </property>
       <property name="background-image" type="string" value="/home/xzhu/Desktop/a.png"/>
@@ -98,12 +97,6 @@
       <property name="settings" type="empty">
         <property name="show-qr-code" type="bool" value="false"/>
       </property>
-    </property>
-    <property name="plugin-8" type="string" value="mixer">
-      <property name="sound-card" type="string" value="HDAIntelPCHAlsamixer"/>
-      <property name="track" type="string" value="Master"/>
-      <property name="command" type="string" value="xfce4-mixer"/>
-      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
     </property>
     <property name="notes" type="empty">
       <property name="global" type="empty">
