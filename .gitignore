@@ -17,6 +17,7 @@
 !.gtkrc-2.0
 
 !.config
+!.config/compton.conf
 !.config/fish
 !.config/fish/config.fish
 !.config/fish/functions
