@@ -33,7 +33,7 @@
 !.config/xfce4/xfconf
 !.config/xfce4/xfconf/xfce-perchannel-xml
 !.config/xfce4/xfconf/xfce-perchannel-xml/*
-!.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 
 !.cabal
 !.cabal/config
