@@ -1,5 +1,5 @@
 options(menu.graphics=F)
 options(stringsAsFactors=F)
-library(setwidth)
+#library(setwidth)
 #library(vimcom)
 #library(colorout)
