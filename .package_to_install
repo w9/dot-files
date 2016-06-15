@@ -1,0 +1,53 @@
+sudo pacman-mirrors -g
+sudo pacman -Syyu
+sudo pacman -S \
+  fish \
+  chromium \
+  htop \
+  neovim \
+  termite \
+  mypaint \
+  fcitx \
+  kimtoy \
+  rofi \
+
+
+mkdir ~/tmp
+cd ~/tmp
+git clone https://aur.archlinux.org/paper-icon-theme-git.git
+cd paper-icon-theme-git
+makepkg -sri
+cd ..
+git clone https://aur.archlinux.org/gtk-theme-adapta-git.git
+cd gtk-theme-adapta-git
+makepkg -sri
+cd ..
+
+
+echo '[infinality-bundle]
+Server = http://bohoomil.com/repo/$arch
+
+[infinality-bundle-fonts]
+Server = http://bohoomil.com/repo/fonts' | sudo tee -a /etc/pacman.conf
+
+sudo pacman-key -r 962DDE58
+pacman-key -f 962DDE58
+sudo pacman-key --lsign-key 962DDE58
+
+sudo pacman -Syu
+
+sudo pacman -S
+	freetype2-infinality-ultimate \
+	fontconfig-infinality-ultimate \
+	cairo-infinality-ultimate \
+	jdk8-openjdk-infinality
+
+sudo pacman -S
+	otf-inconsolata-pwl-ibx \
+	otf-inconsolatazi4-ibx \
+	ttf-dejavu \
+	ttf-dejavu-ib \
+	ttf-droid-ib \
+	ttf-incosolata-ib \
+	ttf-liberation-ib
+

@@ -89,7 +89,6 @@ set guioptions-=T  " menu toobar
 set guioptions-=r  " menu right-hand scroll bar
 set guioptions-=L  " menu left-hand scroll bar
 
-
 " Use only underline to highlight search results
 highlight Search       term=NONE cterm=underline ctermfg=NONE      ctermbg=NONE
 highlight CursorLine   term=NONE cterm=NONE      ctermfg=NONE      ctermbg=234

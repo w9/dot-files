@@ -8,10 +8,8 @@
 set -x PATH /bin $PATH
 set -x PATH /sbin $PATH
 set -x PATH /usr/bin $PATH
-set -x PATH /usr/games $PATH
 set -x PATH /usr/sbin $PATH
 set -x PATH /usr/local/bin $PATH
-set -x PATH /usr/local/game $PATH
 set -x PATH /usr/local/sbin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.cabal/bin $PATH
