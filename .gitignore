@@ -20,6 +20,7 @@
 !.config/compton.conf
 !.config/fish
 !.config/fish/config.fish
+!.config/fish/z.fish
 !.config/fish/functions
 !.config/fish/functions/*
 !.config/nvim

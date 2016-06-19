@@ -5,14 +5,20 @@
 # This is not necessary in trusted machines
 #set -x PATH
 
-set -x PATH /bin $PATH
-set -x PATH /sbin $PATH
-set -x PATH /usr/bin $PATH
-set -x PATH /usr/sbin $PATH
-set -x PATH /usr/local/bin $PATH
-set -x PATH /usr/local/sbin $PATH
-set -x PATH $HOME/.local/bin $PATH
-set -x PATH $HOME/.cabal/bin $PATH
+set -x PATH_TEMP /bin $PATH_TEMP
+set -x PATH_TEMP /sbin $PATH_TEMP
+set -x PATH_TEMP /usr/bin $PATH_TEMP
+set -x PATH_TEMP /usr/sbin $PATH_TEMP
+set -x PATH_TEMP /usr/local/bin $PATH_TEMP
+set -x PATH_TEMP /usr/local/sbin $PATH_TEMP
+set -x PATH_TEMP $HOME/.local/bin $PATH_TEMP
+set -x PATH_TEMP $HOME/.cabal/bin $PATH_TEMP
+
+for path in $PATH_TEMP
+  if [ -d $path ]
+    set -x PATH $path $PATH
+  end
+end
 
 
 #------------------------------------
@@ -139,7 +145,6 @@ function fish_greeting; end
 # Source Other Files
 #-------------------------------------------------------------
 
-source $HOME/.autojump.fish
-
-source $HOME/.config/fish/local_config.fish
+[ -r "$HOME/.config/fish/local_config.fish" ]; and source $HOME/.config/fish/local_config.fish
+[ -r "$HOME/.config/fish/z.fish" ]; and source $HOME/.config/fish/z.fish
 
