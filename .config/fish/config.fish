@@ -3,8 +3,9 @@
 #-------------------------------------------------------------
 
 # This is not necessary in trusted machines
-#set -x PATH
+set -x PATH
 
+set -x PATH_TEMP ''
 set -x PATH_TEMP /bin $PATH_TEMP
 set -x PATH_TEMP /sbin $PATH_TEMP
 set -x PATH_TEMP /usr/bin $PATH_TEMP
