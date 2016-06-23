@@ -80,6 +80,7 @@
         <value type="string" value="pamac-tray"/>
         <value type="string" value="chromium"/>
         <value type="string" value="blueman-applet"/>
+        <value type="string" value="hexchat"/>
         <value type="string" value="clipman"/>
         <value type="string" value="manjaro settings manager"/>
         <value type="string" value="xfce4-power-manager"/>

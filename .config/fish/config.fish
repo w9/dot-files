@@ -52,7 +52,7 @@ set -x MANPATH "$HOME/.local/share/man:$MANPATH"
 # This is so that `screen` will use 256 colors
 set -x TERM xterm-256color
 
-set -x EDITOR vim
+set -x EDITOR nvim
 
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
