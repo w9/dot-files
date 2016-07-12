@@ -133,7 +133,7 @@ end
 alias path      "echo \$PATH | sed 's/ /\\n/g'"
 alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
-alias http 'python -m http.server'
+alias http 'python -m http.server 8023'
 
 abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
