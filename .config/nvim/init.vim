@@ -188,6 +188,29 @@ endif
 let &cpo = s:save_cpo | unlet s:save_cpo
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+" for terminal
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" exit terminal by ESC
+tnoremap <Esc> <C-\><C-n>
+
+" save ther job ID of last terminal
+augroup Terminal
+  au!
+  au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
+augroup END
+
+" send current line to last terminal
+function! REPLSend(lines)
+  call jobsend(g:last_terminal_job_id, add(a:lines, ''))
+endfunction
+
+command! REPLSendLine call REPLSend([getline('.')])
+
+nnoremap <silent> <f6> :REPLSendLine<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " for vim-r-plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
