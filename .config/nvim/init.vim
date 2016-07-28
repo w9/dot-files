@@ -136,9 +136,7 @@ noremap <S-F10> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running 
 " print debug info after running
 noremap <S-F9> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; command time -v "./%<"<CR>
 
-noremap [[ 6H
-noremap ]] 6L
-noremap <CR> :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<CR>
 
 " reopen closed split
 nnoremap <F12> :vs<bar>:b#<CR>
@@ -148,7 +146,7 @@ let g:vim_markdown_initial_foldlevel=99
 " let g:vim_markdown_folding_disabled=1
 
 " netrw: don't show the banner
-let g:netrw_banner=0
+"let g:netrw_banner=0
 
 
 " Search for selected text.
@@ -200,14 +198,26 @@ augroup Terminal
   au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
 augroup END
 
+function! GetVisualSelection()
+  " Why is this not a built-in Vim script function?!
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  return lines
+endfunction
+
 " send current line to last terminal
 function! REPLSend(lines)
   call jobsend(g:last_terminal_job_id, add(a:lines, ''))
 endfunction
 
 command! REPLSendLine call REPLSend([getline('.')])
+command! REPLSendSelection call REPLSend(GetVisualSelection())
 
-nnoremap <silent> <f6> :REPLSendLine<cr>
+nnoremap <silent> <C-\> :REPLSendLine<cr><cr>
+vnoremap <silent> <C-\> :<C-U>REPLSendSelection<cr>gv
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
