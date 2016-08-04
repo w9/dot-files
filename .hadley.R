@@ -1,3 +1,4 @@
+library(devtools)
 library(scales)
 library(reshape2)
 library(ggplot2)
