@@ -96,7 +96,7 @@ highlight CursorLine   term=NONE cterm=NONE      ctermfg=NONE      ctermbg=234
 highlight LineNr       term=NONE cterm=NONE      ctermfg=DarkGrey  ctermbg=235
 highlight CursorLineNr term=NONE cterm=NONE      ctermfg=NONE      ctermbg=235
 highlight ColorColumn  term=NONE cterm=NONE      ctermfg=NONE      ctermbg=Black
-highlight MatchParen   term=NONE cterm=bold,underline      ctermfg=NONE      ctermbg=232
+highlight MatchParen   term=NONE cterm=bold      ctermfg=NONE      ctermbg=232
 highlight Folded       term=NONE cterm=italic    ctermfg=240       ctermbg=234
 
 " quick navigation

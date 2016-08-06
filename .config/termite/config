@@ -27,7 +27,7 @@
 
 		# special
 		foreground      = #a5a2a2
-		foreground_bold = #a5a2a2
+		foreground_bold = #f7f7f7
 		background      = rgba(0,0,0,0.95)
 
 		# black
