@@ -1,6 +1,7 @@
 *
 !.bashrc
-!.hadley.R
+!.h.R
+!.z.R
 !.gitignore
 !.__install-R-packages.R
 !.package_to_install
