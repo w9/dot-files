@@ -49,8 +49,8 @@
       </property>
       <property name="&lt;Primary&gt;Print" type="string" value="xfce4-screenshooter -wc"/>
       <property name="&lt;Super&gt;Escape" type="string" value="xflock4"/>
-      <property name="&lt;Super&gt;t" type="string" value="termite"/>
       <property name="&lt;Super&gt;Tab" type="string" value="skippy-xd"/>
+      <property name="&lt;Super&gt;t" type="string" value="termite"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
