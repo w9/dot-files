@@ -139,6 +139,7 @@ abbr gita 'git add -A .'
 abbr gitl 'git pull origin master'
 abbr gitc 'git commit -am commit'
 abbr gitp 'git push origin master'
+abbr gitacp 'gita && gitc && gitp'
 
 function fish_greeting; end
 
