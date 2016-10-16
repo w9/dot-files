@@ -30,14 +30,14 @@ world-file: /home/xzhu/.cabal/world
 -- program-prefix: 
 -- program-suffix: 
 -- library-vanilla: True
--- library-profiling:
+library-profiling: True
 -- shared:
--- executable-dynamic: False
+executable-dynamic: True
 -- profiling:
 -- executable-profiling:
 -- profiling-detail:
 -- library-profiling-detail:
--- optimization: True
+optimization: True
 -- debug-info: False
 -- library-for-ghci:
 -- split-objs: False
@@ -46,7 +46,7 @@ world-file: /home/xzhu/.cabal/world
 -- configure-option:
 -- user-install: True
 -- package-db:
--- flags:
+flags: PIC
 -- extra-include-dirs:
 -- extra-lib-dirs:
 extra-prog-path: /home/xzhu/.cabal/bin
@@ -61,8 +61,8 @@ extra-prog-path: /home/xzhu/.cabal/bin
 -- preference:
 -- solver: choose
 -- allow-newer: False
--- documentation: False
--- doc-index-file: $datadir/doc/$arch-$os-$compiler/index.html
+documentation: True
+doc-index-file: $datadir/doc/$arch-$os-$compiler/index.html
 -- max-backjumps: 2000
 -- reorder-goals: False
 -- shadow-installed-packages: False
@@ -110,7 +110,7 @@ install-dirs user
   -- libexecdir: $prefix/libexec
   -- datadir: $prefix/share
   -- datasubdir: $abi/$pkgid
-  -- docdir: $datadir/doc/$abi/$pkgid
+  docdir: $datadir/doc/$abi/$pkgid
   -- htmldir: $docdir/html
   -- haddockdir: $htmldir
   -- sysconfdir: $prefix/etc

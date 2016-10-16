@@ -1,3 +1,4 @@
+library(modelr)
 library(devtools)
 library(scales)
 library(reshape2)

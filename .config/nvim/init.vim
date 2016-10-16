@@ -4,6 +4,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 
 " Load local plugins and their settings
@@ -50,7 +51,6 @@ augroup end
 
 " fix syntax error when the file is loaded from middle
 autocmd BufEnter * :syntax sync fromstart
-
 
 let mapleader = " "
 let maplocalleader = "\\"

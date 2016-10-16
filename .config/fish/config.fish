@@ -6,14 +6,14 @@
 set -x PATH
 
 set -x PATH_TEMP ''
-set -x PATH_TEMP /bin $PATH_TEMP
-set -x PATH_TEMP /sbin $PATH_TEMP
-set -x PATH_TEMP /usr/bin $PATH_TEMP
-set -x PATH_TEMP /usr/sbin $PATH_TEMP
-set -x PATH_TEMP /usr/local/bin $PATH_TEMP
-set -x PATH_TEMP /usr/local/sbin $PATH_TEMP
-set -x PATH_TEMP $HOME/.local/bin $PATH_TEMP
 set -x PATH_TEMP $HOME/.cabal/bin $PATH_TEMP
+set -x PATH_TEMP $HOME/.local/bin $PATH_TEMP
+set -x PATH_TEMP /usr/local/sbin $PATH_TEMP
+set -x PATH_TEMP /usr/local/bin $PATH_TEMP
+set -x PATH_TEMP /usr/sbin $PATH_TEMP
+set -x PATH_TEMP /usr/bin $PATH_TEMP
+set -x PATH_TEMP /sbin $PATH_TEMP
+set -x PATH_TEMP /bin $PATH_TEMP
 
 for path in $PATH_TEMP
   if [ -d $path ]
@@ -73,6 +73,9 @@ set -x LESS_TERMCAP_so  (set_color -b blue; set_color yellow)
 set -x LESS_TERMCAP_ue  (set_color normal)
 set -x LESS_TERMCAP_us  (set_color green)
 
+set -x JULIA_INPUT_COLOR "normal"
+set -x JULIA_ANSWER_COLOR "normal"
+
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
@@ -118,7 +121,7 @@ abbr free      'free -h'
 abbr R    "R --quiet --no-save"
 abbr em   'emacs -nw'
 abbr tmux 'tmux -2'
-abbr grep 'grep --color=auto'
+abbr grep 'grep'
 
 abbr rm   'tra'
 
