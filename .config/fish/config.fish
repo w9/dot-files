@@ -135,10 +135,11 @@ alias libpath   "echo \$LD_LIBRARY_PATH | sed 's/:/\n/g'"
 
 alias http 'python -m http.server 8023'
 
-abbr gita 'git add -A .'
-abbr gitl 'git pull origin master'
-abbr gitc 'git commit -am commit'
-abbr gitp 'git push origin master'
+alias gita 'git add -A .'
+alias gitl 'git pull origin master'
+alias gitc 'git commit -am commit'
+alias gitp 'git push origin master'
+alias gitacp 'gita; and gitc; and gitp'
 
 function fish_greeting; end
 

@@ -216,8 +216,8 @@ endfunction
 command! REPLSendLine call REPLSend([getline('.')])
 command! REPLSendSelection call REPLSend(GetVisualSelection())
 
-nnoremap <silent> <C-\> :REPLSendLine<cr><cr>
-vnoremap <silent> <C-\> :<C-U>REPLSendSelection<cr>gv
+nnoremap <silent> <C-ENTER> :REPLSendLine<cr><cr>
+vnoremap <silent> <C-ENTER> :<C-U>REPLSendSelection<cr>gv
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
