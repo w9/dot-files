@@ -7,12 +7,15 @@
 -- Be careful with spaces and indentation because they are
 -- used to indicate layout for nested sections.
 
--- Cabal library version: 1.23.1.0
--- cabal-install version: 1.23.0.0
+-- Cabal library version: 1.24.0.0
+-- cabal-install version: 1.24.0.0
 
 
 repository hackage.haskell.org
   url: http://hackage.haskell.org/
+  -- secure: False
+  -- root-keys:
+  -- key-threshold:
 
 -- default-user-config:
 -- require-sandbox: False
@@ -30,14 +33,14 @@ world-file: /home/xzhu/.cabal/world
 -- program-prefix: 
 -- program-suffix: 
 -- library-vanilla: True
-library-profiling: True
+-- library-profiling:
 -- shared:
-executable-dynamic: True
+-- executable-dynamic: False
 -- profiling:
 -- executable-profiling:
 -- profiling-detail:
 -- library-profiling-detail:
-optimization: True
+-- optimization: True
 -- debug-info: False
 -- library-for-ghci:
 -- split-objs: False
@@ -46,13 +49,15 @@ optimization: True
 -- configure-option:
 -- user-install: True
 -- package-db:
-flags: PIC
+-- flags:
 -- extra-include-dirs:
 -- extra-lib-dirs:
+-- extra-framework-dirs:
 extra-prog-path: /home/xzhu/.cabal/bin
 -- tests: False
 -- coverage: False
 -- library-coverage:
+-- allow-newer: False
 -- exact-configuration: False
 -- benchmarks: False
 -- relocatable: False
@@ -60,9 +65,8 @@ extra-prog-path: /home/xzhu/.cabal/bin
 -- constraint:
 -- preference:
 -- solver: choose
--- allow-newer: False
-documentation: True
-doc-index-file: $datadir/doc/$arch-$os-$compiler/index.html
+-- documentation: False
+-- doc-index-file: $datadir/doc/$arch-$os-$compiler/index.html
 -- max-backjumps: 2000
 -- reorder-goals: False
 -- shadow-installed-packages: False
@@ -110,7 +114,7 @@ install-dirs user
   -- libexecdir: $prefix/libexec
   -- datadir: $prefix/share
   -- datasubdir: $abi/$pkgid
-  docdir: $datadir/doc/$abi/$pkgid
+  -- docdir: $datadir/doc/$abi/$pkgid
   -- htmldir: $docdir/html
   -- haddockdir: $htmldir
   -- sysconfdir: $prefix/etc

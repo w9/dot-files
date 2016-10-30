@@ -6,7 +6,6 @@
 set -x PATH
 
 set -x PATH_TEMP ''
-set -x PATH_TEMP $HOME/.cabal/bin $PATH_TEMP
 set -x PATH_TEMP $HOME/.local/bin $PATH_TEMP
 set -x PATH_TEMP /usr/local/sbin $PATH_TEMP
 set -x PATH_TEMP /usr/local/bin $PATH_TEMP
@@ -98,13 +97,17 @@ alias lc        'wc -l'
 alias ls        'ls -hF --group-directories-first --color'
 alias lx        'ls -l'
 
-alias tree      'tree -CF'    #  Nice alternative to 'recursive ls' ...
+alias tree      'tree -CF --dirsfirst'    #  Nice alternative to 'recursive ls' ...
 alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
 alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;33"'
 alias agp 'ag --pager less'
+
+alias ghc 'stack ghc'
+alias ghci 'stack ghci --silent --no-build --no-load --no-package-hiding'
+alias runghc 'stack runghc'
 
 alias vi   nvim
 alias ipy  ipython
