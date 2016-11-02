@@ -43,7 +43,5 @@
 !.byobu/status
 !.byobu/profile.tmux
 
-!.cabal
-!.cabal/config
 
 *.un~
