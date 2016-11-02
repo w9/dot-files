@@ -38,6 +38,10 @@
 !.config/xfce4/xfconf/xfce-perchannel-xml/*
 .config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 
+!.byobu
+!.byobu/status
+!.byobu/profile.tmux
+
 !.cabal
 !.cabal/config
 
