@@ -19,6 +19,11 @@
 !.gtkrc-2.0
 !.ghci
 
+!.vim
+!.vim/ftplugin
+!.vim/ftplugin/haskell.vim
+
+
 !.config
 !.config/compton.conf
 !.config/fish
