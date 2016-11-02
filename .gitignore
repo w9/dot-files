@@ -19,11 +19,6 @@
 !.gtkrc-2.0
 !.ghci
 
-!.vim
-!.vim/ftplugin
-!.vim/ftplugin/haskell.vim
-
-
 !.config
 !.config/compton.conf
 !.config/fish
@@ -35,6 +30,8 @@
 !.config/nvim/autoload
 !.config/nvim/autoload/*
 !.config/nvim/init.vim
+!.config/nvim/ftplugin
+!.config/nvim/ftplugin/haskell.vim
 !.config/termite
 !.config/termite/config
 !.config/xfce4
