@@ -44,13 +44,13 @@
       <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -rc"/>
       <property name="Print" type="string" value="xfce4-screenshooter -fc"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter"/>
-      <property name="&lt;Super&gt;Return" type="string" value="rofi -show run">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
       <property name="&lt;Primary&gt;Print" type="string" value="xfce4-screenshooter -wc"/>
       <property name="&lt;Super&gt;Escape" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;Tab" type="string" value="skippy-xd"/>
-      <property name="&lt;Super&gt;t" type="string" value="termite"/>
+      <property name="&lt;Super&gt;Return" type="string" value="xfce4-popup-whiskermenu">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Super&gt;t" type="string" value="xfce4-terminal"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

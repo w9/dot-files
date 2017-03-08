@@ -10,8 +10,20 @@
       <value type="string" value="Front"/>
       <value type="string" value="Front Mic"/>
       <value type="string" value="Front Mic Boost"/>
+      <value type="string" value="Surround"/>
+      <value type="string" value="Center"/>
+      <value type="string" value="LFE"/>
       <value type="string" value="Line-in"/>
+      <value type="string" value="IEC958"/>
       <value type="string" value="IEC958 Default PCM"/>
+      <value type="string" value="Capture"/>
+      <value type="string" value="Capture 1 (1)"/>
+      <value type="string" value="Auto-Mute Mode"/>
+      <value type="string" value="Channel Mode"/>
+      <value type="string" value="Digital"/>
+      <value type="string" value="Input Source"/>
+      <value type="string" value="Input Source (1)"/>
+      <value type="string" value="Loopback Mixing"/>
       <value type="string" value="Rear Mic"/>
       <value type="string" value="Rear Mic Boost"/>
     </property>

@@ -7,6 +7,7 @@ set -x PATH
 
 set -x PATH_TEMP ''
 set -x PATH_TEMP $HOME/.local/bin $PATH_TEMP
+set -x PATH_TEMP /usr/bin/core_perl $PATH_TEMP
 set -x PATH_TEMP /usr/local/sbin $PATH_TEMP
 set -x PATH_TEMP /usr/local/bin $PATH_TEMP
 set -x PATH_TEMP /usr/sbin $PATH_TEMP
@@ -111,7 +112,7 @@ alias runghc 'stack runghc'
 
 alias vi   nvim
 alias ipy  ipython
-alias open gnome-open
+alias open xdg-open
 alias top  htop
 alias tra  trash-put
 alias run  runghc
