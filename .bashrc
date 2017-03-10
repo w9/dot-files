@@ -255,3 +255,9 @@ if [ -f  "/usr/share/doc/pkgfile/command-not-found.bash" ]; then
 fi
 
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/xzhu/tmp/g/google-cloud-sdk/path.bash.inc' ]; then source '/home/xzhu/tmp/g/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/xzhu/tmp/g/google-cloud-sdk/completion.bash.inc' ]; then source '/home/xzhu/tmp/g/google-cloud-sdk/completion.bash.inc'; fi

@@ -1,1 +1,3 @@
 :set prompt "\ESC[1;34mλ \ESC[m"
+
+import Text.Printf
