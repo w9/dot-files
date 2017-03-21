@@ -110,6 +110,7 @@ alias ghc 'stack ghc'
 alias ghci 'stack ghci --silent --no-build --no-load --no-package-hiding'
 alias runghc 'stack runghc'
 
+#alias vi   nvim
 alias vi   nvim
 alias ipy  ipython
 alias open xdg-open
@@ -118,14 +119,14 @@ alias tra  trash-put
 alias run  runghc
 alias pac  'sudo pacman -S'
 
-abbr du        'du -kh'    # Makes a more readable output.
-abbr df        'df -kTh'
-abbr free      'free -h'
+alias du        'du -kh'    # Makes a more readable output.
+alias df        'df -kTh'
+alias free      'free -h'
 
-abbr R    "R --quiet --no-save"
-abbr em   'emacs -nw'
-abbr tmux 'tmux -2'
-abbr grep 'grep'
+alias R    "R --quiet --no-save"
+alias em   'emacs -nw'
+alias tmux 'tmux -2'
+alias grep 'grep'
 
 abbr rm   'tra'
 
