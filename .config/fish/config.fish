@@ -124,7 +124,7 @@ alias df        'df -kTh'
 alias free      'free -h'
 
 alias R    "R --quiet --no-save"
-alias em   'emacsclient -t -a ""'
+alias em   'emacs -nw'
 alias tmux 'tmux -2'
 alias grep 'grep'
 

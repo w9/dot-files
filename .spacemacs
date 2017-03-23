@@ -39,7 +39,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     auto-completion
+     ;; auto-completion
      better-defaults
      emacs-lisp
      git
@@ -48,7 +48,8 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     (spell-checking :variables
+            spell-checking-enable-by-default nil)
      syntax-checking
      version-control
      ess
@@ -270,7 +271,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -305,11 +306,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator nil)
   (add-hook 'after-make-frame-functions
-            (lambda (frame)
-              (select-frame frame)
-              (spacemacs/toggle-smartparens-off)
-              (spacemacs/toggle-spelling-checking-off)
-              ))
+        (lambda (frame)
+          (select-frame frame)
+          ;; ...
+          ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
