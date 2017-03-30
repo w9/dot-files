@@ -53,6 +53,11 @@ set -x MANPATH "$HOME/.local/share/man:$MANPATH"
 # This is so that `screen` will use 256 colors
 set -x TERM xterm-256color
 
+# emacs ansi-term support
+if test -n "$EMACS"
+  set -x TERM eterm-color
+end
+
 set -x EDITOR nvim
 
 # Makes programs respect the `.hosts` file
