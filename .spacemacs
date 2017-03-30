@@ -47,7 +47,7 @@ values."
      emacs-lisp
      git
      markdown
-     org
+     ;; org
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -347,7 +347,7 @@ you should place your code here."
 
   (spacemacs/toggle-golden-ratio-on)
   )
-;; 
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
