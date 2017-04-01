@@ -58,7 +58,7 @@ if test -n "$EMACS"
   set -x TERM eterm-color
 end
 
-set -x EDITOR nvim
+set -x EDITOR "emacsclient -c"
 
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"

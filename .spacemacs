@@ -41,7 +41,8 @@ values."
      typescript
      python
      html
-     helm
+     ivy
+     ;; helm
      auto-completion
      better-defaults
      emacs-lisp
@@ -313,16 +314,44 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
+  (filesets-init)
+
   ;; it's recommended for fish shell to work
   (add-hook 'term-mode-hook 'toggle-truncate-lines)
 
   (remove-hook 'prog-mode-hook #'smartparens-mode)
+
+  (add-hook 'neotree-mode-hook
+            (lambda ()
+              (message "neotree-mode-hook")
+              (define-key evil-evilified-state-local-map (kbd "RET") (lambda () (interactive) (neotree-enter) (neotree-hide)))
+              (define-key evil-evilified-state-local-map (kbd "TAB") (lambda () (interactive) (neotree-enter) (select-window-0)))
+              (define-key evil-evilified-state-local-map (kbd "|") (lambda () (interactive) (neotree-enter-vertical-split) (neotree-hide)))
+              (define-key evil-evilified-state-local-map (kbd "-") (lambda () (interactive) (neotree-enter-horizontal-split) (neotree-hide)))
+              )
+            )
+
   (add-hook 'prog-mode-hook
             (lambda ()
               (spacemacs/toggle-truncate-lines-on)
               ;; (spacemacs/toggle-smartparens-globally-off)
               ;; ...
               ))
+
+  (defun a2-open-comp ()
+    (interactive)
+    (let ((x (read-string "Component prefix:")))
+      (delete-other-windows)
+      (split-window-below)
+      (split-window-right)
+      (select-window-1)
+      (find-file (concat x ".component.html"))
+      (select-window-2)
+      (find-file (concat x ".component.css"))
+      (select-window-3)
+      (find-file (concat x ".component.ts"))
+      )
+    )
   )
 
 (defun dotspacemacs/user-config ()
@@ -332,20 +361,37 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq neo-theme 'nerd)
+
   (setq powerline-default-separator nil)
+
   (spaceline-compile)
   (my-setup-indent 2)
 
-  ;; bind evil-forward/backward-args
   (define-key evil-normal-state-map "L" 'evil-forward-arg)
   (define-key evil-normal-state-map "H" 'evil-backward-arg)
   (define-key evil-motion-state-map "L" 'evil-forward-arg)
   (define-key evil-motion-state-map "H" 'evil-backward-arg)
-
-  ;; bind evil-jump-out-args
   (define-key evil-normal-state-map "K" 'evil-jump-out-args)
+  (define-key evil-motion-state-map "H" 'evil-backward-arg)
+
 
   (spacemacs/toggle-golden-ratio-on)
+
+  (sp-pair "'" nil :unless '(sp-point-before-word-p))
+  (sp-pair "\"" nil :unless '(sp-point-before-word-p))
+  (sp-pair "(" nil :unless '(sp-point-before-word-p))
+  (sp-pair "[" nil :unless '(sp-point-before-word-p))
+  (sp-pair "{" nil :unless '(sp-point-before-word-p))
+
+  (custom-set-faces
+   '(powerline-inactive1 ((t (:foreground "#FFFFFF" :background "#000000"))))
+   '(powerline-inactive2 ((t (:foreground "#FFFFFF" :background "#000000"))))
+   '(mode-line-inactive  ((t (:foreground "#FFFFFF" :background "#000000")))))
+
+  ;; for angular
+  (spacemacs/declare-prefix "o" "bracket-prefix")
+  (spacemacs/set-leader-keys "oo" 'a2-open-comp)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -358,7 +404,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (company-tern dash-functional tern company-shell insert-shebang fish-mode tide typescript-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor ess-smart-equals ess-R-object-popup ess-R-data-view ctable ess julia-mode eshell-z eshell-prompt-extras esh-help diff-hl company-web web-completion-data company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
+    (wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy company-tern dash-functional tern company-shell insert-shebang fish-mode tide typescript-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor ess-smart-equals ess-R-object-popup ess-R-data-view ctable ess julia-mode eshell-z eshell-prompt-extras esh-help diff-hl company-web web-completion-data company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
