@@ -1,5 +1,8 @@
 [Desktop Entry]
-DefaultProfile=my-profile.profile
+DefaultProfile=My Profile.profile
+
+[Favorite Profiles]
+Favorites=
 
 [KonsoleWindow]
 ShowMenuBarByDefault=false
@@ -10,4 +13,3 @@ ToolBarsMovable=Disabled
 
 [TabBar]
 TabBarVisibility=ShowTabBarWhenNeeded
-
