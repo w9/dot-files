@@ -20,19 +20,23 @@
 !.ghci
 !.spacemacs
 
+!./.local/share/konsole/My Profile.profile
+!./.local/share/konsole/terminal-sexy.colorscheme
+
 !.config
 !.config/compton.conf
 !.config/fish
 !.config/fish/config.fish
-!.config/fish/z.fish
 !.config/fish/functions
 !.config/fish/functions/*
+!.config/fish/z.fish
+!.config/konsolerc
 !.config/nvim
 !.config/nvim/autoload
 !.config/nvim/autoload/*
-!.config/nvim/init.vim
 !.config/nvim/ftplugin
 !.config/nvim/ftplugin/haskell.vim
+!.config/nvim/init.vim
 !.config/termite
 !.config/termite/config
 !.config/xfce4

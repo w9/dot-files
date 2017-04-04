@@ -1,0 +1,13 @@
+[Desktop Entry]
+DefaultProfile=my-profile.profile
+
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[TabBar]
+TabBarVisibility=ShowTabBarWhenNeeded
+
