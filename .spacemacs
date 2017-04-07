@@ -31,13 +31,20 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+<<<<<<< HEAD
      yaml
+=======
+     php
+>>>>>>> 7c0ba5ab29ae6db49d50a583fa47fce22e4bc1dd
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+<<<<<<< HEAD
      rust
+=======
+>>>>>>> 7c0ba5ab29ae6db49d50a583fa47fce22e4bc1dd
      haskell
      shell-scripts
      javascript
