@@ -116,7 +116,9 @@ alias ghci 'stack ghci --silent --no-build --no-load --no-package-hiding'
 alias runghc 'stack runghc'
 
 #alias vi   nvim
-alias vi   nvim
+function vi
+  echo "Vee-what???"
+end
 alias ipy  ipython
 alias open xdg-open
 alias top  htop

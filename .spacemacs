@@ -31,11 +31,14 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     rust
+     haskell
      shell-scripts
      javascript
      typescript
@@ -119,7 +122,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 997
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -325,7 +328,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
             (lambda ()
               (message "neotree-mode-hook")
               (define-key evil-evilified-state-local-map (kbd "RET") (lambda () (interactive) (neotree-enter) (neotree-hide)))
-              (define-key evil-evilified-state-local-map (kbd "TAB") (lambda () (interactive) (neotree-enter) (select-window-0)))
               (define-key evil-evilified-state-local-map (kbd "|") (lambda () (interactive) (neotree-enter-vertical-split) (neotree-hide)))
               (define-key evil-evilified-state-local-map (kbd "-") (lambda () (interactive) (neotree-enter-horizontal-split) (neotree-hide)))
               )
@@ -335,7 +337,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
             (lambda ()
               (spacemacs/toggle-truncate-lines-on)
               ;; (spacemacs/toggle-smartparens-globally-off)
-              ;; ...
               ))
 
   (defun a2-open-comp ()
@@ -344,11 +345,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
       (delete-other-windows)
       (split-window-below)
       (split-window-right)
-      (select-window-1)
+      (winum-select-window-1)
       (find-file (concat x ".component.html"))
-      (select-window-2)
+      (winum-select-window-2)
       (find-file (concat x ".component.css"))
-      (select-window-3)
+      (winum-select-window-3)
       (find-file (concat x ".component.ts"))
       )
     )
@@ -362,8 +363,13 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq neo-theme 'nerd)
-
-  (setq powerline-default-separator nil)
+  (setq evil-want-Y-yank-to-eol t)
+  (setq undo-tree-auto-save-history t
+         undo-tree-history-directory-alist
+         `(("." . ,(concat spacemacs-cache-directory "undo"))))
+   (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
+(make-directory (concat spacemacs-cache-directory "undo")))
+  (setq powerline-default-separator 'utf-8)
 
   (spaceline-compile)
   (my-setup-indent 2)
@@ -373,7 +379,8 @@ you should place your code here."
   (define-key evil-motion-state-map "L" 'evil-forward-arg)
   (define-key evil-motion-state-map "H" 'evil-backward-arg)
   (define-key evil-normal-state-map "K" 'evil-jump-out-args)
-  (define-key evil-motion-state-map "H" 'evil-backward-arg)
+
+  (define-key evil-normal-state-map (kbd "C-l") 'font-lock-fontify-buffer)
 
 
   (spacemacs/toggle-golden-ratio-on)
@@ -385,29 +392,17 @@ you should place your code here."
   (sp-pair "{" nil :unless '(sp-point-before-word-p))
 
   (custom-set-faces
-   '(powerline-inactive1 ((t (:foreground "#FFFFFF" :background "#000000"))))
-   '(powerline-inactive2 ((t (:foreground "#FFFFFF" :background "#000000"))))
-   '(mode-line-inactive  ((t (:foreground "#FFFFFF" :background "#000000")))))
+   '(powerline-inactive1                          ((t (:foreground "#FFFFFF" :background "#000000"))))
+   '(powerline-inactive2                          ((t (:foreground "#FFFFFF" :background "#000000"))))
+   '(mode-line-inactive                           ((t (:foreground "#FFFFFF" :background "#000000"))))
+   '(evil-search-highlight-persist-highlight-face                       ((t (:foreground "#000000" :background "#ffffff"))))
+   '(isearch                           ((t (:foreground "#000000" :background "#ffffff"))))
+   )
 
   ;; for angular
-  (spacemacs/declare-prefix "o" "bracket-prefix")
+  (spacemacs/declare-prefix "o" "user-defined-functions")
   (spacemacs/set-leader-keys "oo" 'a2-open-comp)
-  )
+  (spacemacs/set-leader-keys "oy" 'yas-insert-snippet)
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   (quote
-    (wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy company-tern dash-functional tern company-shell insert-shebang fish-mode tide typescript-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor ess-smart-equals ess-R-object-popup ess-R-data-view ctable ess julia-mode eshell-z eshell-prompt-extras esh-help diff-hl company-web web-completion-data company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  (define-key evil-insert-state-map (kbd "C-x C-f") 'company-files)
+  )
