@@ -108,7 +108,7 @@ alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
-alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;33"'
+alias ag  'ag --color-line-number="1;30" --color-match="34" --color-path="1;33"'
 alias agp 'ag --pager less'
 
 alias ghc 'stack ghc'

@@ -31,20 +31,15 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-<<<<<<< HEAD
-     yaml
-=======
-     php
->>>>>>> 7c0ba5ab29ae6db49d50a583fa47fce22e4bc1dd
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-<<<<<<< HEAD
+     csv
      rust
-=======
->>>>>>> 7c0ba5ab29ae6db49d50a583fa47fce22e4bc1dd
+     yaml
+     php
      haskell
      shell-scripts
      javascript
@@ -63,7 +58,7 @@ values."
             shell-default-height 30
             shell-default-position 'bottom)
      (spell-checking :variables
-            spell-checking-enable-by-default nil)
+                     spell-checking-enable-by-default nil)
      syntax-checking
      version-control
      ess
@@ -73,7 +68,10 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     vue-mode
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -179,10 +177,10 @@ values."
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-remap-Y-to-y$ t
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
    ;; there. (default t)
-   dotspacemacs-retain-visual-state-on-shift t
+   dotspacemacs-retain-visual-state-on-shift nil
    ;; If non-nil, J and K move lines up and down when in visual mode.
    ;; (default nil)
    dotspacemacs-visual-line-move-text nil
@@ -331,19 +329,27 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (remove-hook 'prog-mode-hook #'smartparens-mode)
 
+  (eval-after-load "swiper" '(define-key evil-motion-state-map (kbd "C-s") 'spacemacs/swiper-region-or-symbol))
+
+  ;; this is for terminals (which cannot distinguish between TAB and C-i)
+  (eval-after-load "evil-maps" '(define-key evil-motion-state-map (kbd "TAB") 'evil-jump-forward))
+
   (add-hook 'neotree-mode-hook
             (lambda ()
-              (message "neotree-mode-hook")
               (define-key evil-evilified-state-local-map (kbd "RET") (lambda () (interactive) (neotree-enter) (neotree-hide)))
               (define-key evil-evilified-state-local-map (kbd "|") (lambda () (interactive) (neotree-enter-vertical-split) (neotree-hide)))
               (define-key evil-evilified-state-local-map (kbd "-") (lambda () (interactive) (neotree-enter-horizontal-split) (neotree-hide)))
               )
             )
-
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (spacemacs/toggle-truncate-lines-on)
+              (spacemacs/toggle-smartparens-globally-off)
+              ))
   (add-hook 'prog-mode-hook
             (lambda ()
               (spacemacs/toggle-truncate-lines-on)
-              ;; (spacemacs/toggle-smartparens-globally-off)
+              (spacemacs/toggle-smartparens-globally-off)
               ))
 
   (defun a2-open-comp ()
@@ -370,12 +376,11 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq neo-theme 'nerd)
-  (setq evil-want-Y-yank-to-eol t)
   (setq undo-tree-auto-save-history t
-         undo-tree-history-directory-alist
-         `(("." . ,(concat spacemacs-cache-directory "undo"))))
-   (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
-(make-directory (concat spacemacs-cache-directory "undo")))
+        undo-tree-history-directory-alist
+        `(("." . ,(concat spacemacs-cache-directory "undo"))))
+  (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
+    (make-directory (concat spacemacs-cache-directory "undo")))
   (setq powerline-default-separator 'utf-8)
 
   (spaceline-compile)
@@ -385,7 +390,6 @@ you should place your code here."
   (define-key evil-normal-state-map "H" 'evil-backward-arg)
   (define-key evil-motion-state-map "L" 'evil-forward-arg)
   (define-key evil-motion-state-map "H" 'evil-backward-arg)
-  (define-key evil-normal-state-map "K" 'evil-jump-out-args)
 
   (define-key evil-normal-state-map (kbd "C-l") 'font-lock-fontify-buffer)
 
@@ -402,8 +406,8 @@ you should place your code here."
    '(powerline-inactive1                          ((t (:foreground "#FFFFFF" :background "#000000"))))
    '(powerline-inactive2                          ((t (:foreground "#FFFFFF" :background "#000000"))))
    '(mode-line-inactive                           ((t (:foreground "#FFFFFF" :background "#000000"))))
-   '(evil-search-highlight-persist-highlight-face                       ((t (:foreground "#000000" :background "#ffffff"))))
-   '(isearch                           ((t (:foreground "#000000" :background "#ffffff"))))
+   '(evil-search-highlight-persist-highlight-face ((t (:foreground nil :background "#444444"))))
+   '(isearch                                      ((t (:foreground "#000000" :background "#87d700"))))
    )
 
   ;; for angular
@@ -413,3 +417,22 @@ you should place your code here."
 
   (define-key evil-insert-state-map (kbd "C-x C-f") 'company-files)
   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol t)
+ '(package-selected-packages
+   (quote
+    (csv-mode yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode diff-hl define-word cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-search-highlight-persist-highlight-face ((t (:foreground nil :background "#444444"))))
+ '(isearch ((t (:foreground "#000000" :background "#87d700"))))
+ '(mode-line-inactive ((t (:foreground "#FFFFFF" :background "#000000"))))
+ '(powerline-inactive1 ((t (:foreground "#FFFFFF" :background "#000000"))))
+ '(powerline-inactive2 ((t (:foreground "#FFFFFF" :background "#000000")))))
