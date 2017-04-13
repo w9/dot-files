@@ -40,7 +40,9 @@ values."
      rust
      yaml
      php
-     haskell
+     (haskell :variables
+              haskell-completion-backend 'intero
+              haskell-enable-hindent-style "johan-tibell")
      shell-scripts
      javascript
      typescript
@@ -329,10 +331,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (remove-hook 'prog-mode-hook #'smartparens-mode)
 
-  (eval-after-load "swiper" '(define-key evil-motion-state-map (kbd "C-s") 'spacemacs/swiper-region-or-symbol))
-
   ;; this is for terminals (which cannot distinguish between TAB and C-i)
-  (eval-after-load "evil-maps" '(define-key evil-motion-state-map (kbd "TAB") 'evil-jump-forward))
+  (eval-after-load "ess-site" '(ess-toggle-underscore nil))
 
   (add-hook 'neotree-mode-hook
             (lambda ()
@@ -416,6 +416,9 @@ you should place your code here."
   (spacemacs/set-leader-keys "oy" 'yas-insert-snippet)
 
   (define-key evil-insert-state-map (kbd "C-x C-f") 'company-files)
+  (define-key evil-insert-state-map (kbd "C-x C-n") 'company-dabbrev)
+  (define-key evil-motion-state-map (kbd "TAB") 'evil-jump-forward)
+  (define-key evil-motion-state-map (kbd "C-s") 'spacemacs/swiper-region-or-symbol)
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
