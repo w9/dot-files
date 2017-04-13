@@ -71,6 +71,7 @@
         <value type="string" value="xnoise"/>
         <value type="string" value="scp-dbus-service.py"/>
         <value type="string" value="chromium"/>
+        <value type="string" value="tribler"/>
         <value type="string" value="deluge"/>
       </property>
     </property>
