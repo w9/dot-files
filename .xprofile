@@ -73,3 +73,5 @@ xsetwacom set "Wacom Intuos Pro M (WL) Pad pad" Button 12 'key 2'
 xsetwacom set "Wacom Intuos Pro M (WL) Pad pad" Button 13 'key 3'
 
 export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
