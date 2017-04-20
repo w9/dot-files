@@ -58,7 +58,7 @@ if test -n "$EMACS"
   set -x TERM eterm-color
 end
 
-set -x EDITOR "emacsclient -c"
+set -x EDITOR "nvim"
 
 # Makes programs respect the `.hosts` file
 set -x HOSTALIASES "$HOME/.hosts"
@@ -108,7 +108,7 @@ alias t         'tree -L 1'
 alias tt        'tree -L 2'
 alias ttt       'tree -L 3'
 
-alias ag  'ag --unrestricted --color-line-number="1;30" --color-match="34" --color-path="1;33"'
+alias ag  'ag --color-line-number="1;30" --color-match="34" --color-path="1;33"'
 alias agp 'ag --pager less'
 
 alias ghc 'stack ghc'
@@ -116,7 +116,9 @@ alias ghci 'stack ghci --silent --no-build --no-load --no-package-hiding'
 alias runghc 'stack runghc'
 
 #alias vi   nvim
-alias vi   nvim
+function vi
+  echo "Vee-what???"
+end
 alias ipy  ipython
 alias open xdg-open
 alias top  htop
