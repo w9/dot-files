@@ -178,7 +178,6 @@ alias R="R --quiet --no-save"
 alias vi='nvim'
 alias em='emacs -nw'
 alias tmux='tmux -2'
-alias grep='grep --color=always'
 
 alias open='gnome-open'
 

@@ -40,6 +40,7 @@ values."
      rust
      yaml
      php
+     react
      (haskell :variables
               haskell-completion-backend 'intero
               haskell-enable-hindent-style "johan-tibell")
@@ -141,7 +142,7 @@ values."
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'emacs-lisp-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -150,8 +151,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 21
+   dotspacemacs-default-font '("Iosevka"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -329,7 +330,16 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; it's recommended for fish shell to work
   (add-hook 'term-mode-hook 'toggle-truncate-lines)
 
-  (remove-hook 'prog-mode-hook #'smartparens-mode)
+  ;; (eval-after-load 'smartparens
+  ;;   '(progn
+  ;;      (sp-pair "(" nil :actions '(:rem insert))
+  ;;      (sp-pair "[" nil :actions '(:rem insert))
+  ;;      (sp-pair "'" nil :actions '(:rem insert))
+  ;;      (sp-pair "\"" nil :actions '(:rem insert))
+  ;;      (sp-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET")))
+  ;;      )
+  ;;   )
+  ;; (remove-hook 'prog-mode-hook #'smartparens-mode)
 
   ;; this is for terminals (which cannot distinguish between TAB and C-i)
   (eval-after-load "ess-site" '(ess-toggle-underscore nil))
@@ -344,12 +354,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-hook 'text-mode-hook
             (lambda ()
               (spacemacs/toggle-truncate-lines-on)
-              (spacemacs/toggle-smartparens-globally-off)
+              ;; (spacemacs/toggle-smartparens-globally-off)
               ))
   (add-hook 'prog-mode-hook
             (lambda ()
               (spacemacs/toggle-truncate-lines-on)
-              (spacemacs/toggle-smartparens-globally-off)
+              ;; (spacemacs/toggle-smartparens-globally-off)
               ))
 
   (defun a2-open-comp ()
@@ -396,11 +406,8 @@ you should place your code here."
 
   (spacemacs/toggle-golden-ratio-on)
 
-  (sp-pair "'" nil :unless '(sp-point-before-word-p))
-  (sp-pair "\"" nil :unless '(sp-point-before-word-p))
-  (sp-pair "(" nil :unless '(sp-point-before-word-p))
-  (sp-pair "[" nil :unless '(sp-point-before-word-p))
-  (sp-pair "{" nil :unless '(sp-point-before-word-p))
+
+
 
   (custom-set-faces
    '(powerline-inactive1                          ((t (:foreground "#FFFFFF" :background "#000000"))))
@@ -419,23 +426,12 @@ you should place your code here."
   (define-key evil-insert-state-map (kbd "C-x C-n") 'company-dabbrev)
   (define-key evil-motion-state-map (kbd "TAB") 'evil-jump-forward)
   (define-key evil-motion-state-map (kbd "C-s") 'spacemacs/swiper-region-or-symbol)
+
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil)
+  (add-hook 'js2-init-hook
+            '(lambda ()
+               (setq next-error-function 'flycheck-next-error)
+               )
+            )
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol t)
- '(package-selected-packages
-   (quote
-    (ssass-mode vue-html-mode typescript-mode powerline tablist spinner org-plus-contrib mmm-mode markdown-mode skewer-mode simple-httpd json-snatcher json-reformat multiple-cursors js2-mode hydra parent-mode helm helm-core haml-mode fringe-helper git-gutter+ git-gutter flyspell-correct seq pos-tip flycheck flx magit magit-popup git-commit with-editor smartparens iedit anzu evil goto-chg undo-tree highlight ctable ess julia-mode php-mode diminish projectile pkg-info epl counsel swiper ivy web-completion-data dash-functional tern ghc haskell-mode company rust-mode bind-map bind-key yasnippet packed async anaconda-mode pythonic f dash s avy auto-complete popup csv-mode yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode diff-hl define-word cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-search-highlight-persist-highlight-face ((t (:foreground nil :background "#444444"))))
- '(isearch ((t (:foreground "#000000" :background "#87d700"))))
- '(mode-line-inactive ((t (:foreground "#FFFFFF" :background "#000000"))))
- '(powerline-inactive1 ((t (:foreground "#FFFFFF" :background "#000000"))))
- '(powerline-inactive2 ((t (:foreground "#FFFFFF" :background "#000000")))))
