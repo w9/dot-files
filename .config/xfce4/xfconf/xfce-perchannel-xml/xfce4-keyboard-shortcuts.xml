@@ -52,7 +52,7 @@
       </property>
       <property name="&lt;Super&gt;t" type="string" value="konsole"/>
       <property name="&lt;Shift&gt;XF86AudioRaiseVolume" type="string" value="amixer -D hw:1 set PCM 5%+"/>
-      <property name="&lt;Shift&gt;XF86AudioLowerVolume" type="string" value="amixer -D hw:1 set PCM 5%-; notify-send $(amixer -D hw:1 sget PCM | grep -o &apos;[0-9]\+%&apos; | sed -z &apos;s/\n/ /&apos;g)"/>
+      <property name="&lt;Shift&gt;XF86AudioLowerVolume" type="string" value="amixer -D hw:1 set PCM 5%-"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
