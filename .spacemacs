@@ -330,6 +330,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; it's recommended for fish shell to work
   (add-hook 'term-mode-hook 'toggle-truncate-lines)
 
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
   ;; (eval-after-load 'smartparens
   ;;   '(progn
   ;;      (sp-pair "(" nil :actions '(:rem insert))
@@ -409,6 +411,14 @@ you should place your code here."
   (spacemacs/toggle-golden-ratio-on)
 
 
+  ;; Turn off js2 mode errors & warnings (we lean on eslint/standard)
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil)
+  (add-hook 'js2-init-hook
+            '(lambda ()
+               (setq next-error-function 'flycheck-next-error)
+               )
+            )
 
 
   (custom-set-faces
