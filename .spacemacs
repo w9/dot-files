@@ -392,6 +392,8 @@ you should place your code here."
   (setq undo-tree-auto-save-history t
         undo-tree-history-directory-alist
         `(("." . ,(concat spacemacs-cache-directory "undo"))))
+  (setq ansi-color-names-vector
+        ["#090300" "#db2d20" "#01a252" "#fded02" "#01a0e4" "#a16a94" "#b5e4f4" "#a5a2a2"])
   (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
     (make-directory (concat spacemacs-cache-directory "undo")))
   (setq powerline-default-separator 'utf-8)
@@ -430,13 +432,6 @@ you should place your code here."
   (define-key evil-motion-state-map (kbd "TAB") 'evil-jump-forward)
   (define-key evil-motion-state-map (kbd "C-s") 'spacemacs/swiper-region-or-symbol)
 
-  (setq js2-mode-show-parse-errors nil)
-  (setq js2-mode-show-strict-warnings nil)
-  (add-hook 'js2-init-hook
-            '(lambda ()
-               (setq next-error-function 'flycheck-next-error)
-               )
-            )
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
