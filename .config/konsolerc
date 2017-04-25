@@ -10,7 +10,11 @@ ShowMenuBarByDefault=false
 [MainWindow]
 Height 1080=1080
 MenuBar=Disabled
+<<<<<<< HEAD
 State=AAAA/wAAAAD9AAAAAAAAB4AAAAQ4AAAABAAAAAQAAAAIAAAACPwAAAAA
+=======
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAQfAAAABAAAAAQAAAAIAAAACPwAAAAA
+>>>>>>> 668a696fcadfd7925d070163c9d5c41bc2c79802
 ToolBarsMovable=Disabled
 Width 1920=1920
 Window-Maximized 1080x1920=true
