@@ -69,6 +69,7 @@ values."
      go
      ess
      pdf-tools
+     ;; aj-javascript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -77,6 +78,7 @@ values."
    dotspacemacs-additional-packages
    '(
      vue-mode
+     rjsx-mode
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -306,18 +308,18 @@ values."
    ))
 
 (defun my-setup-indent (n)
-  ;; java/c/c++
   (setq c-basic-offset n)
-  ;; web development
-  (setq coffee-tab-width n) ; coffeescript
-  (setq javascript-indent-level n) ; javascript-mode
-  (setq js-indent-level n) ; js-mode
-  (setq typescript-indent-level n) ; typescript-mode
-  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
-  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
-  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
-  (setq css-indent-offset n) ; css-mode
+  (setq coffee-tab-width n)
+  (setq javascript-indent-level n)
+  (setq js-indent-level n)
+  (setq typescript-indent-level n)
+  (setq js2-basic-offset n)
+  (setq web-mode-attr-indent-offset n)
+  (setq web-mode-code-indent-offset n)
+  (setq web-mode-css-indent-offset n)
+  (setq web-mode-markup-indent-offset n)
+  (setq web-mode-sql-indent-offset n)
+  (setq css-indent-offset n)
   )
 
 (defun dotspacemacs/user-init ()
@@ -410,6 +412,7 @@ you should place your code here."
 
   (spaceline-compile)
   (my-setup-indent 2)
+  ;; (setq tab-width 2)
 
   (define-key evil-normal-state-map "L" 'evil-forward-arg)
   (define-key evil-normal-state-map "H" 'evil-backward-arg)
@@ -451,6 +454,10 @@ you should place your code here."
   (define-key evil-motion-state-map (kbd "TAB") 'evil-jump-forward)
   (define-key evil-motion-state-map (kbd "C-s") 'spacemacs/swiper-region-or-symbol)
 
+  (define-key evil-insert-state-map (kbd "C-d") nil)
+
+  (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -459,7 +466,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-guru go-eldoc company-go go-mode disaster company-c-headers cmake-mode clang-format wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode arduino-mode yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode diff-hl define-word cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
+    (eslintd-fix add-node-modules-path rjsx-mode yapfify yaml-mode xterm-color ws-butler wolfram-mode winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide thrift tagedit stan-mode spaceline smex smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs request rainbow-delimiters racer qml-mode pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diff-hl define-word cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
