@@ -39,6 +39,8 @@
 !.config/nvim/init.vim
 !.config/termite
 !.config/termite/config
+!.config/vlc
+!.config/vlc/vlcrc
 !.config/xfce4
 !.config/xfce4/desktop_background.png
 !.config/xfce4/xfconf

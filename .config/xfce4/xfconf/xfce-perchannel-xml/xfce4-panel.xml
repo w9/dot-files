@@ -73,13 +73,14 @@
     <property name="plugin-4" type="string" value="battery"/>
     <property name="plugin-10" type="string" value="systray">
       <property name="names-visible" type="array">
+        <value type="string" value="vlc"/>
         <value type="string" value="pnmixer"/>
         <value type="string" value="networkmanager applet"/>
-        <value type="string" value="pa-applet"/>
         <value type="string" value="chromium"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
         <value type="string" value="sogou-qimpanel"/>
+        <value type="string" value="pa-applet"/>
       </property>
       <property name="show-frame" type="bool" value="true"/>
       <property name="names-hidden" type="array">
