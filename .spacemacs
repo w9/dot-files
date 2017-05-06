@@ -424,6 +424,7 @@ you should place your code here."
 
   (spacemacs/toggle-golden-ratio-on)
 
+  (spacemacs/toggle-version-control-margin-globally-off)
 
   ;; Turn off js2 mode errors & warnings (we lean on eslint/standard)
   (setq js2-mode-show-parse-errors nil)
