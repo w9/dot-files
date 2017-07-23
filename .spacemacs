@@ -83,7 +83,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(smartparens)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -361,7 +361,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-hook 'text-mode-hook
             (lambda ()
               (spacemacs/toggle-truncate-lines-on)
-              ;; (spacemacs/toggle-smartparens-globally-off)
+              ;; (spacemacs/toggle-smartparens-globally-off) ;; the smartparens pacakge is excluded above, so this is not needed
               ))
   (add-hook 'prog-mode-hook
             (lambda ()
