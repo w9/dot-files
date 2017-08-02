@@ -1259,7 +1259,7 @@
 #qt-fs-controller=1
 
 # Save the recently played items in the menu (boolean)
-#qt-recentplay=1
+qt-recentplay=0
 
 # List of words separated by | to filter (string)
 #qt-recentplay-filter=
@@ -2027,9 +2027,6 @@ sout-x264-tune=film
 # Session email (string)
 #sout-standard-email=
 
-# Session phone number (string)
-#sout-standard-phone=
-
 [smem] # Stream output to memory buffer
 
 # Time Synchronized output (boolean)
@@ -2156,9 +2153,6 @@ sout-x264-tune=film
 
 # Session email (string)
 #sout-rtp-email=
-
-# Session phone number (string)
-#sout-rtp-phone=
 
 # Transport protocol (string)
 #sout-rtp-proto=udp
@@ -2516,9 +2510,6 @@ sout-x264-tune=film
 #dvdread-angle=1
 
 [access] # HTTPS input
-
-# Force HTTP/2 (boolean)
-#http2=0
 
 # Cookies forwarding (boolean)
 #http-forward-cookies=1
@@ -2923,6 +2914,17 @@ sout-x264-tune=film
 # Seek based on percent not time (boolean)
 #ts-seek-percent=0
 
+[directory] # Directory import
+
+# Subdirectory behavior (string)
+#recursive=collapse
+
+# Ignored extensions (string)
+#ignore-filetypes=m3u,db,nfo,ini,jpg,jpeg,ljpg,gif,png,pgm,pgmyuv,pbm,pam,tga,bmp,pnm,xpm,xcf,pcx,tif,tiff,lbm,sfv,txt,sub,idx,srt,cue,ssa
+
+# Show hidden files (boolean)
+#show-hiddenfiles=0
+
 [vc1] # VC1 video demuxer
 
 # Frames per Second (float)
@@ -3070,15 +3072,6 @@ sout-x264-tune=film
 # Show shoutcast adult content (boolean)
 #shoutcast-show-adult=0
 
-# Subdirectory behavior (string)
-#recursive=collapse
-
-# Ignored extensions (string)
-#ignore-filetypes=m3u,db,nfo,ini,jpg,jpeg,ljpg,gif,png,pgm,pgmyuv,pbm,pam,tga,bmp,pnm,xpm,xcf,pcx,tif,tiff,lbm,sfv,txt,sub,idx,srt,cue,ssa
-
-# Show hidden files (boolean)
-#show-hiddenfiles=0
-
 [image] # Image demuxer
 
 # ES ID (integer)
@@ -3167,6 +3160,12 @@ sout-x264-tune=film
 #rtsp-session-timeout=5
 
 [gnutls] # GNU TLS transport layer security
+
+# Use system trust database (boolean)
+#gnutls-system-trust=1
+
+# Trust directory (string)
+#gnutls-dir-trust=
 
 # TLS cipher priorities (string)
 #gnutls-priorities=NORMAL
@@ -4072,7 +4071,7 @@ sout-x264-tune=film
 # Default stream (string)
 #open=
 
-# Automatically preparse files (boolean)
+# Automatically preparse items (boolean)
 #auto-preparse=1
 
 # Preparsing timeout (integer)

@@ -94,6 +94,7 @@
       <property name="tooltip-format" type="string" value="%A %d %B %Y"/>
       <property name="mode" type="uint" value="2"/>
       <property name="fuzziness" type="uint" value="0"/>
+      <property name="timezone" type="string" value=""/>
     </property>
     <property name="plugin-1" type="string" value="showdesktop"/>
     <property name="plugin-9" type="string" value="separator">
@@ -103,9 +104,11 @@
     <property name="plugin-4" type="string" value="battery"/>
     <property name="plugin-10" type="string" value="systray">
       <property name="names-visible" type="array">
+        <value type="string" value="thunar"/>
         <value type="string" value="vlc"/>
         <value type="string" value="pnmixer"/>
         <value type="string" value="networkmanager applet"/>
+        <value type="string" value="task manager"/>
         <value type="string" value="chromium"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
