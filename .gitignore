@@ -52,5 +52,9 @@
 !.byobu/status
 !.byobu/profile.tmux
 
+!./.jupyter
+!./.jupyter/custom
+!./.jupyter/custom/custom.css
+!./.jupyter/custom/custom.js
 
 *.un~
