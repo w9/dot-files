@@ -85,9 +85,9 @@ set -x JULIA_ANSWER_COLOR "normal"
 # Aliases
 #-------------------------------------------------------------
 
-alias rm! 'rm -i'
-alias cp  'cp -i'
-alias mv  'mv -i'
+alias rm 'rm -i'
+alias cp 'cp -i'
+alias mv 'mv -i'
 
 alias ..        'cd ..'
 alias ...       'cd ../..'
@@ -115,10 +115,7 @@ alias ghc 'stack ghc'
 alias ghci 'stack ghci --silent --no-build --no-load --no-package-hiding'
 alias runghc 'stack runghc'
 
-#alias vi   nvim
-function vi
-  echo "Vee-what???"
-end
+alias vi   nvim
 alias ipy  ipython
 alias open xdg-open
 alias top  htop
@@ -135,7 +132,6 @@ alias em   'emacsclient -t -a ""'
 alias tmux 'tmux -2'
 alias grep 'grep'
 
-abbr rm   'tra'
 
 function rp
   if [ (count $argv) = 0 ]

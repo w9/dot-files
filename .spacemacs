@@ -31,45 +31,42 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     vimscript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     csv
-     rust
-     yaml
-     php
-     react
-     (haskell :variables
-              haskell-completion-backend 'intero
-              haskell-enable-hindent-style "johan-tibell")
-     shell-scripts
-     javascript
-     typescript
-     python
-     html
-     ivy
-     ;; helm
+     ;; aj-javascript
      auto-completion
      better-defaults
-     emacs-lisp
-     git
-     markdown
-     extra-langs
-     ;; org
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
-     syntax-checking
-     version-control
      c-c++
-     go
+     csv
+     emacs-lisp
      ess
+     extra-langs
+     git
+     go
+     gtags
+     (haskell :variables haskell-completion-backend 'intero haskell-enable-hindent-style "johan-tibell")
+     ;; helm
+     html
+     ivy
+     javascript
+     markdown
+     ;; org
      pdf-tools
-     ;; aj-javascript
+     php
+     python
+     react
+     rust
+     shell-scripts
+     (shell :variables shell-default-height 30 shell-default-position 'bottom)
+     (spell-checking :variables spell-checking-enable-by-default nil)
+     syntax-checking
+     typescript
+     version-control
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -467,10 +464,14 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rjsx-mode yapfify yaml-mode xterm-color ws-butler wolfram-mode winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide thrift tagedit stan-mode spaceline smex smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs request rainbow-delimiters racer qml-mode pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diff-hl define-word cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
+    (vimrc-mode dactyl-mode ggtags rjsx-mode yapfify yaml-mode xterm-color ws-butler wolfram-mode winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide thrift tagedit stan-mode spaceline smex smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs request rainbow-delimiters racer qml-mode pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diff-hl define-word cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(evil-search-highlight-persist-highlight-face ((t (:foreground nil :background "#444444"))))
+ '(isearch ((t (:foreground "#000000" :background "#87d700"))))
+ '(mode-line-inactive ((t (:foreground "#FFFFFF" :background "#000000"))))
+ '(powerline-inactive1 ((t (:foreground "#FFFFFF" :background "#000000"))))
+ '(powerline-inactive2 ((t (:foreground "#FFFFFF" :background "#000000")))))
