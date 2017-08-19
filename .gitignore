@@ -52,6 +52,9 @@
 !.byobu/status
 !.byobu/profile.tmux
 
+!~/.weechat
+!~/.weechat/weechat.conf
+
 !./.jupyter
 !./.jupyter/custom
 !./.jupyter/custom/custom.css
