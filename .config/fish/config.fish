@@ -85,9 +85,9 @@ set -x JULIA_ANSWER_COLOR "normal"
 # Aliases
 #-------------------------------------------------------------
 
-alias rm! 'rm -i'
-alias cp  'cp -i'
-alias mv  'mv -i'
+alias rm 'rm -i'
+alias cp 'cp -i'
+alias mv 'mv -i'
 
 alias ..        'cd ..'
 alias ...       'cd ../..'

@@ -6,6 +6,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
+Plug 'mhartington/oceanic-next'
 
 " Load local plugins and their settings
 if file_readable($HOME . "/.config/nvim/local_plugins.vim")
@@ -110,6 +112,7 @@ nnoremap zb zb5<C-E>
 
 nnoremap <C-G> :echo expand('%:p')<CR>
 
+nnoremap <Leader><C-I> <C-^>
 nnoremap <Leader>re #*:%s//
 
 " delete in insert mode
@@ -147,6 +150,44 @@ let g:vim_markdown_initial_foldlevel=99
 
 " netrw: don't show the banner
 "let g:netrw_banner=0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for OceanicNext
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Or if you have Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme OceanicNext
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for EasyMotion
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+"" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+"" `s{char}{label}`
+"nmap s <Plug>(easymotion-overwin-f)
+"" or
+"" `s{char}{char}{label}`
+"" Need one more keystroke, but on average, it may be more comfortable.
+"nmap s <Plug>(easymotion-overwin-f2)
+
+"" Turn on case insensitive feature
+"let g:EasyMotion_smartcase = 1
+
+"" JK motions: Line motions
+"map <Leader>j <Plug>(easymotion-j)
+"map <Leader>k <Plug>(easymotion-k)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 " Search for selected text.
@@ -285,3 +326,4 @@ let g:airline_right_alt_sep = ''
 if file_readable($HOME . ".config/nvim/local.vim")
   so $HOME/.config/nvim/local.vim
 endif
+

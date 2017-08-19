@@ -4,5 +4,8 @@ options(stringsAsFactors=F)
 #library(vimcom)
 #library(colorout)
 
+options(repr.plot.width=10)
+options(repr.plot.height=7)
+
 options(repr.matrix.max.rows=10)
 options(repr.matrix.max.cols=20)
