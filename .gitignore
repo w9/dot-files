@@ -20,8 +20,8 @@
 !.ghci
 !.spacemacs
 
-!./.local/share/konsole/My Profile.profile
-!./.local/share/konsole/terminal-sexy.colorscheme
+!.local/share/konsole/My Profile.profile
+!.local/share/konsole/terminal-sexy.colorscheme
 
 !.config
 !.config/compton.conf
@@ -55,12 +55,12 @@
 !.weechat
 !.weechat/weechat.conf
 
-!./.jupyter
-!./.jupyter/custom
-!./.jupyter/custom/custom.css
-!./.jupyter/custom/custom.js
-!./.jupyter/nbconfig/edit.json
-!./.jupyter/nbconfig/notebook.json
+!.jupyter
+!.jupyter/custom
+!.jupyter/custom/custom.css
+!.jupyter/custom/custom.js
+!.jupyter/nbconfig/edit.json
+!.jupyter/nbconfig/notebook.json
 
 
 *.un~
