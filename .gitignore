@@ -59,5 +59,8 @@
 !./.jupyter/custom
 !./.jupyter/custom/custom.css
 !./.jupyter/custom/custom.js
+!./.jupyter/nbconfig/edit.json
+!./.jupyter/nbconfig/notebook.json
+
 
 *.un~
