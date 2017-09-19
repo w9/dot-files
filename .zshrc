@@ -146,3 +146,6 @@ export ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=blue'
 
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
