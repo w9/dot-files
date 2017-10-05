@@ -159,4 +159,3 @@ function fish_greeting; end
 
 [ -r "$HOME/.config/fish/local_config.fish" ]; and source $HOME/.config/fish/local_config.fish
 [ -r "$HOME/.config/fish/z.fish" ]; and source $HOME/.config/fish/z.fish
-
