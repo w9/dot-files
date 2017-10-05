@@ -30,6 +30,8 @@
 !.config/fish/functions
 !.config/fish/functions/*
 !.config/fish/z.fish
+!.config/fontconfig
+!.config/fontconfig/fonts.conf
 !.config/konsolerc
 !.config/nvim
 !.config/nvim/autoload

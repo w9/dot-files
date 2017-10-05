@@ -167,7 +167,7 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
 alias free='free -h'
-alias top='htop'
+#alias top='htop'
 
 alias tree='tree -CF'    #  Nice alternative to 'recursive ls' ...
 alias t='tree -L 1'
@@ -185,8 +185,10 @@ alias tra='trash-put'
 alias fr="grep -R --include '*.R'"
 
 alias gitl='git pull origin master'
+alias gita='git add .'
 alias gitc='git commit -am commit'
 alias gitp='git push origin master'
+alias gitacp='gita && gitc && gitp'
 
 # print all 256 color and their code for reference
 alias 256='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
@@ -197,8 +199,6 @@ alias run=runghc
 #-------------------------------------------------------------
 # Helper functions
 #-------------------------------------------------------------
-
-function rm() { echo "Use tra instead!" ; }
 
 function ff() { find . -type f -iname '*'"$*"'*' ; }
 function fe() { find . -type f -iname '*'"${1:-}"'*' -exec ${2:-file} {} \; ; }
@@ -253,6 +253,7 @@ if [ -f  "/usr/share/doc/pkgfile/command-not-found.bash" ]; then
   source "/usr/share/doc/pkgfile/command-not-found.bash"
 fi
 
+<<<<<<< HEAD
 
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -263,3 +264,5 @@ if [ -f '/home/xzhu/tmp/g/google-cloud-sdk/completion.bash.inc' ]; then source '
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+=======
+>>>>>>> dfbd1258b46eab62d3148aedac367fb065b4b497

@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     clojure
      vimscript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -42,6 +43,7 @@ values."
      better-defaults
      (c-c++ :variables c-c++-enable-clang-support t)
      csv
+     clojure
      emacs-lisp
      ess
      extra-langs
@@ -64,6 +66,7 @@ values."
      (shell :variables shell-default-height 30 shell-default-position 'bottom)
      (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
+     scala
      typescript
      version-control
      yaml
@@ -457,17 +460,3 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (web-beautify yapfify yaml-mode xterm-color ws-butler wolfram-mode winum which-key wgrep web-mode vue-mode volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide thrift tagedit stan-mode spaceline smex smeargle slim-mode shell-pop scss-mode scad-mode sass-mode rjsx-mode restart-emacs request rainbow-delimiters racer qml-mode pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diff-hl define-word dactyl-mode cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
