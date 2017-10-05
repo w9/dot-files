@@ -40,7 +40,7 @@ values."
      ;; aj-javascript
      auto-completion
      better-defaults
-     c-c++
+     (c-c++ :variables c-c++-enable-clang-support t)
      csv
      emacs-lisp
      ess
