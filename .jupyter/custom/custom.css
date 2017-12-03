@@ -1,0 +1,72 @@
+body {
+  font-family: iosevka;
+}
+
+.cell > .input {
+  width: 50%;
+}
+
+.cell > .output_wrapper {
+  width: 50%;
+  padding-left: 10px;
+}
+
+div.cell {
+  flex-direction: row;
+}
+
+.container {
+  width: 100%;
+}
+
+body > #header #header-container {
+  padding: 5px;
+}
+
+.prompt {
+  font-family: iosevka;
+  min-width: 12ex;
+}
+
+.context {
+  font-family: iosevka;
+}
+
+.introspection {
+  font-family: iosevka;
+}
+
+pre {
+  font-family: iosevka;
+}
+
+.CodeMirror {
+  font-family: iosevka;
+  font-size: 1em;
+}
+
+.CodeMirror pre {
+  font-variant-ligatures: inherit;
+}
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.end_space {
+  min-height: 300px;
+}
+
+.repr-list-wrapper > *:not(summary) {
+  margin-left: 1em;
+}
+
+.repr-list-wrapper:not([open]) > summary:after {
+  content: "list ...";
+  font-size: 0.7em;
+  border: 1px solid #aaa;
+  background-color: #eee;
+  padding: 0 4px 0 4px;
+}

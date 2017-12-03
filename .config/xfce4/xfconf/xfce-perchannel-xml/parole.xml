@@ -13,7 +13,7 @@
     <property name="volume" type="int" value="50"/>
   </property>
   <property name="folders" type="empty">
-    <property name="last-used-media" type="string" value="/home/xzhu"/>
+    <property name="last-used-media" type="string" value="/home/xzhu/tmp/Westworld S01 Season 1 Complete HDTV 720p x265 AAC E-Subs [GWC]"/>
   </property>
   <property name="playlist" type="empty">
     <property name="show-playlist" type="bool" value="false"/>
