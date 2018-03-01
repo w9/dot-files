@@ -20,6 +20,9 @@
 !.ghci
 !.spacemacs
 
+!.local
+!.local/share
+!.local/share/konsole
 !.local/share/konsole/My Profile.profile
 !.local/share/konsole/terminal-sexy.colorscheme
 
