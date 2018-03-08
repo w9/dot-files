@@ -100,13 +100,15 @@ alias ......... 'cd ../../../../../../../..'
 
 alias h         'history'
 alias lc        'wc -l'
-alias ls        'ls -hF --group-directories-first --color'
-alias lx        'ls -l'
+alias exa       'exa -F --group-directories-first --color=always'
+alias ls        'exa'
+alias lx        'exa -l'
+alias ll        'exa -l'
 
-alias tree      'tree -CF --dirsfirst'    #  Nice alternative to 'recursive ls' ...
-alias t         'tree -L 1'
-alias tt        'tree -L 2'
-alias ttt       'tree -L 3'
+alias tree      'lx -T'
+alias t         'tree -L1'
+alias tt        'tree -L2'
+alias ttt       'tree -L3'
 
 alias ag  'ag --color-line-number="1;30" --color-match="34" --color-path="1;33"'
 alias agp 'ag --pager less'
@@ -130,7 +132,6 @@ alias free      'free -h'
 alias R    "R --quiet --no-save"
 alias em   'emacsclient -t -a ""'
 alias tmux 'tmux -2'
-alias grep 'grep'
 
 function rp
   if [ (count $argv) = 0 ]
@@ -159,4 +160,3 @@ function fish_greeting; end
 
 [ -r "$HOME/.config/fish/local_config.fish" ]; and source $HOME/.config/fish/local_config.fish
 [ -r "$HOME/.config/fish/z.fish" ]; and source $HOME/.config/fish/z.fish
-
