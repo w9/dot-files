@@ -1,5 +1,5 @@
 [Desktop Entry]
-DefaultProfile=My Profile.profile
+DefaultProfile=Profile 2.profile
 
 [Favorite Profiles]
 Favorites=
@@ -15,7 +15,6 @@ State=AAAA/wAAAAD9AAAAAAAAB4AAAAQfAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1920=982
 Window-Maximized 1080x1920=true
-Window-Maximized 1200x1920=true
 
 [TabBar]
 TabBarVisibility=ShowTabBarWhenNeeded
