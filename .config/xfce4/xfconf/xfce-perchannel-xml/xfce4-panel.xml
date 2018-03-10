@@ -9,11 +9,10 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="3"/>
         <value type="int" value="7"/>
-        <value type="int" value="1"/>
+        <value type="int" value="13"/>
         <value type="int" value="10"/>
         <value type="int" value="9"/>
         <value type="int" value="5"/>
-        <value type="int" value="4"/>
         <value type="int" value="2"/>
         <value type="int" value="8"/>
       </property>
@@ -66,34 +65,23 @@
       <property name="fuzziness" type="uint" value="0"/>
       <property name="timezone" type="string" value=""/>
     </property>
-    <property name="plugin-1" type="string" value="showdesktop"/>
     <property name="plugin-9" type="string" value="separator">
       <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-8" type="string" value="whiskermenu"/>
-    <property name="plugin-10" type="string" value="systray">
+    <property name="plugin-10" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value=";vlc;vlc.instance6784;vlc.instance6924"/>
+    </property>
+    <property name="plugin-13" type="string" value="systray">
       <property name="names-visible" type="array">
-        <value type="string" value="thunar"/>
-        <value type="string" value="vlc"/>
-        <value type="string" value="pnmixer"/>
+        <value type="string" value="orage"/>
         <value type="string" value="networkmanager applet"/>
-        <value type="string" value="task manager"/>
-        <value type="string" value="msm notifier"/>
-        <value type="string" value="steam"/>
-        <value type="string" value="hexchat"/>
-        <value type="string" value="pamac-tray"/>
         <value type="string" value="chromium"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
-        <value type="string" value="sogou-qimpanel"/>
-        <value type="string" value="pa-applet"/>
+        <value type="string" value="vlc"/>
       </property>
-      <property name="show-frame" type="bool" value="true"/>
-      <property name="names-hidden" type="array">
-      </property>
-    </property>
-    <property name="plugin-4" type="string" value="pulseaudio">
-      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
     </property>
   </property>
   <property name="configver" type="int" value="2"/>
