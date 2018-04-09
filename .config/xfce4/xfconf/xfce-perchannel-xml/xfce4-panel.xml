@@ -75,12 +75,16 @@
     </property>
     <property name="plugin-13" type="string" value="systray">
       <property name="names-visible" type="array">
-        <value type="string" value="orage"/>
+        <value type="string" value="thunar"/>
+        <value type="string" value="vlc"/>
         <value type="string" value="networkmanager applet"/>
+        <value type="string" value="msm notifier"/>
+        <value type="string" value="steam"/>
+        <value type="string" value="orage"/>
         <value type="string" value="chromium"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
-        <value type="string" value="vlc"/>
+        <value type="string" value="sogou-qimpanel"/>
       </property>
     </property>
   </property>
