@@ -312,6 +312,7 @@ values."
 
 (defun my-setup-indent (n)
   (setq c-basic-offset n)
+  (setq python-tab-width n)
   (setq coffee-tab-width n)
   (setq javascript-indent-level n)
   (setq js-indent-level n)
