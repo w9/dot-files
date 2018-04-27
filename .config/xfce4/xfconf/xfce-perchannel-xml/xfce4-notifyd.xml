@@ -17,6 +17,7 @@
       <value type="string" value="org.kde.konsole"/>
       <value type="string" value="pa-applet"/>
       <value type="string" value="Pitivi"/>
+      <value type="string" value="Studio"/>
       <value type="string" value="System Config Printer Notification"/>
       <value type="string" value="Thunar"/>
       <value type="string" value="thunar-volman"/>
