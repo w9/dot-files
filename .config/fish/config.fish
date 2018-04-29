@@ -148,9 +148,11 @@ alias http 'python -m http.server 8023'
 
 alias gita 'git add -A .'
 alias gitl 'git pull origin master'
-alias gitc 'git commit -am commit'
+alias gitlm 'git pull origin master; and git submodule update --init --recursive --jobs 8'
+alias gitcc 'git commit'
+alias gitcc 'git commit -am "Checkpoint"'
 alias gitp 'git push origin master'
-alias gitacp 'gita; and gitc; and gitp'
+alias gitacp 'gita; and gitcc; and gitp'
 
 function fish_greeting; end
 
