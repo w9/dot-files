@@ -19,7 +19,11 @@
 !.gtkrc-2.0
 !.ghci
 !.spacemacs
+!.ideavimrc
 
+!.local
+!.local/share
+!.local/share/konsole
 !.local/share/konsole/My Profile.profile
 !.local/share/konsole/terminal-sexy.colorscheme
 
@@ -49,6 +53,8 @@
 !.config/xfce4/xfconf/xfce-perchannel-xml
 !.config/xfce4/xfconf/xfce-perchannel-xml/*
 .config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+!.config/yapf
+!.config/yapf/style
 
 !.byobu
 !.byobu/status

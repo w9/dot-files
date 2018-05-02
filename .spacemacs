@@ -33,6 +33,9 @@ values."
    '(
      idris
      purescript
+     sql
+     javascript
+     graphviz
      clojure
      vimscript
      ;; ----------------------------------------------------------------
@@ -311,6 +314,7 @@ values."
 
 (defun my-setup-indent (n)
   (setq c-basic-offset n)
+  (setq python-tab-width n)
   (setq coffee-tab-width n)
   (setq javascript-indent-level n)
   (setq js-indent-level n)
@@ -462,24 +466,3 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol t)
- '(package-selected-packages
-   (quote
-    (idris-mode prop-menu psci purescript-mode psc-ide noflet ensime sbt-mode scala-mode clojure-snippets clj-refactor inflections edn paredit seq peg cider-eval-sexp-fu cider queue yapfify yaml-mode xterm-color ws-butler wolfram-mode winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tide thrift tagedit stan-mode spaceline smex smeargle slim-mode shell-pop scss-mode scad-mode sass-mode rjsx-mode restart-emacs request rainbow-delimiters racer qml-mode pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pdf-tools pcre2el paradox orgit org-bullets open-junk-file neotree mwim multi-term move-text matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra intero insert-shebang info+ indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make haskell-snippets google-translate golden-ratio go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-object-popup ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster diff-hl define-word dactyl-mode cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clojure-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
- '(psc-ide-add-import-on-completion t)
- '(psc-ide-rebuild-on-save nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-search-highlight-persist-highlight-face ((t (:foreground nil :background "#444444"))))
- '(isearch ((t (:foreground "#000000" :background "#87d700"))))
- '(mode-line-inactive ((t (:foreground "#FFFFFF" :background "#000000"))))
- '(powerline-inactive1 ((t (:foreground "#FFFFFF" :background "#000000"))))
- '(powerline-inactive2 ((t (:foreground "#FFFFFF" :background "#000000")))))
