@@ -27,6 +27,9 @@
       </property>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
+      <property name="Super_L" type="empty">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
       <property name="&lt;Super&gt;w" type="string" value="exo-open --launch WebBrowser"/>
       <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder --collapsed">
         <property name="startup-notify" type="bool" value="true"/>
@@ -43,17 +46,11 @@
       <property name="&lt;Primary&gt;&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter"/>
       <property name="&lt;Primary&gt;Print" type="string" value="xfce4-screenshooter -wc"/>
       <property name="&lt;Super&gt;Escape" type="string" value="xflock4"/>
-      <property name="&lt;Super&gt;Tab" type="string" value="skippy-xd"/>
-      <property name="&lt;Super&gt;Return" type="string" value="rofi -show-icons -show window">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
       <property name="&lt;Super&gt;t" type="string" value="konsole"/>
-      <property name="XF86AudioLowerVolume" type="string" value="amixer -q sset Master 5%-"/>
-      <property name="XF86AudioRaiseVolume" type="string" value="amixer -q sset Master 5%+"/>
-      <property name="Super_L" type="empty">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
-      <property name="&lt;Primary&gt;&lt;Super&gt;Return" type="string" value="rofi -show-icons -show drun"/>
+      <property name="&lt;Shift&gt;XF86AudioLowerVolume" type="string" value="amixer -q sset Master 5%-"/>
+      <property name="&lt;Shift&gt;XF86AudioRaiseVolume" type="string" value="amixer -q sset Master 5%+"/>
+      <property name="&lt;Super&gt;Tab" type="string" value="rofi -show-icons -show window"/>
+      <property name="&lt;Super&gt;Return" type="string" value="rofi -show-icons -show drun"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
