@@ -252,17 +252,3 @@ fi
 if [ -f  "/usr/share/doc/pkgfile/command-not-found.bash" ]; then
   source "/usr/share/doc/pkgfile/command-not-found.bash"
 fi
-
-<<<<<<< HEAD
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/xzhu/tmp/g/google-cloud-sdk/path.bash.inc' ]; then source '/home/xzhu/tmp/g/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/xzhu/tmp/g/google-cloud-sdk/completion.bash.inc' ]; then source '/home/xzhu/tmp/g/google-cloud-sdk/completion.bash.inc'; fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-=======
->>>>>>> dfbd1258b46eab62d3148aedac367fb065b4b497
