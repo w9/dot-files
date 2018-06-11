@@ -100,9 +100,9 @@ alias ......... 'cd ../../../../../../../..'
 
 alias h         'history'
 alias lc        'wc -l'
-alias exa       'exa -F --group-directories-first --color=always'
+alias exa       'exa -hF --group-directories-first --color=always'
 # alias ls        'exa'
-alias ls        'ls -F --group-directories-first --color=always'
+alias ls        'ls -hF --group-directories-first --color=always'
 alias lx        'ls -l'
 alias ll        'ls -l'
 
